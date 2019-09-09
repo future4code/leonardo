@@ -1,0 +1,63 @@
+cat README.md
+cat inicio
+ls
+cd misterio
+ls
+head cena-do-crime
+head -n 20 cena-do-crime
+tail cena-do-crime
+tail -n 20 cena-do-crime
+grep PISTA cena-do-crime
+grep -n2 PISTA cena-do-crime
+cd entrevistas
+ls
+cd ..
+cd associacoes
+ls
+head AAA
+grep Annabel AAA
+head Delta_SkyMiles
+tail Delta_SkyMiles
+grep Annabel Delta_SkyMiles
+head Biblioteca_da_cidade
+tail Biblioteca_da_cidade
+grep Annabel Biblioteca_da_cidade
+head Museu_da_Historia_do_Bash
+tail Museu_da_Historia_do_Bash
+grep Annabel Museu_da_Historia_do_Bash
+cd ..
+head automoveis
+head -n15 automoveis
+grep Annabel automoveis
+grep Churc automoveis
+grep -n15 Churc automoveis
+cd ruas
+ls
+cd ..
+cd pessoas
+head pessoas
+grep Annabel pessoas
+cd ruas
+cat Vila_Buckingham
+cat -n Vila_Buckingham
+cat -b Vila_Buckingham
+cat -n179 Vila_Buckingham
+cat Vila_Buckingham | head -n 179 | tail -n 1
+cd ..
+cd entrevistas
+cat entrevista-699607
+cd ..
+grep L337 automoveis
+grep -n5 L337 automoveis
+grep Germuska pessoas
+grep Bowers pessoas
+grep Maher pessoas
+cd ruas
+cat Rua_Plainfield | head -n 275 | tail -n 1
+cat Travessa_Dunstable | head -n 284 | tail -n 1
+cat Travessa_Andover | head -n 224 | tail -n1
+cd ..
+cd entrevistas
+cat entrevista-29741223
+cat entrevista-9620713
+cat entrevista-904020
