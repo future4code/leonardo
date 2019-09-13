@@ -31,7 +31,8 @@ body, p {
     color: black;
 }
 .conteudo{
-    margin: auto auto 10px auto;
+    margin: auto ;
+    margin-bottom: 10px;
     width: 80%;
     padding: 10px;
     text-align: center;
