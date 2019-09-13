@@ -49,12 +49,10 @@ th {
     top: 43px;
     box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
 }
-
 table {
     border-collapse: collapse;
     width: 100%;
 }
-  
 th, td {
     padding: 8px;
     border-bottom: 1px solid #ddd;
