@@ -9,7 +9,7 @@ body{
 }
 .menu{
     background-color: #04DB6F;
-    padding: 50px;
+    padding: 10px;
     color: white;
     text-align: center;
 }
@@ -34,6 +34,10 @@ body{
     margin: auto;
     border-radius: 800px;
     padding: 40px;
+    align-self: left;
+}
+#logo{
+    height: 80px;
 }
 .instituicoes{
     width: 400px;
@@ -80,4 +84,22 @@ body{
     margin-bottom: 10px;
     background-color: green;
     margin-bottom: 10px;
+}
+.rodape, .redesSociais{
+    background-color: #3F5E5A;
+}
+.contato{
+    margin: auto;
+    text-align: justify;
+    display: inline-block;
+    padding: 40px;
+}
+input {
+    width: 400px;
+    padding: 12px 20px;
+    margin: auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
