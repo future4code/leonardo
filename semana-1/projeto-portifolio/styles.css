@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body{
+    font-size: 30px;
+    font-family: "eurostile",sans-serif;
+}
+.cabecalho{
+    background-color: #04DB6F;
+    overflow: auto;
+}
+.menu{
+    /* padding: 10px; */
+    color: white;
+    width: 60%;
+    margin: auto;
+    overflow: auto;
+}
+.menuLogo{
+    float: left;
+    width: 400px;
+    /* overflow: auto; */
+
+}
+.menuContatos{
+    float: right;
+}
+.conteudo{
+    margin: auto;
+    text-align: center;
+    background-color: #F9F9F9;
+    background-color: white;
+}
+.descricao{
+    display: block;
+    border: 1px solid white;
+    border-radius: 50px;
+    margin: auto;
+    padding: 60px;
+    margin-bottom: 10px;
+    background-color: white;
+    background-color: #F9F9F9;
+}
+#fotoLeo{
+    display: block;
+    margin: auto;
+    border-radius: 800px;
+    padding: 40px;
+    align-self: left;
+}
+
+.instituicoes{
+    width: 400px;
+    margin: auto;
+    text-align: justify;
+    display: inline-block;
+    padding: 40px;
+    vertical-align: text-top;
+    text-align: center;
+    border-radius: 10px;
+    height: 150px;
+    margin-bottom: 10px;
+    background-color: #F9F9F9;
+}
+.habilidades{
+    border-radius: 10px;
+    width: 400px;
+    margin: auto;
+    vertical-align: text-top;
+    text-align: center;
+    background-color: #F9F9F9;
+    padding: 40px;
+    margin-bottom: 10px;
+}
+.tituloProjeto{
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #F9F9F9;
+    padding: 40px;
+    margin-bottom: 10px;
+}
+.projetos{
+    width: 400px;
+    margin: auto;
+    text-align: justify;
+    display: inline-block;
+    padding: 40px;
+    vertical-align: text-top;
+    text-align: center;
+    border-radius: 10px;
+    height: 150px;
+    margin-bottom: 10px;
+    background-color: green;
+    margin-bottom: 10px;
+}
+.rodape, .redesSociais{
+    background-color: #3F5E5A;
+}
+.contato{
+    margin: auto;
+    text-align: justify;
+    display: inline-block;
+    padding: 40px;
+}
+input {
+    width: 400px;
+    padding: 12px 20px;
+    margin: auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.btn{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    border: solid 3px white;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    font-weight: bold;
+    margin: 10px;
+  }
+  .menuLogo h1{
+      font-size: 0.8em;
+  }
+  .menuLogo p{
+      font-size: 0.6em;
+  }
+.btn a:link{
+    text-decoration: none;
+  }
+.btn a:visited{
+    text-decoration: none;
+    color: white;
+  }
+.btn a:active{
+      text-decoration: none;
+      color: white;
+  }
+.btn:hover {
+    border: solid 3px #3F5E5A;
+}
+#btnLN{
+    float: left; 
+}
+#nomeLogo{
+    vertical-align: middle;
+    display: inline;
+}
+
