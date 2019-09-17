@@ -7,7 +7,7 @@ body{
     background-color: red;
     position: sticky;
     top: 0;
-    width: 100%;
+    width: calc(100% - 40px);
     padding: 20px;
     box-shadow: 0 0 5px 0px rgba(0,0,0,0.75);
 }
@@ -65,34 +65,46 @@ ul {
     background-color: #333;
     display: flex;
     justify-content: center;
-  }
-  li {
+}
+li {
     width: 100%;
     overflow: hidden;
     background-color: #333;
     text-align: center;
-  }
-  li a {
+}
+li a {
     display: inline-block;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-  }
-  li a:hover {
+}
+li a:hover {
     background-color: #ddd;
     color: black;
-  }
-  .menuDirCabecalho.post{
+}
+.menuDirCabecalho.post{
       background-color: aqua;
-  }
-  .menuDirTexto.post{
+}
+.menuDirTexto.post{
       background-color: aquamarine;
-  }
-  .menuDir.post{
-    grid-column: 3 / 4;
-    background-color: white;
-    box-shadow: 4px 4px 0px 1px black;
-    height: 200px;
+}
+.menuDir.post{
+    display: block;
+    position: fixed;
+    left: calc(50% + 300px);
+    top: 71px;
+    bottom: 20px;
+    width: 310px;
+    display: flex;
+    flex-direction: column; 
+}
+.menuEsq.post{
+    display: block;
+    position: fixed;
+    right: calc(50% + 600px);
+    top: 71px;
+    bottom: 20px;
+    width: 250px;
 }
