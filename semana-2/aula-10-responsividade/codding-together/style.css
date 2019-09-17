@@ -1,0 +1,45 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    min-height: 100vh;
+}
+
+.item {
+    color: white;
+}
+
+.header {
+    background-color: #2ECC40;
+}
+
+.menu {
+    background-color: #FFDC00;
+}
+
+.content1 {
+    background-color: #F012BE; 
+}
+
+.content2 {
+    background-color: #0074D9;
+}
+
+.image {
+    background-color: #FF4136;   
+}
+
+.extra {
+    background-color: #01FF70;
+}
+
+.footer {
+    background-color: #B10DC9;
+}
+@media (max-width: 800px){
+    .container{
+        grid-template-columns: 1fr 1fr;
+    }
+}

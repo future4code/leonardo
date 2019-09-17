@@ -1,0 +1,93 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.cabecalho{
+    background-color: red;
+    height: 50px;
+    width: 100%;
+    
+}
+.menuEsq{
+    width: 20%;
+    background-color: gray;
+    
+}
+.principal{
+    display: flex;
+    width: 100%;
+}
+.conteudo{
+    display: flex;
+    flex-direction: column;
+    width: 100vw; 
+    height: 100vh;   
+}
+.linha {
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    line-height: 100px;
+    
+    
+}
+#q1, #q4 {
+    background-color: blue;
+    width: 33%;
+    margin: 20px;
+    height: 100px;
+}
+#q2, #q5{
+    background-color: yellow;
+    width: 33%;
+    margin: 20px;
+    height: 100px;
+}
+#q3, #q6{
+    background-color: green;
+    width: 33%;
+    margin: 20px;
+    height: 100px
+}
+#q7, #q8{
+    background-color: black;
+    width: 50%;
+    margin: 20px;
+    height: 200px;
+    color: white;
+    line-height: 200px;
+}
+#q9, #q10, #q11{
+    border: 2px solid black;
+    width: 33%;
+    height: 100px;
+    margin: 20px;
+}
+@media (max-width: 900px){
+    .linha1, .linha2, .linha4{
+        flex-wrap: wrap;
+    }
+    #q1, #q4, #q2, #q5 {
+        width: calc(50% - 40px);
+    }
+    #q3, #q6, #q11{
+        width: 100%;
+    }
+    #q9, #q10{
+        width: calc(50% - 45px);
+    }
+}
+@media (max-width: 800px){
+    .menuEsq{
+        display: none;
+    }
+    
+}
+@media (max-width: 600px){
+    #q1, #q2, #q3, #q4, #q5, #q6, #q7, #q8, #q9, #q10, #q11{
+        width: 100%;
+    }
+    
+
+}
