@@ -1,0 +1,98 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(216, 214, 214);
+}
+.cabecalho{
+    background-color: red;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 0 5px 0px rgba(0,0,0,0.75);
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 10px 80px 0 80px;
+}
+.container.menor{
+    grid-template-columns: 1fr 3fr 2fr;
+}
+.menuEsq{
+    grid-column: 1 / 2;
+    background-color: #FFDC00;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    height: 100px;
+}
+.conteudo{
+    grid-column: 2 / 3;
+    background-color: green;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    margin: 0 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+}
+.posts{
+    grid-column: 2 / 3;
+    margin: 0 20px 0 20px;
+}
+.menuDir{
+    grid-column: 3 / 4;
+    background-color: white;
+    box-shadow: 4px 4px 0px 1px blue;
+    height: 200px;
+}
+.menuDirCabecalho{
+    background-color: blue;
+    padding: 10px;
+    text-align: center;
+}
+.grupo{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin: 0 80px 0 80px;
+    justify-content: space-between;
+}
+.campoBusca{
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+  }
+  li {
+    width: 100%;
+    overflow: hidden;
+    background-color: #333;
+    text-align: center;
+  }
+  li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  li a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  .menuDirCabecalho.post{
+      background-color: aqua;
+  }
+  .menuDirTexto.post{
+      background-color: aquamarine;
+  }
+  .menuDir.post{
+    grid-column: 3 / 4;
+    background-color: white;
+    box-shadow: 4px 4px 0px 1px black;
+    height: 200px;
+}
