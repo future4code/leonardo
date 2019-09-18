@@ -6,6 +6,7 @@
 body {
     font-size: 20px;
 }
+
 header {
     background-color: #EF843A;
     width: calc(100vw - 40px);
@@ -15,6 +16,8 @@ header {
     font-weight: bold;
     font-size: 2rem;
     position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 input {
@@ -27,6 +30,7 @@ section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
+    margin-bottom: 80px;
 }
 
 article {
@@ -57,7 +61,7 @@ article:hover {
 }
 
 article p {
-    padding: 20px 0;
+    padding: 20px;
 }
 
 footer {
@@ -70,13 +74,19 @@ footer {
     font-size: 2em;
 }
 
-.video p {
+.video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.video p, #video {
     padding: 20px;
+    width: 60vw;
 }
 
 #video{
-    object-fit: initial;
-    width: 50vw;
     padding: 0 20px;
 }
 
@@ -94,3 +104,21 @@ a:active {
     color: black;
 }
 
+header a:hover {
+    color: white;
+}
+
+input {
+    border-radius: 20px;
+}
+
+@media (max-width: 600px){
+    section {
+        grid-template-columns: 1fr;
+    }
+
+    #video, .video p{
+        
+        width: 90vw;
+    }
+}
