@@ -112,6 +112,26 @@ input {
     border-radius: 20px;
 }
 
+nav {
+    border-right: 1px solid black;
+}
+.video-curtir {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.container-main {
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+
+.container-video{
+    display: grid;
+    grid-template-columns: 100px auto 2fr;
+}
+
+
 @media (max-width: 600px){
     section {
         grid-template-columns: 1fr;
