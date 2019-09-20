@@ -8,17 +8,63 @@
     <title>Future Tube</title>
 </head>
 <body>
-    <header>
-        <a href="index.html"><p>FutureTube</p></a>
-        <input type="search" name="search" placeholder="Busca">
-    </header>
-    <div class="video">
-        <div><video id="video" src="http://soter.ninja/videos/2.mp4" controls autoplay ></div>
-        <div><p>Estrelas</p></div>
+    <div class="wrap">
+        <header>
+            <a href="index.html"><p>FutureTube</p></a>
+            <input type="search" name="search" placeholder="Busca">
+        </header>
+        <div class="container-exibicao">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html"><p>Inicio</p></a>
+                    </li>
+                    <li><p>Em alta</p></li>
+                    <li><p>Inscrições</p></li>
+                    <li><p>Originais</p></li>
+                    <hr>
+                    <li><p>Biblioteca</p></li>
+                    <li><p>Histórico</p></li>
+                </ul>
+            </nav>
+            <div class="video exibicao">
+                <div>
+                    <video id="video" src="http://soter.ninja/videos/2.mp4" controls autoplay >
+                </div>
+                <div class="img-description video-exibicao">
+                    <div class="img-titulo">
+                        <p>Estrelas</p>
+                    </div>
+                    <div class="img-buttons">
+                        <button>Like</button>
+                        <button>Dislike</button>
+                    </div>
+                </div> 
+            </div>
+            <aside class="menu-lateral-video">
+                <div class="img-recomendacoes">  
+                    <a href="estrelas.html"><img src="/imagens/estrelas.png" alt="Tumbnail Video" width="200px"></a>
+                </div>
+                <div>
+                    <p>Estrelas</p>
+                </div>
+                <div class="img-recomendacoes">  
+                    <a href="cabos.html"><img src="/imagens/cabos.png" alt="Tumbnail Video" width="200px"></a>
+                </div>
+                <div>
+                    <p>Cabos</p>
+                </div>
+                <div class="img-recomendacoes">  
+                    <a href="#"><img src="/imagens/nao_encontrada.png" alt="Tumbnail Video" width="200px"></a>
+                </div>
+                <div>
+                    <p>Não Encontrada</p>
+                </div>
+            </aside>
+        </div>
+        <footer>
+            <p>Oi! Eu moro no footer!</p>
+        </footer>
     </div>
-    <footer>
-        <p>Oi! Eu moro no footer!</p>
-    </footer>
-    
 </body>
 </html>
