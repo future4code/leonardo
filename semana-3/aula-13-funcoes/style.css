@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    min-height: calc(100vh - 40px);
+    padding: 20px;
+}
+article {
+flex: 1;
+background-color: #FFFF99;
+border: 1px solid rgb(163, 163, 14);
+}
+
+article h1 {
+    padding: 20px;
+    text-align: center;
+}
+
+article input {
+    margin-left: 20px;
+}
+
+
+#entrada-texto{
+    background-color: #FFFF99;
+}
+
+
+@media (max-width: 600px) {
+    section {
+        grid-template-columns: 1fr;
+    }
+
+    article {
+        min-height: 20vh;
+    }
+  }
