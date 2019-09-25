@@ -9,12 +9,12 @@
 <style>
     body {
         display: grid;
-        grid-template-columns: 20% auto;
     }
 
     #input-post {
         display: flex;
         flex-direction: column;
+        width: 50%;
     }
 
     #exibir-post {
@@ -43,14 +43,14 @@
         </div>
     </section>
     <section>
-        <h1>Conteudo</h1>
+        
         <div id="exibir-post">
 
         </div>
     </section>
 </body>
 <script>
-    const posts = []
+    const posts = buscaItem("Posts")
     class Post {
         constructor (titulo, autor, mensagem, imagem) {
             this.titulo = titulo
@@ -73,21 +73,26 @@
         }
         const novoPost = new Post (postPronto.titulo, postPronto.autor, postPronto.mensagem, postPronto.imagem)
         posts.push(novoPost)
-        console.log(posts)
         limparCampos()
-        inserirPost()
+        salvaItem("Posts", posts)
+        window.open("posts.html")
         
         }
     const containerPost = document.getElementById("exibir-post") 
-    function inserirPost() {
-        var ultimo = posts[posts.length -1]
-        containerPost.innerHTML +=  `<div>
-                                        <img src="${ultimo.imagem}">
-                                        <h1>${ultimo.titulo}</h1>
-                                        <p>${ultimo.autor}</p>
-                                        <p>${ultimo.mensagem}</p>
-                                    </div>` 
+    function buscaItem(chave) {
+        const valor = window.localStorage.getItem(chave);
+        if (valor) {
+            return JSON.parse(valor);
+        }
+        return [];
     }
+
+    function salvaItem(chave, item) {
+        if(item && chave) {
+            window.localStorage.setItem(chave, JSON.stringify(item));
+        }
+    }
+    
     
 </script>
 </html>
