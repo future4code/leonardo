@@ -4,83 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inscrição</title>
-</head>
-<style>
-.container {
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-}
-
-.container input {
-margin-bottom: 10px;
-}
-
-#botao-inscritos {
-margin-top: 10px;
-}
-
-#botao-inscritos a {
-color: black;
-text-decoration: none;
-}
-  
-</style>
-
-<script>
+    <title>Formulario Inscrição</title>
+    <script>
+    function salvaItem(chave, item) {
+        if(item && chave) {
+        window.localStorage.setItem(chave, JSON.stringify(item));
+        }
+    }
     function buscaItem(chave) {
         const valor = window.localStorage.getItem(chave);
-        if (valor) {
+            if (valor) {
             return JSON.parse(valor);
         }
         return [];
-    }
-
-    function salvaItem(chave, item) {
-        if(item && chave) {
-            window.localStorage.setItem(chave, JSON.stringify(item));
         }
-    }
-
-    function limpaCadastro(){
+    function limpaFormulario() {
         document.getElementById("nome").value = ""
         document.getElementById("idade").value = ""
         document.getElementById("email").value = ""
     }
-    
-     let alunos = []
- 
-    function cadastrar(){
+    let alunos = []
+    function cadastrar() {
         const aluno = {
-        nome: document.getElementById("nome").value,
-        idade: document.getElementById("idade").value,
-        email: document.getElementById("email").value
+            Nome: document.getElementById("nome").value,
+            Idade: document.getElementById("idade").value,
+            Email: document.getElementById("email").value
         }
-        salvaItem("salvarAluno", aluno)
-        limpaCadastro()
-        alunos.push(aluno)
+        
+        if (!aluno.Nome){
+            alert("Inserir o nome do aluno")
+        }else {
+            alunos = buscaItem("alunoSalvo")
+            alunos.push(aluno)
+            salvaItem("alunoSalvo", alunos)
+            limpaFormulario()
+            alert(`Aluno ${aluno.Nome} criado com sucesso`)
+        }
     }
 
-    function listarAlunos(){
-        for aluno in aluno (console.log())
-    }
-    
-
-    
-
-
-</script>
-<body class="__bm__extension">
-    <div class="container __burner-mail-jcdjkj" style="position: relative;">
-      <h1>Formulário de inscrição Future4</h1>
-      <label for="nome">Nome</label>
-      <input type="text" id="nome" name="nome" placeholder="Nome">
-      <label for="idade">Idade</label>
-      <input type="text" id="idade" name="idade" placeholder="Idade">
-      <label for="idade">Email</label>
-      <input type="text" id="email" name="email" placeholder="Email">
-      <button onclick="cadastrar()">Cadastrar</button>
-      <a href="inscritos.html"><button id="botao-inscritos">Inscritos</button></a>
-
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulário de inscrição Future4</h1>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Nome">
+        <label for="idade">Idade</label>
+        <input type="text" id="idade" name="idade" placeholder="Idade">
+        <label for="idade">Email</label>
+        <input type="text" id="email" name="email" placeholder="Email">
+        <button onclick="cadastrar()">Cadastrar</button>
+        <a href="busca.html"><button id="botao-inscritos">Inscritos</button></a>
+    </div>
+</body>
 </html>
