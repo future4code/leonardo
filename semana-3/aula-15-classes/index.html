@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Future Blog</title>
+</head>
+<style>
+    body {
+        display: grid;
+        grid-template-columns: 20% auto;
+    }
+
+    #input-post {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #exibir-post {
+        padding: 20px;
+    }
+
+    #exibir-post > div {
+        min-height: 200px;
+        border: 1px solid black;
+        padding-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+</style>
+<body>
+    <section>
+        <h1>Criar Post</h1>
+        <div id="input-post">
+            <p>Titulo</p>
+            <input type="text" id="titulo" placeholder="Digite o Titulo">
+            <p>Autor</p>
+            <input type="text" id="autor" placeholder="Digite o Autor">
+            <p>Mensagem</p>
+            <textarea name="mensagem" id="mensagem" cols="30" rows="10" placeholder="Digite o conteudo"></textarea>
+            <button id="enviar-post" onclick="enviarPost()">Enviar</button>
+        </div>
+    </section>
+    <section>
+        <h1>Conteudo</h1>
+        <div id="exibir-post">
+
+        </div>
+    </section>
+</body>
+<script>
+    const posts = []
+    class Post {
+        constructor (titulo, autor, mensagem, imagem) {
+            this.titulo = titulo
+            this.autor = autor
+            this.mensagem = mensagem
+            this.imagem = imagem
+        }
+    }
+    function limparCampos() {
+        document.getElementById("titulo").value = ""
+        document.getElementById("autor").value = ""
+        document.getElementById("mensagem").value = ""
+    }
+    function enviarPost() {
+        const postPronto = {
+            titulo: document.getElementById("titulo").value,
+            autor: document.getElementById("autor").value,
+            mensagem: document.getElementById("mensagem").value,
+            imagem: "https://picsum.photos/200/200"
+        }
+        const novoPost = new Post (postPronto.titulo, postPronto.autor, postPronto.mensagem, postPronto.imagem)
+        posts.push(novoPost)
+        console.log(posts)
+        limparCampos()
+        inserirPost()
+        
+        }
+    const containerPost = document.getElementById("exibir-post") 
+    function inserirPost() {
+        var ultimo = posts[posts.length -1]
+        containerPost.innerHTML +=  `<div>
+                                        <img src="${ultimo.imagem}">
+                                        <h1>${ultimo.titulo}</h1>
+                                        <p>${ultimo.autor}</p>
+                                        <p>${ultimo.mensagem}</p>
+                                    </div>` 
+    }
+    
+</script>
+</html>
