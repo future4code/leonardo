@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario Inscrição</title>
+    <script>
+    function salvaItem(chave, item) {
+        if(item && chave) {
+        window.localStorage.setItem(chave, JSON.stringify(item));
+        }
+    }
+    function buscaItem(chave) {
+        const valor = window.localStorage.getItem(chave);
+            if (valor) {
+            return JSON.parse(valor);
+        }
+        return [];
+        }
+    function limpaFormulario() {
+        document.getElementById("nome").value = ""
+        document.getElementById("idade").value = ""
+        document.getElementById("email").value = ""
+    }
+    let alunos = []
+    function cadastrar() {
+        const aluno = {
+            Nome: document.getElementById("nome").value,
+            Idade: document.getElementById("idade").value,
+            Email: document.getElementById("email").value
+        }
+        
+        if (!aluno.Nome){
+            alert("Inserir o nome do aluno")
+        }else {
+            alunos = buscaItem("alunoSalvo")
+            alunos.push(aluno)
+            salvaItem("alunoSalvo", alunos)
+            limpaFormulario()
+            alert(`Aluno ${aluno.Nome} criado com sucesso`)
+        }
+    }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulário de inscrição Future4</h1>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Nome">
+        <label for="idade">Idade</label>
+        <input type="text" id="idade" name="idade" placeholder="Idade">
+        <label for="idade">Email</label>
+        <input type="text" id="email" name="email" placeholder="Email">
+        <button onclick="cadastrar()">Cadastrar</button>
+        <a href="busca.html"><button id="botao-inscritos">Inscritos</button></a>
+    </div>
+</body>
+</html>
