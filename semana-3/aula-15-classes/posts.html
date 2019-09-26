@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Posts</title>
+</head>
+<body>
+    <section >
+        <h1>Posts</h1>
+        <div id="mostra-posts">
+
+        </div>
+        <a href="index.html"><button >Voltar</button></a>
+    </section>
+    
+</body>
+<script>
+   function buscaItem(chave) {
+        const valor = window.localStorage.getItem(chave);
+        if (valor) {
+            return JSON.parse(valor);
+        }
+        return [];
+    } 
+    const containerPost = document.getElementById("mostra-posts")
+    const posts = buscaItem("Posts")
+    for ( i = 0; i < posts.length; i++){
+        containerPost.innerHTML +=  `<div>
+                                        <img src="${posts[i].imagem}">
+                                        <h1>${posts[i].titulo}</h1>
+                                        <p>${posts[i].autor}</p>
+                                        <p>${posts[i].mensagem}</p>
+                                    </div>` 
+    }
+</script>
+</html>

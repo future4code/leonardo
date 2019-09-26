@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Future Blog</title>
+</head>
+<style>
+    body {
+        display: grid;
+    }
+
+    #input-post {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    #exibir-post {
+        padding: 20px;
+    }
+
+    #exibir-post > div {
+        min-height: 200px;
+        border: 1px solid black;
+        padding-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+</style>
+<body>
+    <section>
+        <h1>Criar Post</h1>
+        <div id="input-post">
+            <p>Titulo</p>
+            <input type="text" id="titulo" placeholder="Digite o Titulo">
+            <p>Autor</p>
+            <input type="text" id="autor" placeholder="Digite o Autor">
+            <p>Mensagem</p>
+            <textarea name="mensagem" id="mensagem" cols="30" rows="10" placeholder="Digite o conteudo"></textarea>
+            <button id="enviar-post" onclick="enviarPost()">Enviar</button>
+        </div>
+    </section>
+    <section>
+        
+        <div id="exibir-post">
+
+        </div>
+    </section>
+</body>
+<script>
+    const posts = buscaItem("Posts")
+    class Post {
+        constructor (titulo, autor, mensagem, imagem) {
+            this.titulo = titulo
+            this.autor = autor
+            this.mensagem = mensagem
+            this.imagem = imagem
+        }
+    }
+    function limparCampos() {
+        document.getElementById("titulo").value = ""
+        document.getElementById("autor").value = ""
+        document.getElementById("mensagem").value = ""
+    }
+    function enviarPost() {
+        const postPronto = {
+            titulo: document.getElementById("titulo").value,
+            autor: document.getElementById("autor").value,
+            mensagem: document.getElementById("mensagem").value,
+            imagem: "https://picsum.photos/200/200"
+        }
+        const novoPost = new Post (postPronto.titulo, postPronto.autor, postPronto.mensagem, postPronto.imagem)
+        posts.push(novoPost)
+        limparCampos()
+        salvaItem("Posts", posts)
+        window.open("posts.html")
+        
+        }
+    const containerPost = document.getElementById("exibir-post") 
+    function buscaItem(chave) {
+        const valor = window.localStorage.getItem(chave);
+        if (valor) {
+            return JSON.parse(valor);
+        }
+        return [];
+    }
+
+    function salvaItem(chave, item) {
+        if(item && chave) {
+            window.localStorage.setItem(chave, JSON.stringify(item));
+        }
+    }
+    
+    
+</script>
+</html>
