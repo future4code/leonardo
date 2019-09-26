@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Planner Despesas</title>
+</head>
+<body>
+    <section class="custom-container" id="section-1">
+        <h2>Controlador de Despesas</h2>
+        <h3>Cadastrar despesa</h3>
+        <div>
+          <div class="input-container">
+            <p class="label-texto">Valor</p>
+            <input id="valor-da-despesa">
+          </div>
+          <div class="input-container">
+            <p class="label-texto">Tipo (Casa, Viagem, Rolês, Outros)</p>
+            <select id="tipo-da-despesa">
+              <option value="Casa">Casa</option>
+              <option value="Rolê">Rolê</option>
+              <option value="Viagem">Viagem</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+          <div class="input-container">
+            <p class="label-texto">Descrição</p>
+            <input id="descrição-da-despesa">
+          </div>
+        </div>
+        <button class="botao-comum" onclick="cadastrarDespesa()" id="cadastrar-despesa-btn">Cadastrar Despesa</button>
+    </section>
+  
+    <section class="custom-container" id="section-2">
+        <h2>Despesas Detalhadas</h2>
+        <div>
+            <div class="input-container">
+                <p class="label-texto">Tipo (Casa, Viagem, Rolês, Outros)</p>
+                <select id="filtro-tipo">
+                <option value="Casa">Casa</option>
+                <option value="Rolê">Rolê</option>
+                <option value="Viagem">Viagem</option>
+                <option value="Outros">Outros</option>
+                </select>
+            </div>
+                <div class="input-container">
+                    <p class="label-texto">Valor Mínimo</p>
+                    <input id="filtro-valor-minimo">
+                </div>
+            <div class="input-container">
+                <p class="label-texto">Valor Máximo</p>
+                <input id="filtro-valor-maximo">
+            </div>
+            <button class="botao-comum" id="filtrar-btn">Filtrar</button>
+            <button class="botao-comum" id="limpar-filtros-btn">Limpar Filtros</button>
+        </div>
+        <div id="despesas-list-container">
+
+        </div>
+    </section>
+    <section class="custom-container" id="section-3">
+        <h2>Extrato</h2>
+        <div>
+          <h3 id="valor-total"> Valor Total: </h3>
+        </div>
+        <div id="lista-do-estrato"></div>
+    </section>
+  
+  
+    </div>
+</body>
+<style>
+    body {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .mostra-despesa {
+        display: flex;
+    }
+</style>
+<script>
+    
+    class Despesa {
+        constructor (valor, tipo, descricao){
+            this.valor = valor
+            this.tipo = tipo
+            this.descricao = descricao
+        }
+    }
+
+    function limparCampos() {
+        document.getElementById("valor-da-despesa").value = ""
+        document.getElementById("tipo-da-despesa").value = ""
+        document.getElementById("descrição-da-despesa").value = ""
+    }
+    
+    let despesasTotais = []
+    
+    function instanciarDespesa(){
+        let valorDespesa = document.getElementById("valor-da-despesa").value
+        let tipoDespesa = document.getElementById("tipo-da-despesa").value
+        let descricaoDespesa = document.getElementById("descrição-da-despesa").value
+        if (!valorDespesa){
+            alert("Informar o valor da despesa")
+        }else if (!tipoDespesa){
+            alert("Informar o tipo da despesa")
+        }else if (!descricaoDespesa){
+            alert("Informar a descricao da despesa")
+        }else {
+            const despesaInstanciada = {
+            valor: valorDespesa,
+            tipo: tipoDespesa,
+            descricao: descricaoDespesa
+        }
+        const novaDespesa = new Despesa (despesaInstanciada.valor, despesaInstanciada.tipo, despesaInstanciada.descricao)
+        despesasTotais.push(novaDespesa)
+        mostrasDespesas()
+        }
+        
+    }
+
+    function cadastrarDespesa() {
+        instanciarDespesa()
+        limparCampos()
+        console.log(despesasTotais)
+    }
+
+    function mostrasDespesas() {
+        let containerDespesas = document.getElementById("despesas-list-container")
+        containerDespesas.innerHTML = ""
+        for (despesas of despesasTotais){
+            containerDespesas.innerHTML +=  `<hr>
+                                            <div class="mostra-despesa">
+                                            <p> R$ ${despesas.valor} </p>
+                                            <p> TIPO: ${despesas.tipo} </p>
+                                            <p> DESCRIÇÂO: ${despesas.descricao} </p>
+                                            </div>
+                                            <hr>` 
+    }
+    }
+
+
+</script>
+</html>
