@@ -11,37 +11,38 @@
         <h2>Controlador de Despesas</h2>
         <h3>Cadastrar despesa</h3>
         <div>
-          <div class="input-container">
+            <div class="input-container">
             <p class="label-texto">Valor</p>
             <input id="valor-da-despesa">
-          </div>
-          <div class="input-container">
-            <p class="label-texto">Tipo (Casa, Viagem, Rolês, Outros)</p>
-            <select id="tipo-da-despesa">
-              <option value="Casa">Casa</option>
-              <option value="Rolê">Rolê</option>
-              <option value="Viagem">Viagem</option>
-              <option value="Outros">Outros</option>
-            </select>
-          </div>
-          <div class="input-container">
-            <p class="label-texto">Descrição</p>
-            <input id="descrição-da-despesa">
-          </div>
+            </div>
+            <div class="input-container">
+                <p class="label-texto">Tipo (Casa, Viagem, Rolês, Outros)</p>
+                <select id="tipo-da-despesa">
+                    <option value=""></option>
+                    <option value="Casa">Casa</option>
+                    <option value="Rolê">Rolê</option>
+                    <option value="Viagem">Viagem</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <p class="label-texto">Descrição</p>
+                <input id="descrição-da-despesa">
+            </div>
         </div>
         <button class="botao-comum" onclick="cadastrarDespesa()" id="cadastrar-despesa-btn">Cadastrar Despesa</button>
     </section>
-  
     <section class="custom-container" id="section-2">
         <h2>Despesas Detalhadas</h2>
         <div>
             <div class="input-container">
                 <p class="label-texto">Tipo (Casa, Viagem, Rolês, Outros)</p>
                 <select id="filtro-tipo">
-                <option value="Casa">Casa</option>
-                <option value="Rolê">Rolê</option>
-                <option value="Viagem">Viagem</option>
-                <option value="Outros">Outros</option>
+                    <option value=""></option>
+                    <option value="Casa">Casa</option>
+                    <option value="Rolê">Rolê</option>
+                    <option value="Viagem">Viagem</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </div>
                 <div class="input-container">
@@ -56,20 +57,16 @@
             <button class="botao-comum" onclick="limparCamposFiltro()" id="limpar-filtros-btn">Limpar Filtros</button>
         </div>
         <div id="despesas-list-container">
-
         </div>
     </section>
     <section class="custom-container" id="section-3">
         <h2>Extrato</h2>
         <div>
-          <h3>Valor Total: </h3>
-          <div id="valor-total"></div>
+            <h3>Valor Total: </h3>
+            <div id="valor-total"></div>
         </div>
         <div id="lista-do-estrato"></div>
     </section>
-  
-  
-    </div>
 </body>
 <style>
     body {
@@ -88,7 +85,6 @@
 }
 </style>
 <script>
-    
     class Despesa {
         constructor (valor, tipo, descricao){
             this.valor = valor
@@ -109,7 +105,7 @@
         let valorDespesa = document.getElementById("valor-da-despesa").value
         let tipoDespesa = document.getElementById("tipo-da-despesa").value
         let descricaoDespesa = document.getElementById("descrição-da-despesa").value
-        if (!valorDespesa){
+        if (isNaN(valorDespesa) || !valorDespesa){
             alert("Informar o valor da despesa")
         }else if (!tipoDespesa){
             alert("Informar o tipo da despesa")
@@ -123,7 +119,7 @@
         }
         const novaDespesa = new Despesa (despesaInstanciada.valor, despesaInstanciada.tipo, despesaInstanciada.descricao)
         despesasTotais.push(novaDespesa)
-        
+        alert("Despesa cadastrada com sucesso")
         }
         
     }
@@ -136,7 +132,7 @@
         somaTotalExtrato()
     }
 
-    function mostrasDespesas(array) {
+    function mostrasDespesas() {
         let containerDespesas = document.getElementById("despesas-list-container")
         containerDespesas.innerHTML = ""
         for (despesas of despesasTotais){
@@ -159,36 +155,48 @@
         somaTotalExtrato()
     }
 
-    function verificaFiltro() {
+    function verificaFiltroPreenchido() {
         filtroTipo = document.getElementById("filtro-tipo").value
         filtroMinimo = document.getElementById("filtro-valor-minimo").value
         filtroMaximo = document.getElementById("filtro-valor-maximo").value
-
         if(!filtroTipo && !filtroMaximo && !filtroMinimo){
             alert("Informe o tipo de Filtro que deseja aplicar")
+            return false
+        }else {
+            return true
         }
-        // }else if (!filtroMinimo && !filtroMaximo){
-        //     alert("Informe como deseja Filtrar")
-        // }
     }
 
     function filtrarDespesas(){
-        verificaFiltro()
-        
+        if (verificaFiltroPreenchido()){
         let antesDoFiltro = despesasTotais
+        let aplicarFiltro
         let filtroTipoDespesa = document.getElementById("filtro-tipo").value
-        const aplicarFiltro = despesasTotais.filter((despesa, index, array) =>{
+        let filtroValorMinimo = document.getElementById("filtro-valor-minimo").value
+        let filtroValorMaximo = document.getElementById("filtro-valor-maximo").value
+        
+        if (filtroTipoDespesa) {
+            aplicarFiltro = despesasTotais.filter((despesa, index, array) =>{
             return despesa.tipo === document.getElementById("filtro-tipo").value
-        })
+            })
+        }else if (filtroValorMinimo){
+            let valorMinimo = parseInt(document.getElementById("filtro-valor-minimo").value)
+            aplicarFiltro = despesasTotais.filter((valor, index, array) =>{
+            return valor.valor >= valorMinimo
+            })
+        }else if (filtroValorMaximo){
+            let valorMaximo = parseInt(document.getElementById("filtro-valor-maximo").value)
+            aplicarFiltro = despesasTotais.filter((valor, index, array) =>{
+            return valor.valor <= valorMaximo
+            })
+        }
         despesasTotais = aplicarFiltro
         mostrasDespesas()
         extratoDespesas()
         somaTotalExtrato()
         despesasTotais = antesDoFiltro
-
+        }
     }
-
-
 
     function extratoDespesas() {
         const listaExtrato = document.getElementById("lista-do-estrato")
@@ -206,8 +214,7 @@
                                             <p> R$${despesas.valor} </p>
                                             </div>
                                             <hr>` 
-    }
-    
+        }
     }
 
     function somaTotalExtrato() {
