@@ -64,10 +64,10 @@
     //d- !(false && true) || !(true && true) = true
     //e- !(true) && !(true) || (!false && true && true) = true
 
-    //3. Acredito que falte a iteração no i, para que nao fique preso em um loop infinito
+    //3. Acredito que falte a iteração no i, para que nao fique preso em um loop infinito e tive que adicionar um valor para a variavel 'quantidadeDeNumerosPares'
     
-    function imprimeNumerosPares {
-        const quantidadeDeNumerosPares
+    function imprimeNumerosPares() {
+        const quantidadeDeNumerosPares = 4
         let i = 0
         while(i <= quantidadeDeNumerosPares) {
             console.log(i*2)
@@ -135,10 +135,21 @@
 
     //1
     function segundoMaiorNumeroSegundoMenorNumero (array){
-        
-        for (numero of array){
-
-        }
+        arrayOdernado = array.sort()
+        segundoMenorNumero = arrayOdernado[1]
+        segundoMaiorNumero = arrayOdernado[arrayOdernado.length - 1]
+        console.log(`O segundo maior numero é: ${segundoMaiorNumero}`)
+        console.log(`O segundo menor numero é: ${segundoMenorNumero}`)
     }
+    arrayNumeros = [0,1,99,33,55,77,100]
+    segundoMaiorNumeroSegundoMenorNumero(arrayNumeros)
+
+    //2
+    let emitirAlert = function (){
+        alert("Hello Future4")
+    }
+    emitirAlert()
+
+    //Exercicios Objetos
 </script>
 </html>
