@@ -11,11 +11,14 @@
 </body>
 <script>
     //Lista de Exercicios
-    //Lista de Interpretacao de Codigos
+
+    //Exercicios de Interpretacao de Codigo
+
     //1. A funcao conversorDeMoeda recebe como parametro o 'valorEmDolar', dentro da funcao ela declara uma variavel 'cotacao' que ira armazenar o resultado de um prompt
     // transformado em numero pela funcao Number e ira retornar o 'valorEmDolar' * 'cotacao'. A funcao 'conversorDeMoeda' com parametro de entrada '100' 
     //foi armazenada numa variavel 'meuDinheiro', apos isso foi chamada pelo 'console.log'. O valor impresso dependerá do valor informado pelo usuario na variavel 'cotacao'
-    //sendo que sera 'cotacao' * 100.
+    //sendo que no fim sera 'cotacao' * 100.
+
     //2. A funcao 'investeDinheiro' recebe dois parametros, 'tipoDeInvestimento' e 'valor'. Dentro dela ela declara uma variavel 'valorAposInvestimento' e 
     // um 'switch' que recebe como parametro 'tipoDeInvestimento', informado na chamada da funcao 'investeDinheiro'. Dentro do 'switch' temos 4 cases: 'Poupança', 'Renda Fixa'
     // 'CDB' e 'Ações', alem do 'default' que retorna um 'alert' informando que o tipo de investimento informado é incorreto. Dentro de cada 'case' a variavel 'valorAposInvestimento'
@@ -23,11 +26,119 @@
     // (informado para cada 'case'), apos isso temos um break para a saida do case e a funcao retorna a variavel 'valorAposInvestimento'. Fora da funcao temos a declaracao
     //de duas variaveis 'novoMontante' que recebe a 'investeDinheiro' com os parametros de 'Ações' e '150' e a 'segundoMontante' que recebe 'Tesouro Direto' e '200'.
     //O 'console.log' de 'novoMontante' sera de 165 e o 'console.log' de 'segundoMontante' sera de "TIPO DE INVESTIMENTO INFORMADO INCORRETO"
+    
     //3. Temos a declaracao de 3 arrays, sendo 'numeros', 'array1' (vazio) e 'array2' (vazio). Apos isso o array 'numeros' é percorrido por um for, sendo que para cada
     //numero do array (cada elemento) ira ser feita uma verificação, se ele for divisivel por par sera incluido no 'array1' e se nao for no 'array2'.
     //No fim temos o 'console.log' "Quantidade total de numeros 14" (usando o tamanho de 'numeros') . "6" (para o tamanho do 'array1') e "8" (para o tamanho do 'array2') 
+
     //4.Temos a declaracao de 3 arrays, 'numeros' (com alguns numeros), 'numero1' (com a variavel Infinity) e 'numero2' (com o valor 0). É usado um for para percorrer 
     //o array 'numeros', se ('if') o 'numero'(elemento) de 'numeros' for menor que 'numero1', 'numero1' ira receber o valor de 'numero', depois temos outro 'if' se 'numero' 
     // for maior que 'numero2', 'numero2' ira receber o 'numero'. Na chamada do 'console.log' de 'numero1' temos -10 e na chamada do 'console.log' de 'numero2' temos 1590
+
+    //Exercicios de Logica de Programacao
+
+    //1. Podemos usar o 'for of', 'for i < array.length' ou 'while (i < array.length)'
+    function formasDePercorrerArray(){
+        const array = [0,1,2]
+        
+        for (numero of array){
+            console.log(numero)
+        }
+
+        for(let i = 0; i < array.length; i++){
+            console.log(numero)
+        }
+        
+        let i = 0
+        while (i < array.length){
+            console.log(array[i])
+            i++
+        }
+
+    }
+
+    //2. 
+    //a- true && false $$ !false = false
+    //b- (false && true) || !true = false 
+    //c- (false || true) && (false || true) = true
+    //d- !(false && true) || !(true && true) = true
+    //e- !(true) && !(true) || (!false && true && true) = true
+
+    //3. Acredito que falte a iteração no i, para que nao fique preso em um loop infinito
+    
+    function imprimeNumerosPares {
+        const quantidadeDeNumerosPares
+        let i = 0
+        while(i <= quantidadeDeNumerosPares) {
+            console.log(i*2)
+            i++
+        }
+    }
+
+    //4
+
+    function classificaTriangulo (a, b, c){
+        if ( a === b && b === c){
+            console.log("triangulo equilatero")
+        }else if ( a === b || a === c || b === c){
+            console.log("triangulo isosceles ")
+        }else {
+            console.log("triangulo escaleno")
+        }
+    }
+
+    //5
+
+    function comparaDoisNumeros(num1, num2){
+        let maior
+        let menor
+        let num1Divisivelnum2
+        let num2Divisivelnum1
+        let diferenca 
+
+        if (num1 > num2){
+            maior = num1
+            menor = num2
+        }else if (num2 > num1){
+            maior = num2
+            menor = num1
+        }else {
+            maior = "Eles são iguais"
+        }
+
+        if ( (num1 % num2 ) === 0){
+            num1Divisivelnum2 = `${num1} é divisivel por ${num2}`
+        } else {
+            num1Divisivelnum2 = `${num1} é não divisivel por ${num2}`
+        }
+        
+        if ( (num2 % num1 ) === 0){
+            num2Divisivelnum1 = `${num2} é divisivel por ${num1}`
+        } else {
+            num2Divisivelnum1 = `${num2} é não divisivel por ${num1}`
+        }
+
+        if(isNaN(maior)){
+        diferenca = maior - menor
+        } else {
+            diferenca = "Eles são iguais"
+        }
+
+        console.log(`O maior é : ${maior}`)
+        console.log(num1Divisivelnum2)
+        console.log(num2Divisivelnum1)
+        console.log(`A diferença entre eles é: ${diferenca}`)
+
+    }
+
+    //Exercicios de Funções
+
+    //1
+    function segundoMaiorNumeroSegundoMenorNumero (array){
+        
+        for (numero of array){
+
+        }
+    }
 </script>
 </html>
