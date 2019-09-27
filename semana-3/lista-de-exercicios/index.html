@@ -283,30 +283,8 @@
         { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
     ]
     
-    function consultasCanceladas(consultas){
-        let listaEmailCancelado = []
-        let texto 
-        for (consulta of consultas){
-            let SrSra
-            let lembrar
-            if (consulta.genero === "masculino"){
-                srSra = "Sr"
-                lembrar = "lembra-lo"
-            }else {
-                srSra = "Sra"
-                lembrar = "lembra-la"
-            }
-            if (consulta.cancelada){
-                texto = `Olá, ${srSra} ${consulta.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${consulta.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
-                listaEmailCancelado.push(texto)
-            }
-        }
-        return listaEmailCancelado
-    }
-    console.log(consultasCanceladas(consultas))
-
     function consultasNaoCanceladas(consultas){
-        let listaNaoEmailCancelado = []
+        let listaEmailConsultaNaoCancelad = []
         let texto 
         for (consulta of consultas){
             let SrSra
@@ -320,61 +298,45 @@
             }
             if (!consulta.cancelada){
                 texto = `Olá, ${srSra} ${consulta.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${consulta.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
-                listaEmailCancelado.push(texto)
+                listaEmailConsultaNaoCancelad.push(texto)
             }
         }
-        return listaEmailCancelado
+        return listaEmailConsultaNaoCancelad
+    }
+    console.log(consultasNaoCanceladas(consultas))
+
+    function consultasCanceladas(consultas){
+        let listaEmailConsultaCanceladas = []
+        let texto 
+        for (consulta of consultas){
+            let SrSra
+            let lembrar
+            if (consulta.genero === "masculino"){
+                srSra = "Sr"
+                lembrar = "lembra-lo"
+            }else {
+                srSra = "Sra"
+                lembrar = "lembra-la"
+            }
+            if (consulta.cancelada){
+                texto = `Olá, ${srSra} ${consulta.nome}. Infelizmente, sua consulta marcada para o dia ${consulta.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`
+                listaEmailConsultaCanceladas.push(texto)
+            }
+        }
+        return listaEmailConsultaCanceladas
     }
     console.log(consultasCanceladas(consultas))
         
-        
-        // let listaEmailCancelado = []
-        // const consultasCanceladas = lista.forEach((consultas, index, array) =>{
-        //     let SrSra
-        //     let lembrar
-        //     let listaEmailCancelado = []
-        //     if (consultas.genero === "masculino"){
-        //         SrSra = "Sr"
-        //         lembrar = "lembrá-lo"
-        //     }else {
-        //         SrSra = "Sra"
-        //         lembrar = "lembrá-la"
-        //     }
-        //     if(consultas.cancelada){
-        //         return  `Olá, ${SrSra} ${consultas.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${consultas.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
-                
-        //         }
-        //     }) 
-        //     return listaEmailCancelado
-    
-    // console.log(consultasCanceladas(consultas))
 
-    // function consultasNaoCanceladas(lista) {
-    //     const consultasNaoCanceladas = lista.map((consultas, index, array) =>{
-    //         let SrSra
-    //         let lembrar
-    //         let listaCancelada 
-    //         if (consultas.genero === "masculino"){
-    //             SrSra = "Sr"
-    //             lembrar = "lembrá-lo"
-    //         }else {
-    //             SrSra = "Sra"
-    //             lembrar = "lembrá-la"
-    //         }
-    //         return  `Olá, ${SrSra} ${consultas.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${consultas.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
-    // }) 
-    //     return consultasCanceladas
-    // }
-
-    // //5
-    // const contas = [
-    //     { cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
-    //     { cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
-    //     { cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
-    //     { cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
-    //     { cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
-    //     { cliente: "Soter", saldoTotal: 1200, compras: [] }
-    //     ]
+     //5
+    const contas = [
+        { cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+        { cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+        { cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+        { cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+        { cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+        { cliente: "Soter", saldoTotal: 1200, compras: [] }
+        ]
     // function atualizarSaldo(contas) {
     //     contas.forEach((conta, index, array) => {
     //         let totalCompras
