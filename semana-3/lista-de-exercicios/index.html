@@ -212,7 +212,180 @@
     console.log(leo)
 
     //Exercicios de Funcoes de array
+    //1
+    const pessoas = [
+        { nome: "Pedro", idade: 20 },
+        { nome: "João", idade: 10 },
+        { nome: "Paula", idade: 12 },
+        { nome: "Artur", idade: 89 } 
+    ]
 
+    const pessoasAdultas = pessoas.filter((pessoa, index, array) =>{
+        return pessoa.idade >= 20 
+    })
+    const pessoasCriancas = pessoas.filter((pessoa, index, array) =>{
+        return pessoa.idade < 20 
+    })
+    console.log(pessoasAdultas)
+    console.log(pessoasCriancas)
+
+    //2
+    const array = [1, 2, 3, 4, 5, 6]
+
+    const arrayMultiplicadoPorDois = array.map((numero, index, array) =>{
+        return parseInt(numero) * 2
+    })
+    console.log(arrayMultiplicadoPorDois)
+    const arrayMultiplicadoPorTresEmString = array.map((numero, index, array) =>{
+        return String(parseInt(numero) * 3)
+    })
+    console.log(arrayMultiplicadoPorTresEmString)
+    const arrayVerificaImparPar = array.map((numero, index, array) =>{
+        if(numero % 2 ===0){
+            return `${numero} é par`
+        }else {
+            return `${numero} é impar`
+        }
+    })
+    console.log(arrayVerificaImparPar)
+
+    //3
+    const pessoasEx3 = [
+        { nome: "Paula", idade: 12, altura: 1.8},
+        { nome: "João", idade: 20, altura: 1.3},
+        { nome: "Pedro", idade: 15, altura: 1.9},
+        { nome: "Luciano", idade: 22, altura: 1.8},
+        { nome: "Artur", idade: 10, altura: 1.2},
+        { nome: "Soter", idade: 70, altura: 1.9}
+    ]
+
+    function pessoasComPermissaoEntrar(lista) {
+        const listaPessoas = lista.filter((pessoa, index, array) =>{
+            return pessoa.altura >= 1.5 && pessoa.idade > 14 && pessoa.idade < 60
+    }) 
+        return listaPessoas
+    }
+
+    function pessoasSemPermissaoEntrar(lista) {
+        const listaPessoas = lista.filter((pessoa, index, array) =>{
+            return pessoa.altura < 1.5 || pessoa.idade < 14 || pessoa.idade > 60
+    }) 
+        return listaPessoas
+    }
+    console.log(pessoasComPermissaoEntrar(pessoasEx3))
+    console.log(pessoasSemPermissaoEntrar(pessoasEx3))
+
+    //4
+    const consultas = [
+        { nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+        { nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+        { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+        { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+    ]
+    
+    function consultasCanceladas(consultas){
+        let listaEmailCancelado = []
+        let texto 
+        for (consulta of consultas){
+            let SrSra
+            let lembrar
+            if (consulta.genero === "masculino"){
+                srSra = "Sr"
+                lembrar = "lembra-lo"
+            }else {
+                srSra = "Sra"
+                lembrar = "lembra-la"
+            }
+            if (consulta.cancelada){
+                texto = `Olá, ${srSra} ${consulta.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${consulta.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+                listaEmailCancelado.push(texto)
+            }
+        }
+        return listaEmailCancelado
+    }
+    console.log(consultasCanceladas(consultas))
+
+    function consultasNaoCanceladas(consultas){
+        let listaNaoEmailCancelado = []
+        let texto 
+        for (consulta of consultas){
+            let SrSra
+            let lembrar
+            if (consulta.genero === "masculino"){
+                srSra = "Sr"
+                lembrar = "lembra-lo"
+            }else {
+                srSra = "Sra"
+                lembrar = "lembra-la"
+            }
+            if (!consulta.cancelada){
+                texto = `Olá, ${srSra} ${consulta.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${consulta.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+                listaEmailCancelado.push(texto)
+            }
+        }
+        return listaEmailCancelado
+    }
+    console.log(consultasCanceladas(consultas))
+        
+        
+        // let listaEmailCancelado = []
+        // const consultasCanceladas = lista.forEach((consultas, index, array) =>{
+        //     let SrSra
+        //     let lembrar
+        //     let listaEmailCancelado = []
+        //     if (consultas.genero === "masculino"){
+        //         SrSra = "Sr"
+        //         lembrar = "lembrá-lo"
+        //     }else {
+        //         SrSra = "Sra"
+        //         lembrar = "lembrá-la"
+        //     }
+        //     if(consultas.cancelada){
+        //         return  `Olá, ${SrSra} ${consultas.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${consultas.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+                
+        //         }
+        //     }) 
+        //     return listaEmailCancelado
+    
+    // console.log(consultasCanceladas(consultas))
+
+    // function consultasNaoCanceladas(lista) {
+    //     const consultasNaoCanceladas = lista.map((consultas, index, array) =>{
+    //         let SrSra
+    //         let lembrar
+    //         let listaCancelada 
+    //         if (consultas.genero === "masculino"){
+    //             SrSra = "Sr"
+    //             lembrar = "lembrá-lo"
+    //         }else {
+    //             SrSra = "Sra"
+    //             lembrar = "lembrá-la"
+    //         }
+    //         return  `Olá, ${SrSra} ${consultas.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${consultas.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+    // }) 
+    //     return consultasCanceladas
+    // }
+
+    // //5
+    // const contas = [
+    //     { cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+    //     { cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+    //     { cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+    //     { cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+    //     { cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+    //     { cliente: "Soter", saldoTotal: 1200, compras: [] }
+    //     ]
+    // function atualizarSaldo(contas) {
+    //     contas.forEach((conta, index, array) => {
+    //         let totalCompras
+    //         for (conta of contas.compras){
+    //             totalCompras += conta.compra[index]
+    //         }
+    //         conta.saldoTotal -= totalCompras 
+    //     })
+    // }
+    // atualizarSaldo(contas)
+    // console.log(contas)
 
 </script>
 </html>
