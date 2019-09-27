@@ -148,8 +148,71 @@
     let emitirAlert = function (){
         alert("Hello Future4")
     }
-    emitirAlert()
+    // comentado para nao atrapalhar nos testes
+    //emitirAlert()
 
     //Exercicios Objetos
+
+    //1. Array guardam informacoes ordenadas por um indice, são faceis de adicionar, retirar, percorrer e iterar. Acredito que devemos usar quando quisermos
+    // guardar varios tipos de um mesmo elemento,  como numeros, strings, objetos, etc. Objeto é um tipo primitivo da linguagem javascript e pode conter dentro de si
+    // propriedades vinculadas a chave-valor, acredito ser melhor utilizado quando quisermos ter um elemento com propriedades com valores diferentes.
+
+    //2
+
+    function criaRetangulo (lado1, lado2){
+        const informacoesRetangulo = {
+            largura: lado1,
+            altura: lado2,
+            perimetro: 2 * (lado1 + lado2),
+            area: lado1 * lado2
+        }
+        return informacoesRetangulo
+    }
+    console.log(criaRetangulo(2,4))
+
+    //3
+
+    const filmeFavorito = {
+        titulo: "Matrix",
+        Ano: 1999,
+        diretor: "Lilly Wachowski e Lana Wachowski",
+        atores: ["Keanu Reeves", "Carrie-Anne Moss"]
+    }
+    //daria para melhorar a logica para verificar a quantidade de atores para colocar 'ator1, ator2 e ator3'
+    
+    function exibirAtores(){
+        let atores =""
+        for (let ator of filmeFavorito.atores){
+            atores += ator + ", "
+        }
+        return atores.substring(0, atores.length -2)
+        
+    }
+    
+    console.log(`Venha assistir ao filme ${filmeFavorito.titulo}, de ${filmeFavorito.Ano}, dirigido por ${filmeFavorito.diretor} e estrelado por ${exibirAtores()}.`)
+
+    //4
+
+    const leo = {
+        nome: "leonardo",
+        idade: 33,
+        email: "leonardocpn@gmail.com",
+        endereço: "Rua azul, 123"
+    }
+
+    function anonimizarPessoa(pessoa){
+        const pessoaAnonima = {
+            ...pessoa
+        }
+        pessoaAnonima.nome = "ANÔNIMO"
+        return pessoaAnonima
+    }
+
+    console.log(anonimizarPessoa(leo))
+    console.log(leo)
+
+    //Exercicios de Funcoes de array
+
+
 </script>
 </html>
