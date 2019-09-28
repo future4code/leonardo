@@ -39,19 +39,19 @@
 
     //1. Podemos usar o 'for of', 'for i < array.length' ou 'while (i < array.length)'
     function formasDePercorrerArray(){
-        const array = [0,1,2]
+        const array1 = [1,2,4]
         
-        for (numero of array){
+        for (numero of array1){
             console.log(numero)
         }
 
-        for(let i = 0; i < array.length; i++){
-            console.log(numero)
+        for(let i = 0; i < array1.length; i++){
+            console.log(array1[i])
         }
         
         let i = 0
-        while (i < array.length){
-            console.log(array[i])
+        while (i < array1.length){
+            console.log(array1[i])
             i++
         }
 
@@ -272,8 +272,6 @@
     }) 
         return listaPessoas
     }
-    console.log(pessoasComPermissaoEntrar(pessoasEx3))
-    console.log(pessoasSemPermissaoEntrar(pessoasEx3))
 
     //4
     const consultas = [
@@ -284,7 +282,7 @@
     ]
     
     function consultasNaoCanceladas(consultas){
-        let listaEmailConsultaNaoCancelad = []
+        let listaEmailConsultaNaoCanceladas = []
         let texto 
         for (consulta of consultas){
             let SrSra
@@ -298,10 +296,10 @@
             }
             if (!consulta.cancelada){
                 texto = `Olá, ${srSra} ${consulta.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${consulta.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
-                listaEmailConsultaNaoCancelad.push(texto)
+                listaEmailConsultaNaoCanceladas.push(texto)
             }
         }
-        return listaEmailConsultaNaoCancelad
+        return listaEmailConsultaNaoCanceladas
     }
     console.log(consultasNaoCanceladas(consultas))
 
@@ -337,17 +335,18 @@
         { cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
         { cliente: "Soter", saldoTotal: 1200, compras: [] }
         ]
-    // function atualizarSaldo(contas) {
-    //     contas.forEach((conta, index, array) => {
-    //         let totalCompras
-    //         for (conta of contas.compras){
-    //             totalCompras += conta.compra[index]
-    //         }
-    //         conta.saldoTotal -= totalCompras 
-    //     })
-    // }
-    // atualizarSaldo(contas)
-    // console.log(contas)
 
+    function atualizarSaldo(contas) {
+        const saldoAtualizado = contas.forEach(conta => {
+            let totalCompra = 0
+            for (let i =0; i< conta.compras.length; i++){
+                totalCompra += parseInt(conta.compras[i])
+            }
+            conta.saldoTotal -= totalCompra
+        });
+    }
+    atualizarSaldo(contas)
+    console.log(contas)
+    
 </script>
 </html>
