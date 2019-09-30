@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: orange;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.footer {
+  background-color: gray;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 0 10px;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+}
+
+main nav {
+  width: 200px;
+  border-right: 1px solid black;
+}
+​
+nav li {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+​
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.video-card {
+  border: 1px solid green;
+  display: grid;
+  grid-template-rows: auto 50px;
+  align-items: center;
+  overflow: hidden;
+}
+​
+.tituloVideo {
+  padding: 10px;
+}
+
+main section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-content: flex-start;
+  grid-gap: 10px;
+  padding: 10px;
+  flex: 1;
+}
+
+.imagem {
+  height: 250px;
+  
+}
