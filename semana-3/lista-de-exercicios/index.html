@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de exercicios</title>
+</head>
+<body>
+
+</body>
+<script>
+    //Lista de Exercicios
+
+    //Exercicios de Interpretacao de Codigo
+
+    //1. A funcao conversorDeMoeda recebe como parametro o 'valorEmDolar', dentro da funcao ela declara uma variavel 'cotacao' que ira armazenar o resultado de um prompt
+    // transformado em numero pela funcao Number e ira retornar o 'valorEmDolar' * 'cotacao'. A funcao 'conversorDeMoeda' com parametro de entrada '100' 
+    //foi armazenada numa variavel 'meuDinheiro', apos isso foi chamada pelo 'console.log'. O valor impresso dependerá do valor informado pelo usuario na variavel 'cotacao'
+    //sendo que no fim sera 'cotacao' * 100.
+
+    //2. A funcao 'investeDinheiro' recebe dois parametros, 'tipoDeInvestimento' e 'valor'. Dentro dela ela declara uma variavel 'valorAposInvestimento' e 
+    // um 'switch' que recebe como parametro 'tipoDeInvestimento', informado na chamada da funcao 'investeDinheiro'. Dentro do 'switch' temos 4 cases: 'Poupança', 'Renda Fixa'
+    // 'CDB' e 'Ações', alem do 'default' que retorna um 'alert' informando que o tipo de investimento informado é incorreto. Dentro de cada 'case' a variavel 'valorAposInvestimento'
+    // é alterada de maneira diferente seguindo um padrao de 'valorAposInvestimento' recebe a multiplicacao de 'valor' (informado na chamada da funcao 'investeDinheiro') * algum numero
+    // (informado para cada 'case'), apos isso temos um break para a saida do case e a funcao retorna a variavel 'valorAposInvestimento'. Fora da funcao temos a declaracao
+    //de duas variaveis 'novoMontante' que recebe a 'investeDinheiro' com os parametros de 'Ações' e '150' e a 'segundoMontante' que recebe 'Tesouro Direto' e '200'.
+    //O 'console.log' de 'novoMontante' sera de 165 e o 'console.log' de 'segundoMontante' sera de "TIPO DE INVESTIMENTO INFORMADO INCORRETO"
+    
+    //3. Temos a declaracao de 3 arrays, sendo 'numeros', 'array1' (vazio) e 'array2' (vazio). Apos isso o array 'numeros' é percorrido por um for, sendo que para cada
+    //numero do array (cada elemento) ira ser feita uma verificação, se ele for divisivel por par sera incluido no 'array1' e se nao for no 'array2'.
+    //No fim temos o 'console.log' "Quantidade total de numeros 14" (usando o tamanho de 'numeros') . "6" (para o tamanho do 'array1') e "8" (para o tamanho do 'array2') 
+
+    //4.Temos a declaracao de 3 arrays, 'numeros' (com alguns numeros), 'numero1' (com a variavel Infinity) e 'numero2' (com o valor 0). É usado um for para percorrer 
+    //o array 'numeros', se ('if') o 'numero'(elemento) de 'numeros' for menor que 'numero1', 'numero1' ira receber o valor de 'numero', depois temos outro 'if' se 'numero' 
+    // for maior que 'numero2', 'numero2' ira receber o 'numero'. Na chamada do 'console.log' de 'numero1' temos -10 e na chamada do 'console.log' de 'numero2' temos 1590
+
+    //Exercicios de Logica de Programacao
+
+    //1. Podemos usar o 'for of', 'for i < array.length' ou 'while (i < array.length)'
+    function formasDePercorrerArray(){
+        const array1 = [1,2,4]
+        
+        for (numero of array1){
+            console.log(numero)
+        }
+
+        for(let i = 0; i < array1.length; i++){
+            console.log(array1[i])
+        }
+        
+        let i = 0
+        while (i < array1.length){
+            console.log(array1[i])
+            i++
+        }
+
+    }
+
+    //2. 
+    //a- true && false $$ !false = false
+    //b- (false && true) || !true = false 
+    //c- (false || true) && (false || true) = true
+    //d- !(false && true) || !(true && true) = true
+    //e- !(true) && !(true) || (!false && true && true) = true
+
+    //3. Acredito que falte a iteração no i, para que nao fique preso em um loop infinito e tive que adicionar um valor para a variavel 'quantidadeDeNumerosPares'
+    
+    function imprimeNumerosPares() {
+        const quantidadeDeNumerosPares = 4
+        let i = 0
+        while(i <= quantidadeDeNumerosPares) {
+            console.log(i*2)
+            i++
+        }
+    }
+
+    //4
+
+    function classificaTriangulo (a, b, c){
+        if ( a === b && b === c){
+            console.log("triangulo equilatero")
+        }else if ( a === b || a === c || b === c){
+            console.log("triangulo isosceles ")
+        }else {
+            console.log("triangulo escaleno")
+        }
+    }
+
+    //5
+
+    function comparaDoisNumeros(num1, num2){
+        let maior
+        let menor
+        let num1Divisivelnum2
+        let num2Divisivelnum1
+        let diferenca 
+
+        if (num1 > num2){
+            maior = num1
+            menor = num2
+        }else if (num2 > num1){
+            maior = num2
+            menor = num1
+        }else {
+            maior = "Eles são iguais"
+        }
+
+        if ( (num1 % num2 ) === 0){
+            num1Divisivelnum2 = `${num1} é divisivel por ${num2}`
+        } else {
+            num1Divisivelnum2 = `${num1} é não divisivel por ${num2}`
+        }
+        
+        if ( (num2 % num1 ) === 0){
+            num2Divisivelnum1 = `${num2} é divisivel por ${num1}`
+        } else {
+            num2Divisivelnum1 = `${num2} é não divisivel por ${num1}`
+        }
+
+        if(isNaN(maior)){
+        diferenca = maior - menor
+        } else {
+            diferenca = "Eles são iguais"
+        }
+
+        console.log(`O maior é : ${maior}`)
+        console.log(num1Divisivelnum2)
+        console.log(num2Divisivelnum1)
+        console.log(`A diferença entre eles é: ${diferenca}`)
+
+    }
+
+    //Exercicios de Funções
+
+    //1
+    function segundoMaiorNumeroSegundoMenorNumero (array){
+        arrayOdernado = array.sort()
+        segundoMenorNumero = arrayOdernado[1]
+        segundoMaiorNumero = arrayOdernado[arrayOdernado.length - 1]
+        console.log(`O segundo maior numero é: ${segundoMaiorNumero}`)
+        console.log(`O segundo menor numero é: ${segundoMenorNumero}`)
+    }
+    arrayNumeros = [0,1,99,33,55,77,100]
+    segundoMaiorNumeroSegundoMenorNumero(arrayNumeros)
+
+    //2
+    let emitirAlert = function (){
+        alert("Hello Future4")
+    }
+    // comentado para nao atrapalhar nos testes
+    //emitirAlert()
+
+    //Exercicios Objetos
+
+    //1. Array guardam informacoes ordenadas por um indice, são faceis de adicionar, retirar, percorrer e iterar. Acredito que devemos usar quando quisermos
+    // guardar varios tipos de um mesmo elemento,  como numeros, strings, objetos, etc. Objeto é um tipo primitivo da linguagem javascript e pode conter dentro de si
+    // propriedades vinculadas a chave-valor, acredito ser melhor utilizado quando quisermos ter um elemento com propriedades com valores diferentes.
+
+    //2
+
+    function criaRetangulo (lado1, lado2){
+        const informacoesRetangulo = {
+            largura: lado1,
+            altura: lado2,
+            perimetro: 2 * (lado1 + lado2),
+            area: lado1 * lado2
+        }
+        return informacoesRetangulo
+    }
+    console.log(criaRetangulo(2,4))
+
+    //3
+
+    const filmeFavorito = {
+        titulo: "Matrix",
+        Ano: 1999,
+        diretor: "Lilly Wachowski e Lana Wachowski",
+        atores: ["Keanu Reeves", "Carrie-Anne Moss"]
+    }
+    //daria para melhorar a logica para verificar a quantidade de atores para colocar 'ator1, ator2 e ator3'
+    
+    function exibirAtores(){
+        let atores =""
+        for (let ator of filmeFavorito.atores){
+            atores += ator + ", "
+        }
+        return atores.substring(0, atores.length -2)
+        
+    }
+    
+    console.log(`Venha assistir ao filme ${filmeFavorito.titulo}, de ${filmeFavorito.Ano}, dirigido por ${filmeFavorito.diretor} e estrelado por ${exibirAtores()}.`)
+
+    //4
+
+    const leo = {
+        nome: "leonardo",
+        idade: 33,
+        email: "leonardocpn@gmail.com",
+        endereço: "Rua azul, 123"
+    }
+
+    function anonimizarPessoa(pessoa){
+        const pessoaAnonima = {
+            ...pessoa
+        }
+        pessoaAnonima.nome = "ANÔNIMO"
+        return pessoaAnonima
+    }
+
+    console.log(anonimizarPessoa(leo))
+    console.log(leo)
+
+    //Exercicios de Funcoes de array
+    //1
+    const pessoas = [
+        { nome: "Pedro", idade: 20 },
+        { nome: "João", idade: 10 },
+        { nome: "Paula", idade: 12 },
+        { nome: "Artur", idade: 89 } 
+    ]
+
+    const pessoasAdultas = pessoas.filter((pessoa, index, array) =>{
+        return pessoa.idade >= 20 
+    })
+    const pessoasCriancas = pessoas.filter((pessoa, index, array) =>{
+        return pessoa.idade < 20 
+    })
+    console.log(pessoasAdultas)
+    console.log(pessoasCriancas)
+
+    //2
+    const array = [1, 2, 3, 4, 5, 6]
+
+    const arrayMultiplicadoPorDois = array.map((numero, index, array) =>{
+        return parseInt(numero) * 2
+    })
+    console.log(arrayMultiplicadoPorDois)
+    const arrayMultiplicadoPorTresEmString = array.map((numero, index, array) =>{
+        return String(parseInt(numero) * 3)
+    })
+    console.log(arrayMultiplicadoPorTresEmString)
+    const arrayVerificaImparPar = array.map((numero, index, array) =>{
+        if(numero % 2 ===0){
+            return `${numero} é par`
+        }else {
+            return `${numero} é impar`
+        }
+    })
+    console.log(arrayVerificaImparPar)
+
+    //3
+    const pessoasEx3 = [
+        { nome: "Paula", idade: 12, altura: 1.8},
+        { nome: "João", idade: 20, altura: 1.3},
+        { nome: "Pedro", idade: 15, altura: 1.9},
+        { nome: "Luciano", idade: 22, altura: 1.8},
+        { nome: "Artur", idade: 10, altura: 1.2},
+        { nome: "Soter", idade: 70, altura: 1.9}
+    ]
+
+    function pessoasComPermissaoEntrar(lista) {
+        const listaPessoas = lista.filter((pessoa, index, array) =>{
+            return pessoa.altura >= 1.5 && pessoa.idade > 14 && pessoa.idade < 60
+    }) 
+        return listaPessoas
+    }
+
+    function pessoasSemPermissaoEntrar(lista) {
+        const listaPessoas = lista.filter((pessoa, index, array) =>{
+            return pessoa.altura < 1.5 || pessoa.idade < 14 || pessoa.idade > 60
+    }) 
+        return listaPessoas
+    }
+
+    //4
+    const consultas = [
+        { nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+        { nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+        { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+        { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+    ]
+    
+    function consultasNaoCanceladas(consultas){
+        let listaEmailConsultaNaoCanceladas = []
+        let texto 
+        for (consulta of consultas){
+            let SrSra
+            let lembrar
+            if (consulta.genero === "masculino"){
+                srSra = "Sr"
+                lembrar = "lembra-lo"
+            }else {
+                srSra = "Sra"
+                lembrar = "lembra-la"
+            }
+            if (!consulta.cancelada){
+                texto = `Olá, ${srSra} ${consulta.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${consulta.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+                listaEmailConsultaNaoCanceladas.push(texto)
+            }
+        }
+        return listaEmailConsultaNaoCanceladas
+    }
+    console.log(consultasNaoCanceladas(consultas))
+
+    function consultasCanceladas(consultas){
+        let listaEmailConsultaCanceladas = []
+        let texto 
+        for (consulta of consultas){
+            let SrSra
+            let lembrar
+            if (consulta.genero === "masculino"){
+                srSra = "Sr"
+                lembrar = "lembra-lo"
+            }else {
+                srSra = "Sra"
+                lembrar = "lembra-la"
+            }
+            if (consulta.cancelada){
+                texto = `Olá, ${srSra} ${consulta.nome}. Infelizmente, sua consulta marcada para o dia ${consulta.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`
+                listaEmailConsultaCanceladas.push(texto)
+            }
+        }
+        return listaEmailConsultaCanceladas
+    }
+    console.log(consultasCanceladas(consultas))
+        
+
+     //5
+    const contas = [
+        { cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+        { cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+        { cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+        { cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+        { cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+        { cliente: "Soter", saldoTotal: 1200, compras: [] }
+        ]
+
+    function atualizarSaldo(contas) {
+        const saldoAtualizado = contas.forEach(conta => {
+            let totalCompra = 0
+            for (let i =0; i< conta.compras.length; i++){
+                totalCompra += parseInt(conta.compras[i])
+            }
+            conta.saldoTotal -= totalCompra
+        });
+    }
+    atualizarSaldo(contas)
+    console.log(contas)
+    
+</script>
+</html>
