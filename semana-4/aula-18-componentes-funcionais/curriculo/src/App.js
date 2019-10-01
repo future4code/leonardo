@@ -46,7 +46,7 @@ const dadosProfissionais = {
 }
 
 const redesSociais = {
-  titulo: 'Dados Pessoais',
+  titulo: 'Redes Sociais',
 }
 
 const expProfissional1 = {
