@@ -1,0 +1,9 @@
+.ImageButton {
+    height: 50px;
+    width: 200px;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 20px;
+    align-items: center;
+    
+}
