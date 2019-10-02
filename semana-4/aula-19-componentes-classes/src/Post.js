@@ -36,21 +36,21 @@ class Post extends React.Component {
     <div className="post-container">
         <div className="autor-content">
           <div className="img-autor">
-            <img src={imagemAutor} alt=""/>
+            <img src={this.props.imagemAutor} alt=""/>
           </div>
           <div className="name-autor">
-            <p>{props.autor}</p>
+            <p>{this.props.autor}</p>
           </div>
         </div>
         <div className="img-content">
-         <img src={props.imagem} alt=""/>
+         <img src={this.props.imagem} alt=""/>
         </div>
         <div className="icons-content">
           <div className="like">
-            <img src={props.imagemLike} onClick={this.onShowAlternativeImage} alt="" className="img-like"/>
+            <img src={linkImg} onClick={this.onShowAlternativeImage} alt="" className="img-like"/>
           </div>
           <div className="comment">
-            <img src={props.imagemComment}  alt="" className="img-comment"/>
+            <img src={this.props.imagemComment}  alt="" className="img-comment"/>
           </div>
         </div>
     </div>
@@ -63,8 +63,6 @@ Post.propTypes = {
     imagemAutor: PropTypes.string.isRequired,
     autor: PropTypes.string.isRequired,
     imagem: PropTypes.string.isRequired,
-    imagemLike: PropTypes.string.isRequired,
-    
     imagemComment: PropTypes.string.isRequired,
   }
 
