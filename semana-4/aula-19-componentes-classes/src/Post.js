@@ -51,6 +51,7 @@ class Post extends React.Component {
         let likeContChange = this.state.likeCont
         let commentCont = this.state.commentCont
         let inputComments
+        
         if(this.state.imagemChange){
           linkImg = imgNotLike
           likeContChange = 1
@@ -68,14 +69,14 @@ class Post extends React.Component {
     <div className="post-container">
         <div className="autor-content">
           <div className="img-autor">
-            <img src={this.props.imagemAutor} alt=""/>
+            <img src={this.props.fotoPerfil} alt=""/>
           </div>
           <div className="name-autor">
-            <p>{this.props.autor}</p>
+            <p>{this.props.nomePost}</p>
           </div>
         </div>
         <div className="img-content">
-         <img src={this.props.imagem} alt=""/>
+         <img src={this.props.imagemPost} alt=""/>
         </div>
         <div className="icons-content">
           <div className="like">
@@ -95,9 +96,9 @@ class Post extends React.Component {
 }
 
 Post.propTypes = {
-    imagemAutor: PropTypes.string.isRequired,
-    autor: PropTypes.string.isRequired,
-    imagem: PropTypes.string.isRequired,
+    fotoPerfil: PropTypes.string.isRequired,
+    nomePost: PropTypes.string.isRequired,
+    imagemPost: PropTypes.string.isRequired,
   }
 
   
