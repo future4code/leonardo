@@ -26,12 +26,10 @@ class Post extends React.Component {
         likeChange: !mostraLikeAlternativoAtual
       }
       this.setState(novoEstado)
-      console.log(novoEstado)
     }
 
     onShowCommentInput = () => {
       
-  
       const novoEstado = {
         mostraInput: true
       }
@@ -65,7 +63,6 @@ class Post extends React.Component {
               <button onClick={this.commentCont}>Enviar</button>
             </div>)
         }
-  
   
     return (
     <div className="post-container">
