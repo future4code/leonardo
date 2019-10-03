@@ -24,3 +24,20 @@
     width: 300px;
     margin: 10px 0;
   }
+
+  .like {
+    display: flex;
+  }
+
+  .img-autor img {
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  .comment {
+    display: flex;
+  }
+
+  .comment-input {
+    padding: 0 10px;
+    padding-bottom: 5px;
+  }

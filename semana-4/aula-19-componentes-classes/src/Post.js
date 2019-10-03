@@ -11,25 +11,60 @@ class Post extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-        imgemChange: false
+        imagemChange: false,
+        likeCont: 0,
+        mostraInput: false,
+        commentCont: 0
       }
     
     }
     onShowAlternativeImage = () => {
-      const mostraImagemAlternativaAtual = this.state.imgemChange
+      const mostraImagemAlternativaAtual = this.state.imagemChange
+      const mostraLikeAlternativoAtual = this.state.likeCont
       const novoEstado = {
-        imgemChange: !mostraImagemAlternativaAtual
+        imagemChange: !mostraImagemAlternativaAtual,
+        likeChange: !mostraLikeAlternativoAtual
       }
       this.setState(novoEstado)
       console.log(novoEstado)
     }
+
+    onShowCommentInput = () => {
+      
   
+      const novoEstado = {
+        mostraInput: true
+      }
+  
+      this.setState(novoEstado)
+    }
+    
+    commentCont = () => {
+      let commentContAtual = this.state.commentCont
+
+      const novoEstado = {
+        commentCont: commentContAtual + 1,
+        mostraInput: false
+      }
+      this.setState(novoEstado)
+    }
     render(){
         let linkImg = imgLike
-        if(this.state.imgemChange){
+        let likeContChange = this.state.likeCont
+        let commentCont = this.state.commentCont
+        let inputComments
+        if(this.state.imagemChange){
           linkImg = imgNotLike
+          likeContChange = 1
         }
-    
+        
+        if(this.state.mostraInput){
+          inputComments =
+           ( <div className="comment-input">
+              <input type="text" placeholder="Digite seu comentario"/>
+              <button onClick={this.commentCont}>Enviar</button>
+            </div>)
+        }
   
   
     return (
@@ -48,11 +83,14 @@ class Post extends React.Component {
         <div className="icons-content">
           <div className="like">
             <img src={linkImg} onClick={this.onShowAlternativeImage} alt="" className="img-like"/>
+            <p>{likeContChange}</p>
           </div>
           <div className="comment">
-            <img src={this.props.imagemComment}  alt="" className="img-comment"/>
+            <img src={imgComment} onClick={this.onShowCommentInput}  alt="" className="img-comment"/>
+            <p>{commentCont}</p>
           </div>
         </div>
+        {inputComments}
     </div>
     
   );
@@ -63,7 +101,6 @@ Post.propTypes = {
     imagemAutor: PropTypes.string.isRequired,
     autor: PropTypes.string.isRequired,
     imagem: PropTypes.string.isRequired,
-    imagemComment: PropTypes.string.isRequired,
   }
 
   
