@@ -13,55 +13,54 @@ const Container = styled.div `
 `
 
 const Tela = styled.div `
-max-width: 600px;
-height: 100vh;
-display: flex;
-flex-direction: column;
-border-width: 1px;
-border-style: solid;
-border-color: black;
-border-image: initial;
-flex: 1 1 0%;
+  max-width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-image: initial;
+  flex: 1 1 0%;
 `
+
 const EntradaMensagem = styled.section `
   flex-grow:0;
   margin-bottom: 20px;
+  display:flex;
 `
+
 const CaixaMensagem = styled.section `
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-flex: 1 1 0%;
-padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 1 1 0%;
+  padding: 20px;
    
 `
 
 const Usuario = styled.input `
-width:20%;
-`
-const TextoDigitado = styled.input `
-width: 60%;
-`
-const ButtonEnviar = styled.button `
-  margin:0;
-  border:0;
-  padding:0;
   width:20%;
 `
+
+const TextoDigitado = styled.input `
+  width: 60%;
+`
+
+const ButtonEnviar = styled.button `
+  width:20%;
+`
+
 class App extends React.Component {
   constructor(props){
       super(props);
       this.state = {
         listaMensagem: [
-          {
-          nomeUsuario:'',
-          mensagem:''
-          },
+         
         ]
       }
     }
   
-
   onChangeUsuario = (event) => {
     this.setState({nomeUsuario: event.target.value})
   }
@@ -70,33 +69,33 @@ class App extends React.Component {
     this.setState({mensagem: event.target.value})
   }
 
+  
   inserirMensagem = () => {
      
     let capturaMensagem = {
         nomeUsuario: this.state.nomeUsuario,
         mensagem: this.state.mensagem,
         
-      }
-      const listaMensagemCopia = [ ...this.state.listaMensagem, capturaMensagem]
+    }
+    const listaMensagemCopia = [ ...this.state.listaMensagem, capturaMensagem]
       
-      this.setState({
-        listaMensagem: listaMensagemCopia,
-        nomeUsuario:'',
-        mensagem:''
-      })
+    this.setState({
+      listaMensagem: listaMensagemCopia,
+      mensagem:''
+    })
+
   }
   
-    
-  
-  
   render(){
-    const exibirMensagens = this.state.listaMensagem.map((linha,index) =>{
+    
+    let exibirMensagens = this.state.listaMensagem.map((linha,index) =>{
       return <Linha
               key={index}
               nomeUsuario={linha.nomeUsuario}
-              texto={": " + linha.mensagem}
+              texto={linha.mensagem}
               />
     })
+    
     return (
     <Container>
       <Tela>
