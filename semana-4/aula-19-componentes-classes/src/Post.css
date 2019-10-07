@@ -1,0 +1,43 @@
+.App {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .autor-content {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    padding-left: 10px;
+  }
+  
+  .icons-content {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 10px;
+  }
+  
+  .post-container {
+    border: 1px solid #a9a9a9;
+    width: 300px;
+    margin: 10px 0;
+  }
+
+  .like {
+    display: flex;
+  }
+
+  .img-autor img {
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  .comment {
+    display: flex;
+  }
+
+  .comment-input {
+    padding: 0 10px;
+    padding-bottom: 5px;
+  }
