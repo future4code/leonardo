@@ -10,22 +10,27 @@ export class Tarefa extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-        
+        tarefa: {
+            nomeTarefa:'',
+            checkTarefa:'',
+            apagarTarefa:''
+        }
     }
   }
-  handleOnChangeTarefa = event => {
+  handleOnChangeTarefa = (event) => {
     this.setState({ nomeTarefa: event.target.value });
   };
 
-  apagarTarefa = event => {
-      this.setState({})
-  }
+  handleOnChangeCheck = (event) => {
+    this.setState({ checkTarefa: event.target.checked });
+  };
   render (){
   return (
     <LinhaTarefa>
         <input
             type="checkbox"
-            value={this.props.checkTarefa}
+            checked={this.state.checkTarefa}
+            onChange={this.handleOnChangeCheck} 
             />
         <input
             onChange={this.handleOnChangeTarefa} 

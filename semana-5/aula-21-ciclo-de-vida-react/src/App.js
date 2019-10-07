@@ -34,14 +34,19 @@ class App extends React.Component {
 
     }
   }
+  handleOnChangeTarefa = (event) => {
+    this.setState({ nomeTarefa: event.target.value });
+  };
   inserirTarefas = () => {
     
-    let capturaTarefa = {}
+    let capturaTarefa = {
+      nomeTarefa:this.state.nomeTarefa
+    }
     const listaTarefaCopia = [ ...this.state.listaTarefa, capturaTarefa]
     this.setState({
       listaTarefa: listaTarefaCopia
     })
-    
+    console.log(capturaTarefa)
   }
 
   apagarTodasMensagens =() => {
@@ -57,10 +62,13 @@ class App extends React.Component {
               key={index}
               nomeTarefa={linha.nomeTarefa}
               checkTarefa={linha.checkTarefa}
-              apagarTarefa={this.apagarTarefa}
+              apagarTarefa={linha.apagarTarefa}
               />
     })
-    console.log(exibirTarefas)
+    let exibirTarefasFeitas = this.state.listaTarefa.filter((linha) =>{
+      return linha.nomeTarefa
+    })
+    
 
     return (
     <Main>
@@ -72,6 +80,7 @@ class App extends React.Component {
       <TarefasParaFazer>
       {exibirTarefas}
       </TarefasParaFazer>
+      {exibirTarefasFeitas}
     </Main>
   );
 }
