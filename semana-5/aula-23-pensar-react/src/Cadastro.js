@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-const listaDespesas =[]
+
 export class Cadastro extends React.Component {
   constructor(props){
       super(props);
@@ -9,7 +9,7 @@ export class Cadastro extends React.Component {
         valorDespesa:"",
         valorTipoDespesa:"",
         valorDescricaoDespesa:"",
-        listaDespesas
+        listaDespesas:[]
       }
       
   }
@@ -43,6 +43,7 @@ export class Cadastro extends React.Component {
         })
   }
     render(){
+        
         return (
         <div>
             <h1>CADASTRO</h1>
@@ -72,7 +73,7 @@ export class Cadastro extends React.Component {
                 />
             <div>
                 <button onClick={this.salvarDespesaLista}>Salvar Despesa</button>
-                <button onclick={this.props.ConsultarExtrato}>Consultar Extrato</button>
+                <button onclick={this.props.consultarExtrato}>Consultar Extrato</button>
             </div>
         </div>
     );}

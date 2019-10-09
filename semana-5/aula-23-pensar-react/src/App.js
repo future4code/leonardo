@@ -5,13 +5,29 @@ import { Extrato } from './Extrato';
 
 
 
-function App() {
-  return (
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state ={
+      listaDespesas:[],
+      
+    }
+    
+}
+
+
+  
+  render(){
+    let telaExibida
+    if (!this.state.telaInicial ? telaExibida = <Cadastro consultarExtrato={this.exibirExtrato} /> : telaExibida = <Extrato/> )
+  
+    return (
     <div className="App">
-      <Cadastro />
-      <Extrato/>
+      <Cadastro consultarExtrato={this.exibirExtrato} />
+      <Extrato/> 
     </div>
-  );
+  )
+}
 }
 
 export default App;

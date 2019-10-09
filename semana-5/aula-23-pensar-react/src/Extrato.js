@@ -17,5 +17,5 @@ export function Extrato() {
         </select>
         <button>Filtrar</button>
     </div>
-  );
+  )
 }
