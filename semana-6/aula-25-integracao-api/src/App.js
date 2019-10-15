@@ -10,21 +10,23 @@ class App extends React.Component {
     this.state = {
       nameValue: "",
       emailValue: "",
-      tela:"",
+      view:false,
     };
   }
   
-  exibirTela2 = () => {
-    const novaTela = 2
-    this.setState({tela: novaTela })
-    console.log(this.state.tela)
+  onChangeView = () => {
+    const newView = !this.state.view
+    this.setState({view: newView })
+    console.log(this.state.view)
   }
   render(){
+  
   return (
     
     <div className="App">
-      <Cadastro exibirTela={this.exibirTela2}/>
-      <Exibiçao/>
+      {this.state.view ? <Exibiçao onShowLogin={this.onChangeView}/> :<Cadastro onShowUsers={this.onChangeView}/>}
+
+      
     </div>
   );
 }

@@ -24,9 +24,6 @@ class Cadastro extends React.Component {
         })
     }
 
-    exibirUsuarios = () => {
-
-    }
 
     addUser =() => {
         // url: "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist"
@@ -47,10 +44,11 @@ class Cadastro extends React.Component {
         }).catch((error) => {
           console.log(error)
         })
+        this.setState({nameValue:"", emailValue:""})
       }
 
-      mudarTela = () => {
-          this.props.exibirTela()
+      onShowUsers = () => {
+          this.props.onShowUsers()
       }
     render(){
         
@@ -62,7 +60,7 @@ class Cadastro extends React.Component {
         <p>E-mail</p>
         <input onChange={this.onChangeEmailValue} value={this.state.emailValue} type="text"/>
         <div><button onClick={this.addUser}>Enviar</button></div>
-        <div><button onClick={this.mudarTela} >Exibir Usuarios</button></div>
+        <div><button onClick={this.onShowUsers} >Exibir Usuarios</button></div>
         </div>
         );
     }

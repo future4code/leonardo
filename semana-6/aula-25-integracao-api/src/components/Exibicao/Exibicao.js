@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 class Exibicao extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
         usuariosCadastrados: [],
         };
@@ -38,7 +38,10 @@ class Exibicao extends React.Component {
             });
           });
       };
-      
+      onShowLogin = () => {
+        this.props.onShowLogin()
+    }
+
     render(){
         const listaUsuarios = this.state.usuariosCadastrados.map(
             cadaUsuario => {
@@ -53,6 +56,7 @@ class Exibicao extends React.Component {
         <div>
         <p>Usuarios Cadastrados</p>
         {listaUsuarios}
+        <div><button onClick={this.onShowLogin} >Voltar</button></div>
         </div>
         );
     }
