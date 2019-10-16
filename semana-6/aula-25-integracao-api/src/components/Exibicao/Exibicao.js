@@ -1,64 +1,85 @@
 import React from 'react';
-import Styled from 'styled-components'
-import PropTypes from 'prop-types';
+import styled from 'styled-components'
 import axios from 'axios';
 
+const UserElement = styled.div `
+  display:flex;
+  justify-content:space-between;
+`
+
+const DeleteUser = styled.div`
+  color: red;
+`
+
 class Exibicao extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+  constructor(props) {
+      super(props);
+      this.state = {
         usuariosCadastrados: [],
-        };
-      }
-      componentDidMount() {
-        this.getUsers();
-      }
-    
-      
-      getUsers = () => {
-        const request = axios.get(
-          "https://us-central1-future4-users.cloudfunctions.net/api/users/getAllUsers",
-          {
-            headers: {
-                "api-token": "b55e5b6257ecc2bf0920da958f84ebd0"
-            }
-          }
-        );
-    
-        request
-          .then(response => {
-            console.log(response);
-            this.setState({ usuariosCadastrados: response.data.result });
-          })
-          .catch(error => {
-            console.log(error);
-            this.setState({
-              errorMessage:
-                "Ocorreu um erro! Atualize a página para tentar novamente!"
-            });
-          });
       };
-      onShowLogin = () => {
-        this.props.onShowLogin()
     }
 
-    render(){
-        const listaUsuarios = this.state.usuariosCadastrados.map(
-            cadaUsuario => {
-            //   const funcaoIntermediaria = () => {
-            //     this.getPlaylistMusics(cadaUsuario.name);
-            //   };
-              return <li >{cadaUsuario.name}</li>;
-            }
-          );
-        
-        return (
-        <div>
-        <p>Usuarios Cadastrados</p>
-        {listaUsuarios}
-        <div><button onClick={this.onShowLogin} >Voltar</button></div>
-        </div>
-        );
-    }
+  componentDidMount() {
+    this.getUsers();
+  }
+  
+  getUsers = () => {
+      axios.get(
+      "https://us-central1-future4-users.cloudfunctions.net/api/users/getAllUsers",
+      {
+        headers: {
+            "api-token": "b55e5b6257ecc2bf0920da958f84ebd0"
+        }
+      })
+    
+    .then(response => {
+      this.setState({ usuariosCadastrados: response.data.result });
+    })
+
+    .catch(error => {
+      window.alert(`Ocorreu um erro: ${error} `)
+    });
+  };
+    
+  deleteUser = (usuario) => {
+    if(window.confirm(`Tem certeza que deseja excluir o usuario ${usuario.name}?`)){
+      axios.delete(
+        `https://us-central1-future4-users.cloudfunctions.net/api/users/deleteUser?id=${usuario.id}`,
+        {
+          headers: {
+              "api-token": "b55e5b6257ecc2bf0920da958f84ebd0"
+          }
+        }
+      )
+
+      .then(r => {
+        window.alert(`Usuário deletado com sucesso`)
+        this.getUsers()
+      })
+      .catch(error => {
+        window.alert(`Ocorreu um erro ao excluir o usuario ${usuario.name}. ${error} `)
+      });
+    };
+  }
+
+  render(){
+    const listaUsuarios = this.state.usuariosCadastrados.map(
+      cadaUsuario => {
+        return <UserElement key={cadaUsuario.id}>
+                  <div> {cadaUsuario.name} </div>
+                  <button onClick={()=> {this.deleteUser(cadaUsuario)}}>
+                      <DeleteUser> X </DeleteUser>
+                  </button>
+                </UserElement>;
+      }
+    );
+    
+    return (
+    <div>
+    <p>Usuarios Cadastrados</p>
+    {listaUsuarios}
+    </div>
+    );
+  }
 }
 export default Exibicao;
