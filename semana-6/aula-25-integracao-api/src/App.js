@@ -26,7 +26,8 @@ class App extends React.Component {
       nameValue: "",
       emailValue: "",
       view:false,
-      buttonText: "Exibir Usuários"
+      buttonText: "Exibir Usuários",
+      userDetails:false,
     };
   }
   
@@ -43,15 +44,17 @@ class App extends React.Component {
       })
       }
     }
-
+  
   render(){
+    
     return (
       <div>
       <AppWrapper>
-        {this.state.view ? <Exibicao onShowLogin={this.onChangeView} /> 
-        : <Cadastro onShowUsers={this.onChangeView} />}
+        {this.state.view ? <Exibicao onTeste={this.teste} /> 
+        : <Cadastro/>}
       </AppWrapper>
       <ButtonWrapper><Button onClick={this.onChangeView} > { this.state.buttonText} </Button></ButtonWrapper>
+      
       </div>
     );
   }

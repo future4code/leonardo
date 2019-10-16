@@ -66,7 +66,7 @@ class Exibicao extends React.Component {
     const listaUsuarios = this.state.usuariosCadastrados.map(
       cadaUsuario => {
         return <UserElement key={cadaUsuario.id}>
-                  <div> {cadaUsuario.name} </div>
+                  <div > {cadaUsuario.name} </div>
                   <button onClick={()=> {this.deleteUser(cadaUsuario)}}>
                       <DeleteUser> X </DeleteUser>
                   </button>
