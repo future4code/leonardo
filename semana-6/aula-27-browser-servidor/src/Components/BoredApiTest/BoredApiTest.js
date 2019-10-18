@@ -12,7 +12,7 @@ class BoredApiTest extends React.Component {
             }    
     }
     fetchActivity = async ()  => {
-        const response = await axios.get('http://www.boredapi.com/api/activity/')
+        const response = await axios.get('https://www.boredapi.com/api/activity/')
         let activity = response.data
         console.log(activity)
         this.setState({
