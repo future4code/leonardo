@@ -9,7 +9,8 @@ class AddMusicToPlaylist extends React.Component {
             allPlaylists:[],
             nameValue:'',
             urlValue:'',
-            artistValue:''
+            artistValue:'',
+            selectedPlaylist:''
             
             }
     }
@@ -60,17 +61,17 @@ class AddMusicToPlaylist extends React.Component {
     }
 
     addMusicToSelectedPlaylist = async  (playlist)  => {
-        console.log(this.state.currentSelectedPlaylist)
+        console.log(playlist)
         const data = {
-            "playlistId": playlist.id, 
-            "music": { 
-                "name": this.state.nameValue, 
-                "artist": this.state.artistValue,
-                "url": this.state.urlValue
+            playlistId: playlist, 
+            music: { 
+                name: this.state.nameValue, 
+                artist: this.state.artistValue,
+                url: this.state.urlValue
             }
         }
         
-        await axios.post('https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist',
+        await axios.put('https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist',
         data, {
             headers: {
                 auth: 'b55e5b6257ecc2bf0920da958f84ebd0 '
@@ -79,6 +80,7 @@ class AddMusicToPlaylist extends React.Component {
         
 
     }
+    
     render(){
         return(
             <div>
@@ -86,15 +88,21 @@ class AddMusicToPlaylist extends React.Component {
                     onChange={this.handlePlaylistSelection}
                     value={this.state.currentSelectedPlaylist}
                 >
-                    <option>Escolha a Playlist</option>
+                    <option
+                        onChange={this.handlePlaylistSelectionOption}
+                        value={this.state.currentSelectedPlaylist}
+                    >Escolha a Playlist</option>
                     {this.state.allPlaylists.map((playlist) => {
                         return (
+                           
                             <option
                                 key={playlist.id}
-                                value={playlist.name}
+                                value={playlist.id}
                             >
                             {playlist.name}
+                            
                             </option>
+                            
                         )
                     })}
                 </select>
