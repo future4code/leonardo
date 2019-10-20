@@ -1,0 +1,1691 @@
+{
+	"info": {
+		"_postman_id": "de21f8ff-94c8-44c3-8c0c-27af4b29a960",
+		"name": "Aula 24 HTTPS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth",
+						"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Pop\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"createPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"5480b6a9-1007-480a-885b-127b41e4dec6\", \r\n    \"music\": \r\n    \t{ \r\n        \"name\": \"Atrás do trio elétrico\", \r\n        \"artist\": \"Caetano Veloso\"\r\n    }\r\n    \r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"50d6f674-cbc0-431c-bf02-86f276ce7f97\", \r\n    \"music\": \r\n    \t{ \r\n        \"name\": \"No One Knows\", \r\n        \"artist\": \"Queens of the Stone Age\"\r\n    }\r\n    \r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"50d6f674-cbc0-431c-bf02-86f276ce7f97\", \r\n    \"music\": \r\n    \t{ \r\n        \"name\": \"No One Knows\", \r\n        \"artist\": \"Black\"\r\n    }\r\n    \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"9c3c79a3-c5bf-400b-9c8b-a492edbda6b1\", \r\n    \"music\": \r\n    \t{ \r\n        \"name\": \"thriller\", \r\n        \"artist\": \"michael jackson\"\r\n    }\r\n    \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"9c3c79a3-c5bf-400b-9c8b-a492edbda6b1\", \r\n    \"music\": \r\n    \t{ \r\n        \"name\": \"Times Like These\", \r\n        \"artist\": \"Jack Johnson\"\r\n    }\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getAllPlaylists",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getAllPlaylists",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getAllPlaylists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/5480b6a9-1007-480a-885b-127b41e4dec6",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "playlistID",
+						"value": "5480b6a9-1007-480a-885b-127b41e4dec6",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/5480b6a9-1007-480a-885b-127b41e4dec6?",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"5480b6a9-1007-480a-885b-127b41e4dec6"
+					],
+					"query": [
+						{
+							"key": "playlistID",
+							"value": "9c3c79a3-c5bf-400b-9c8b-a492edbda6b1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/50d6f674-cbc0-431c-bf02-86f276ce7f97",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/50d6f674-cbc0-431c-bf02-86f276ce7f97",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"50d6f674-cbc0-431c-bf02-86f276ce7f97"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/9c3c79a3-c5bf-400b-9c8b-a492edbda6b1",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/9c3c79a3-c5bf-400b-9c8b-a492edbda6b1",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"9c3c79a3-c5bf-400b-9c8b-a492edbda6b1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"5480b6a9-1007-480a-885b-127b41e4dec6\", \r\n    \"music\": \r\n    \t{ \r\n        \"name\": \"Besta é tu\", \r\n        \"artist\": \"Novos Baianos\"\r\n    }\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"5480b6a9-1007-480a-885b-127b41e4dec6\", \r\n    \"music\": \r\n    \t{ \r\n        \"name\": \"Ilê Ayê\", \r\n        \"artist\": \"Gilberto Gil\"\r\n    }\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/5480b6a9-1007-480a-885b-127b41e4dec6",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/5480b6a9-1007-480a-885b-127b41e4dec6",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"5480b6a9-1007-480a-885b-127b41e4dec6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"9c3c79a3-c5bf-400b-9c8b-a492edbda6b1\", \r\n    \"music\": \r\n    \t{ \r\n        \"name\": \"Quem traiu levou\", \r\n        \"artist\": \"Gusttavo Lima\"\r\n    }\r\n    \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/9c3c79a3-c5bf-400b-9c8b-a492edbda6b1",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/9c3c79a3-c5bf-400b-9c8b-a492edbda6b1",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"9c3c79a3-c5bf-400b-9c8b-a492edbda6b1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/removeMusicFromPlaylist?playlistId=9c3c79a3-c5bf-400b-9c8b-a492edbda6b1&musicId=8ab0584f-a2ff-4204-b729-08a2cb465ab7",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/removeMusicFromPlaylist?playlistId=9c3c79a3-c5bf-400b-9c8b-a492edbda6b1&musicId=8ab0584f-a2ff-4204-b729-08a2cb465ab7",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"removeMusicFromPlaylist"
+					],
+					"query": [
+						{
+							"key": "playlistId",
+							"value": "9c3c79a3-c5bf-400b-9c8b-a492edbda6b1"
+						},
+						{
+							"key": "musicId",
+							"value": "8ab0584f-a2ff-4204-b729-08a2cb465ab7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/9c3c79a3-c5bf-400b-9c8b-a492edbda6b1",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/9c3c79a3-c5bf-400b-9c8b-a492edbda6b1",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"9c3c79a3-c5bf-400b-9c8b-a492edbda6b1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/deletePlaylist?playlistId=9c3c79a3-c5bf-400b-9c8b-a492edbda6b1",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/deletePlaylist?playlistId=9c3c79a3-c5bf-400b-9c8b-a492edbda6b1",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"deletePlaylist"
+					],
+					"query": [
+						{
+							"key": "playlistId",
+							"value": "9c3c79a3-c5bf-400b-9c8b-a492edbda6b1"
+						},
+						{
+							"key": "playlistId",
+							"value": "5480b6a9-1007-480a-885b-127b41e4dec6",
+							"disabled": true
+						},
+						{
+							"key": "playlistId",
+							"value": "50d6f674-cbc0-431c-bf02-86f276ce7f97",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/deletePlaylist?playlistId=5480b6a9-1007-480a-885b-127b41e4dec6",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/deletePlaylist?playlistId=5480b6a9-1007-480a-885b-127b41e4dec6",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"deletePlaylist"
+					],
+					"query": [
+						{
+							"key": "playlistId",
+							"value": "5480b6a9-1007-480a-885b-127b41e4dec6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/deletePlaylist?playlistId=50d6f674-cbc0-431c-bf02-86f276ce7f97",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/deletePlaylist?playlistId=50d6f674-cbc0-431c-bf02-86f276ce7f97",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"deletePlaylist"
+					],
+					"query": [
+						{
+							"key": "playlistId",
+							"value": "50d6f674-cbc0-431c-bf02-86f276ce7f97"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getAllPlaylists",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getAllPlaylists",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getAllPlaylists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"musica para chuveiro\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"createPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getAllPlaylists",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getAllPlaylists",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getAllPlaylists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"719b274d-aa42-44c4-8ef0-9c264ea5045a\", \r\n    \"music\": { \r\n        \"name\": \"Banho É Bom (Ratinho Tomando Banho)\", \r\n        \"artist\": \"Castelo Rá-Tim-Bum\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"719b274d-aa42-44c4-8ef0-9c264ea5045a\", \r\n    \"music\": { \r\n        \"name\": \"Meu pé meu querido pé\", \r\n        \"artist\": \"Castelo Rá-Tim-Bum\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"719b274d-aa42-44c4-8ef0-9c264ea5045a\", \r\n    \"music\": { \r\n        \"name\": \"O Pato\", \r\n        \"artist\": \"Vinicius de Moraes\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/719b274d-aa42-44c4-8ef0-9c264ea5045a",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/719b274d-aa42-44c4-8ef0-9c264ea5045a",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"719b274d-aa42-44c4-8ef0-9c264ea5045a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/removeMusicFromPlaylist?musicId=d22addfe-da02-4b3f-ad69-c5711e27d55f&playlistId=719b274d-aa42-44c4-8ef0-9c264ea5045a",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/removeMusicFromPlaylist?musicId=d22addfe-da02-4b3f-ad69-c5711e27d55f&playlistId=719b274d-aa42-44c4-8ef0-9c264ea5045a",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"removeMusicFromPlaylist"
+					],
+					"query": [
+						{
+							"key": "musicId",
+							"value": "d22addfe-da02-4b3f-ad69-c5711e27d55f"
+						},
+						{
+							"key": "playlistId",
+							"value": "719b274d-aa42-44c4-8ef0-9c264ea5045a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/719b274d-aa42-44c4-8ef0-9c264ea5045a",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/719b274d-aa42-44c4-8ef0-9c264ea5045a",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"719b274d-aa42-44c4-8ef0-9c264ea5045a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Hora de Codar\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"createPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sextou\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"createPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getAllPlaylists",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getAllPlaylists",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getAllPlaylists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"a787ee4b-b606-49fe-81bc-d330f0359c9f\", \r\n    \"music\": { \r\n        \"name\": \"Nothing Else Matters\", \r\n        \"artist\": \"Metallica\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"854d5689-64a8-4faa-b437-cbbd36f84f5e\", \r\n    \"music\": { \r\n        \"name\": \"Sextou\", \r\n        \"artist\": \"Wesley Safadão\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/a787ee4b-b606-49fe-81bc-d330f0359c9f",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/a787ee4b-b606-49fe-81bc-d330f0359c9f",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"a787ee4b-b606-49fe-81bc-d330f0359c9f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/854d5689-64a8-4faa-b437-cbbd36f84f5e",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "auth",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "b55e5b6257ecc2bf0920da958f84ebd0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/854d5689-64a8-4faa-b437-cbbd36f84f5e",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"854d5689-64a8-4faa-b437-cbbd36f84f5e"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
