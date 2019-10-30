@@ -1,60 +1,73 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import DeleteIcon from '@material-ui/icons/Delete';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import styled from 'styled-components';
 
-const styles = {
+const styles = theme => ({
 	root: {
-		padding: '2px 4px',
-		display: 'flex',
-		alignItems: 'center',
-		width: 400,
+		width: '100%',
+		maxWidth: 360,
+		backgroundColor: theme.palette.background.paper,
 	},
-	input: {
-		marginLeft: 8,
-		flex: 1,
-	},
-	iconButton: {
-		padding: 10,
-	},
-};
+});
 
-function CustomizedInputBase(props) {
-	const { classes } = props;
 
-	return (
-		<div>
-			<Paper className={classes.root} elevation={1}>
-				<IconButton className={classes.iconButton} >
-					<Checkbox />
-				</IconButton>
-				<InputBase className={classes.input} placeholder="Deseja lembrar de algo?" />
-				<IconButton className={classes.iconButton} >
-					<DeleteIcon />
-				</IconButton>
 
-			</Paper>
-			<Paper className={classes.root} elevation={1}>
-				<IconButton className={classes.iconButton} >
-					<Checkbox />
-				</IconButton>
-				<InputBase className={classes.input} placeholder="Deseja lembrar de algo?" />
-				<IconButton className={classes.iconButton} >
-					<DeleteIcon />
-				</IconButton>
+class CheckboxList extends React.Component {
+	state = {
+		checked: [0],
+	};
 
-			</Paper>
-		</div>
-	);
+	handleToggle = value => () => {
+		const { checked } = this.state;
+		const currentIndex = checked.indexOf(value);
+		const newChecked = [...checked];
+
+		if (currentIndex === -1) {
+			newChecked.push(value);
+		} else {
+			newChecked.splice(currentIndex, 1);
+		}
+
+		this.setState({
+			checked: newChecked,
+		});
+	};
+
+	render() {
+		const { classes } = this.props;
+
+		return (
+
+
+			<ListItem role={undefined} dense button onClick={this.handleToggle()}>
+				<Checkbox
+					checked={this.state.checked.indexOf() !== -1}
+					tabIndex={-1}
+					disableRipple
+				/>
+				<ListItemText> {this.props.todo.text}</ListItemText>
+				<ListItemSecondaryAction>
+					<IconButton >
+						<DeleteIcon />
+					</IconButton>
+				</ListItemSecondaryAction>
+			</ListItem>
+
+
+		);
+	}
 }
 
-CustomizedInputBase.propTypes = {
+CheckboxList.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CustomizedInputBase);	
+export default withStyles(styles)(CheckboxList);

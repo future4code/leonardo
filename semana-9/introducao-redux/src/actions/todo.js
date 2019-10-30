@@ -1,4 +1,4 @@
-export const addTask = text => {
+export const addTodo = text => {
 	return {
 		type: "ADD_TODO",
 		payload: {
