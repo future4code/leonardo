@@ -1,10 +1,12 @@
 const initialState = [
 	{
 		id: 1,
-		text: "teste1"
+		text: "teste1",
+		completed:false
 	}, {
 		id: 2,
-		text: "teste2"
+		text: "teste2",
+		completed:true
 	}
 ]
 
@@ -15,9 +17,10 @@ export const todoReducer = (state = initialState, action) => {
 		case 'ADD_TODO':
 			const newTodo = {
 				text: action.payload.text,
-				id: Date.now()
+				id: Date.now(),
+				completed:false
 			}	
-		return [newTodo, ...state]
+		return [ ...state, newTodo]
 		default:
 			return state
 	}

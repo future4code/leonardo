@@ -25,11 +25,7 @@ const AppWrapper = styled.div`
 
 
 class TodoList extends React.Component {
-  super(props){
-	this.state = {
-    checked: [0],
-  };
-  }
+ 
   
 
   render() {

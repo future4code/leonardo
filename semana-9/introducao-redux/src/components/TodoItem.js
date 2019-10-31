@@ -9,6 +9,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import styled from 'styled-components';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const styles = theme => ({
 	root: {
@@ -16,30 +17,25 @@ const styles = theme => ({
 		maxWidth: 360,
 		backgroundColor: theme.palette.background.paper,
 	},
+	teste: {
+		textDecoration: 'line-through',
+		color: 'red',
+		hover: 'red',
+	}
 });
 
 
 
-class CheckboxList extends React.Component {
+class TodoItem extends React.Component {
 	state = {
-		checked: [0],
+		checked: false,
 	};
-
-	handleToggle = value => () => {
-		const { checked } = this.state;
-		const currentIndex = checked.indexOf(value);
-		const newChecked = [...checked];
-
-		if (currentIndex === -1) {
-			newChecked.push(value);
-		} else {
-			newChecked.splice(currentIndex, 1);
-		}
-
-		this.setState({
-			checked: newChecked,
-		});
-	};
+	
+	handleChange = name => event => {
+		let newValue = !this.props.todo.completed
+		this.setState({ [name]: newValue });
+	  };
+	
 
 	render() {
 		const { classes } = this.props;
@@ -47,13 +43,15 @@ class CheckboxList extends React.Component {
 		return (
 
 
-			<ListItem role={undefined} dense button onClick={this.handleToggle()}>
+			<ListItem className={classes.teste}  dense button >
 				<Checkbox
-					checked={this.state.checked.indexOf() !== -1}
-					tabIndex={-1}
-					disableRipple
+					checked={this.props.todo.completed}
+					onChange={this.handleChange('checked')}
+					
+					
 				/>
-				<ListItemText> {this.props.todo.text}</ListItemText>
+				 
+				<ListItemText onClick={this.handleChange('checked')} > {this.props.todo.text}</ListItemText>
 				<ListItemSecondaryAction>
 					<IconButton >
 						<DeleteIcon />
@@ -66,8 +64,8 @@ class CheckboxList extends React.Component {
 	}
 }
 
-CheckboxList.propTypes = {
+TodoItem.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CheckboxList);
+export default withStyles(styles)(TodoItem);
