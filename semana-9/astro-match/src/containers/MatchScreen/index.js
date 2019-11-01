@@ -28,7 +28,7 @@ class MatchScreen extends Component {
 				/>
 				<List>
 					{matches && matches.map((match) => (
-						<ListItem key={match.name}>
+						<ListItem key={match.name} onClick={goToSwipeScreen}>
 							<Avatar src={match.photo}/>
 							<ListText>{match.name}</ListText>
 						</ListItem>
@@ -46,11 +46,11 @@ MatchScreen.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	
+	matches: state.profiles.matches
 })
 
 const mapDispatchToProps = dispatch => ({
-	goToSwipeScreen: () => dispatch(updateCurrentPage('SwipeScreen')),
+	goToSwipeScreen: () => dispatch(updateCurrentPage('ProfileScreen')),
 	getMatches: () => dispatch(getMatches())
 })
 

@@ -4,11 +4,11 @@ export const clearSwipes = () => async (dispatch) => {
 	await axios.put('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/darvas/clear')
 }
 
-const profileToSwipe = profile => {
+export const profileToSwipe = profileToSwipe => {
 	return {
 	type: "SET_PROFILE",
 	payload: {
-		profile: profile
+		profileToSwipe
 	}
 }
 };
@@ -21,10 +21,7 @@ export const getProfileToSwipe = () => async (dispatch, getState) => {
 	dispatch(profileToSwipe(response.data.profile));
 };
 
-export const chooseProfile = () => async (dispatch, getState) => {
 
-
-}
 
 const matches = matches => {
 	return {
@@ -35,10 +32,24 @@ const matches = matches => {
 	}
 }
 
-export const getMatches = () => async (dispatch, getMatches) => {
+export const getMatches = () => async (dispatch, getState) => {
 	const response = await axios.get(
 		"https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo/matches"
 	);
 
 	dispatch(matches(response.data.matches));
 };
+
+export const chooseProfile = (id, option) => async (dispatch, getState) => {
+	
+	
+	const newMatch = {
+		id: id,
+		choice: option
+	}
+	const response = await axios.post(
+		"https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo/choose-person", newMatch
+	);
+	dispatch(getProfileToSwipe())
+
+}

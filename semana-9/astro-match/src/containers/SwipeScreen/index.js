@@ -31,6 +31,7 @@ export class SwipeScreen extends Component {
 	}
 
 	onChooseOption = (option) => () => {
+		
 		let currentAnimation = option === 'dislike' ? swipeRight : swipeLeft
 		
 		if (this.state.currentAnimation === null) {
@@ -39,7 +40,9 @@ export class SwipeScreen extends Component {
 
 		if (this.props.profileToSwipe) {
 			this.props.chooseProfile(this.props.profileToSwipe.id, option === 'like')
+			
 		}
+		
 	}
 
 	render() {
@@ -57,8 +60,8 @@ export class SwipeScreen extends Component {
 				/>
 				<ContentWrapper>
 					{currentAnimation !== null && (<Loader/>)}
-					{this.props.profile ? <UserSwipeCard
-						userToSwipe={this.props.profile}
+					{this.props.profileToSwipe ? <UserSwipeCard
+						userToSwipe={this.props.profileToSwipe}
 						animationDirection={currentAnimation}
 					/> : (<Loader/>)}
 					<ButtonsWrapper>
@@ -81,22 +84,15 @@ SwipeScreen.propTypes = {
 const mapStateToProps = (state) => {
 	
 	return {
-	profile : {
-			id: state.profiles.profile.id,
-			age: state.profiles.profile.age,
-			name: state.profiles.profile.name,
-			photo: state.profiles.profile.photo,
-			bio: state.profiles.profile.bio,
-		  
+		profileToSwipe : state.profiles.profileToSwipe
 	}
-}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		goToMatchScreen: () => dispatch(updateCurrentPage('MatchScreen')),
 		getProfileToSwipe : () => dispatch(getProfileToSwipe()),
-		chooseProfile: () => dispatch(chooseProfile())
+		chooseProfile: (id, option) => dispatch(chooseProfile(id, option))
 	}
 }
 
