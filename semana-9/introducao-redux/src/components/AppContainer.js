@@ -1,18 +1,25 @@
 import React from 'react'
 import Header from './Header'
-import TodoItem from '../components/TodoItem'
-import TaskList from './TodoList'
 import TodoList from './TodoList'
+import { Provider } from 'react-redux'
+import { store } from '../store'
+import styled from 'styled-components'
+
+
 
 export class AppContainer extends React.Component {
-	constructor(props) {
-		super(props)
-	}
+	
 
 	render() {
-		return <div>
-			<Header />
-			<TodoList />
-		</div>
+		
+		return (
+		
+			<appWrapper>
+				<Header />
+				<TodoList />
+			</appWrapper> 
+		
+		)
 	}
 }
+

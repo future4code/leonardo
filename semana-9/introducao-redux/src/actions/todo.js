@@ -1,8 +1,8 @@
-export const addTodo = text => {
+export const addTodo = (id) => {
 	return {
 		type: "ADD_TODO",
 		payload: {
-			text: text
+			id: id
 		}
 	};
 };
@@ -57,3 +57,10 @@ export const clearCompleteTodo = () => {
 	  }
 	};
   };
+
+  export const updateTodoTitle = (newTitle) => ({
+	  type:"UPDATE_TODO_TITLE",
+	  payload: {
+		  text: newTitle
+	  }
+  })

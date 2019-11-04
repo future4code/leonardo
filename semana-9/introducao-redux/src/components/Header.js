@@ -20,7 +20,9 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { addTodo } from '../actions/todo'
+import { addTodo, updateTodoTitle } from '../actions/todo'
+import { TextField } from '@material-ui/core';
+
 
 const AppWrapper = styled.div`
   display:flex;
@@ -31,7 +33,7 @@ const AppWrapper = styled.div`
 
 const styles = theme => ({
 	root: {
-		padding: '2px 4px',
+		padding: '2px',
 		display: 'flex',
 		alignItems: 'center',
 		width: 400,
@@ -77,7 +79,7 @@ const styles = theme => ({
 		paddingTop: theme.spacing.unit,
 		paddingRight: theme.spacing.unit,
 		paddingBottom: theme.spacing.unit,
-		paddingLeft: theme.spacing.unit * 10,
+		paddingLeft: theme.spacing.unit,
 		transition: theme.transitions.create('width'),
 		width: '100%',
 		[theme.breakpoints.up('md')]: {
@@ -98,13 +100,15 @@ class Header extends React.Component {
 		inputTodo: ''
 	};
 
-	handleChange = name => event => {
-		this.setState({ [name]: event.target.value });
+	onUpdateTodoTitle  = event => {
+		this.props.updateTodoTitle(event.target.value)
 	};
 
-	onClickEnviar = () => {
-		this.props.addTodo(this.state.inputTodo)
-		console.log(this.state.inputTodo)
+	onEnterPress = (event ) => {
+		if( event.key === 'Enter'){
+			let newId = new Date().getTime()
+			this.props.addNewTodo(newId)
+		}
 	}
 
 	render() {
@@ -134,11 +138,13 @@ class Header extends React.Component {
 					</Toolbar>
 				</AppBar>
 				<AppWrapper>
-					<Paper className={classes.root} elevation={1}>
-						<InputBase className={classes.inputInput} placeholder="Deseja lembrar de algo?"
-							onChange={this.handleChange('inputTodo')}
+					<Paper className={classes.root} >
+						<TextField className={classes.inputInput} placeholder="Deseja lembrar de algo?"
+							onChange={this.onUpdateTodoTitle}
+							value={this.props.currentTodoText}
+							onKeyPress={this.onEnterPress}
 						/>
-						<Button variant="contained" color="primary"	onClick={this.onClickEnviar} className={classes.button}>Salvar</Button>
+						
 					</Paper>
 				</AppWrapper>
 			</div>
@@ -150,10 +156,15 @@ Header.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+	currentTodoText: state.todos.currentTodoText,
+})
+
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addTodo: (text) => dispatch(addTodo(text))
+		addNewTodo: (id) => dispatch(addTodo(id)),
+		updateTodoTitle: (newTitle) => dispatch(updateTodoTitle(newTitle))
 	}
 }
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(Header));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header));
