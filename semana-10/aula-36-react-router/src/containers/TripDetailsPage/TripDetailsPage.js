@@ -20,9 +20,16 @@ class TripDetailsPage extends React.Component {
     return (
       <div>
         <p>List Trip details Page</p>
+            
             {<li>
                 {this.props.currentTrip.name}
             </li>}
+
+            {<p>{this.props.currentTrip.planet}</p>}
+            {<p>{this.props.currentTrip.durationInDays}</p>}
+            {<p>{this.props.currentTrip.date}</p>}
+            {<p>{this.props.currentTrip.description}</p>}
+
                 {this.props.currentTrip.candidates && this.props.currentTrip.candidates.map((trip) => (
 						<li key={trip.name} >
 						    {trip.name}
