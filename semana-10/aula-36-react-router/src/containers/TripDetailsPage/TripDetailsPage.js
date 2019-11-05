@@ -24,11 +24,11 @@ class TripDetailsPage extends React.Component {
             {<li>
                 {this.props.currentTrip.name}
             </li>}
-                {/* {this.props.currentTrip && this.props.currentTrip.candidates.map((trip) => (
+                {this.props.currentTrip.candidates && this.props.currentTrip.candidates.map((trip) => (
 						<li key={trip.name} >
 						    {trip.name}
 						</li>
-					))} */}
+					))}
 				
 				
         <button onClick={this.props.goToHomePage}>Home</button>
