@@ -7,7 +7,7 @@ import { routes } from '../Router'
 
 
 
-class HomePage extends React.Component {
+class ApplicationForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -18,7 +18,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <p>Home Page</p>
+        <p>Application Page</p>
         <button onClick={this.props.goToLoginPage}>login</button>
         <button onClick={this.props.goToApplicationForm}>Inscricao Viagem</button>
       </div>
@@ -26,6 +26,13 @@ class HomePage extends React.Component {
   }
 }
 
+ApplicationForm.propTypes = {
+
+}
+
+const mapStateToProps = (state) => ({
+    
+})
 
 const mapDispatchToProps = dispatch => ({
     goToLoginPage: () => dispatch(push(routes.login)),
@@ -33,4 +40,4 @@ const mapDispatchToProps = dispatch => ({
    
   });
 
-export default connect(null, mapDispatchToProps)(HomePage)
+export default connect(mapStateToProps, mapDispatchToProps)(ApplicationForm)

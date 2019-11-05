@@ -50,7 +50,7 @@ class LoginPage extends Component {
           label="Password"
           value={password}
         />
-        <Button onClick={this.props.goToHomePage}>Login</Button>
+        <Button onClick={this.props.goToTripList}>Login</Button>
       </LoginWrapper>
     );
   }
@@ -61,7 +61,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  goToHomePage: () => dispatch(push(routes.login)),
+  goToTripList: () => dispatch(push(routes.list)),
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(LoginPage);
