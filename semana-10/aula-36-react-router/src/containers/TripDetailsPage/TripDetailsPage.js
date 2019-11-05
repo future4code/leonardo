@@ -15,7 +15,6 @@ class TripDetailsPage extends React.Component {
 
     }
   }
-  
   render() {
     console.log(this.props.currentTrip)
     return (
