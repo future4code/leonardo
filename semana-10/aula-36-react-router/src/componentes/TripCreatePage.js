@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { push } from 'connected-react-router'
 import { routes } from '../containers/Router'
 import { Card, Button } from '@material-ui/core'
-import { getTrips } from '../api'
+import { createTrip } from '../api'
 
 const AppWrapper = styled.div`
 height:100vh;
@@ -41,7 +41,7 @@ class TripCreatePage extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+      this.props.createTrip(this.state)
   }
 
 
@@ -57,8 +57,8 @@ class TripCreatePage extends React.Component {
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
-              required={true}
-              pattern="[a-zA-Z]{5,}"
+              // required={true}
+              // pattern="[a-zA-Z]{5,}"
               title="preencha algo valido" />
             <p>Planeta</p>
             <select 
@@ -94,13 +94,18 @@ class TripCreatePage extends React.Component {
               name="description"
               value={this.state.description}
               onChange={this.handleChange}
-              pattern="\s*\S+(?:\s+\S+){4,}\s*$"/>
+              required={true}
+              // pattern="\s*\S+(?:\s+\S+){29,}\s*$"
+              />
+              
             <p>Duração em dias</p>
             <Inputstyled
               type="number"
               name="durationInDays"
               onChange={this.handleChange}
-              value={this.state.durationInDays} >
+              required={true}
+              value={this.state.durationInDays}
+              min="50" >
 
             </Inputstyled>
 
@@ -116,4 +121,10 @@ class TripCreatePage extends React.Component {
 }
 
 
-export default TripCreatePage;
+
+const mapDispatchToProps = dispatch => ({
+  createTrip: (trip) => dispatch(createTrip(trip))
+
+});
+
+export default connect(null, mapDispatchToProps)(TripCreatePage)
