@@ -34,6 +34,7 @@ class ListTripPage extends React.Component {
         <button onClick={this.props.goToLoginPage}>login</button>
         <button onClick={this.props.goToApplicationForm}>Inscricao Viagem</button>
         <button onClick={this.props.goToTripList}>Lista</button>
+        <button onClick={this.props.goToTripCreate}>Criar Viagem</button>
         
       </div>
     )
@@ -53,7 +54,8 @@ const mapDispatchToProps = dispatch => ({
     goToHomePage: () => dispatch(push(routes.home)),
     goToTripDetailsPage : () => dispatch(push(routes.details)),
     getTrips: () => dispatch(getTrips()),
-    getTripDetails: (id) => dispatch(getTripDetails(id))
+    getTripDetails: (id) => dispatch(getTripDetails(id)),
+    goToTripCreate: () => dispatch(push(routes.create)),
     
    
   });

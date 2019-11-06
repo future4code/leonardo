@@ -50,7 +50,7 @@ class LoginPage extends Component {
           label="Password"
           value={password}
         />
-        <Button onClick={this.props.goToTripList}>Login</Button>
+        <Button variant="contained" color="primary" onClick={this.props.goToTripList}>Login</Button>
       </LoginWrapper>
     );
   }

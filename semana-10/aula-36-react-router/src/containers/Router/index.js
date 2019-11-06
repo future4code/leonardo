@@ -7,6 +7,8 @@ import HomePage from '../HomePage/HomePage'
 import ListTripPage from "../ListTripsPage/ListTripPage";
 import ApplicationForm from "../ApplicationForm";
 import TripDetailsPage from "../TripDetailsPage/TripDetailsPage";
+import TripCreatePage from "../../componentes/TripCreatePage";
+
 
 export const routes = {
  
@@ -29,6 +31,7 @@ function Router(props) {
         <Route exact path={routes.list} component={ListTripPage} />
         <Route exact path={routes.applicationForm} component={ApplicationForm} />
         <Route exact path={routes.details} component={TripDetailsPage} />
+        <Route exact path={routes.create} component={TripCreatePage} />
        
 
       </Switch>

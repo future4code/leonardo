@@ -4,17 +4,19 @@ import styled from 'styled-components'
 import { push } from 'connected-react-router'
 import { routes } from '../Router'
 import Button from '@material-ui/core/Button';
-import { Card, CardContent, Typography, CardActions } from '@material-ui/core'
+import { Card, CardContent, Typography, CardActions, CardMedia } from '@material-ui/core'
+import img from '../../img/futurex.png'
 
 const CardStyled = styled(Card)`
-  width: 400px;
-  height: 600px;
-  display:flex;
-  align-items:center;
+  width: 400px; 
 `
 
 const AppWrapper = styled.div`
+height:100vh;
+width:100vw;
 display:flex;
+justify-content:center;
+align-items:center;
 
 `
 
@@ -30,7 +32,13 @@ class HomePage extends React.Component {
     return (
       <AppWrapper>
         <CardStyled>
+        <CardMedia
+          style={{height: 0, paddingTop: '56.25%'}}
+          image={img}
+          title="FutureX"
+        />
           <CardContent>
+          
             <Typography variant="h5">
               Home Page
             </Typography>
