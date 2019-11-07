@@ -38,9 +38,15 @@ render() {
         <CardStyled>
           <h2>Viagens Criadas</h2>
           {trips && this.props.trips.map((trip) => (
-            <List component="nav">
-              <ListItem button key={trip.name} onClick={() => this.onChangeToTripDetails(trip.id)}>
-                <ListItemText primary={trip.name} />
+            <List style={{padding:'0'}} >
+              <ListItem
+               button 
+               key={trip.name} 
+               onClick={() => this.onChangeToTripDetails(trip.id)}
+               
+               >
+
+                <ListItemText primary={trip.name}  />
               </ListItem>
             </List>
           ))}

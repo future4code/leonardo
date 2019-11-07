@@ -64,7 +64,7 @@ class LoginPage extends Component {
           style={{margin: '20px', }}
         />
         <Button variant="contained" color="primary" onClick={this.onClickLogin}>Login</Button>
-        <ErrorMessage>{errorMessage}</ErrorMessage>
+        {errorMessage ? <ErrorMessage>{errorMessage}</ErrorMessage> : null}
       
       </CardStyled>
       </Div2>

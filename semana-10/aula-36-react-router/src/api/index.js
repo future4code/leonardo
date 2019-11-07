@@ -39,6 +39,7 @@ export const trip = trip => {
 };
 
 export const createTrip = (trip) => async (dispatch, getState) => {
+	const token = window.localStorage.getItem("token");
 	const data = {
 		name: trip.name,
 		planet: trip.planet,
@@ -46,24 +47,55 @@ export const createTrip = (trip) => async (dispatch, getState) => {
 		description: trip.description,
 		durationInDays: trip.durationInDays
 	}
+	
 	await axios.post(
-		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips`, data
+		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips`, data,
+		{
+			headers: {
+				auth: token
+			}
+		}
 	);
 
 };
 
-export const candidateTrip = (trip) => async (dispatch, getState) => {
-	const id = trip.viagem;
+export const candidateTrip = (candidate) => async (dispatch, getState) => {
+	const id = candidate.trip;
 	const data = {
-		name: trip.name,
-		age: trip.age,
-		applicationText: trip.applicationText,
-		profession: trip.profession,
-		country: trip.country
+		name: candidate.name,
+		age: candidate.age,
+		applicationText: candidate.applicationText,
+		profession: candidate.profession,
+		country: candidate.country
 	}
 	
 	await axios.post(
-		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${id}/apply`, data
+		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${id}/apply`, data,
+		
 	);
 
 };
+
+export const onApproveCandidate = (tripId, candidate) => async (dispatch, getState) => {
+	const token = window.localStorage.getItem("token");
+	const data = {approve: true}
+	await axios.put(
+		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${tripId}/candidates/${candidate}/decide`, data,
+		{
+			headers: {
+				auth: token
+			}
+		})
+}
+
+export const onReproveCandidate = (tripId, candidate) => async (dispatch, getState) => {
+	const token = window.localStorage.getItem("token");
+	const data = {approve: false}
+	await axios.put(
+		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${tripId}/candidates/${candidate}/decide`, data,
+		{
+			headers: {
+				auth: token
+			}
+		})
+}

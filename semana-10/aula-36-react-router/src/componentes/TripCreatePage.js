@@ -102,7 +102,8 @@ class TripCreatePage extends React.Component {
                 min="50"
                 style={{ marginBottom: '15px' }} >
               </TextField>
-              <Button variant="contained" color="primary" type='submit'>Enviar</Button>
+              <Button variant="contained" color="primary" type='submit' style={{marginBottom: '10px'}}>Enviar</Button>
+              <Button variant="contained" color="primary" onClick={this.props.goToTripList}>Voltar</Button>
             </Formstyled>
           </CardStyled>
         </Div2>
@@ -115,7 +116,8 @@ const mapDispatchToProps = dispatch => ({
   createTrip: (trip) => dispatch(createTrip(trip)),
   goToLoginPage: () => dispatch(push(routes.login)),
   goToApplicationForm: () => dispatch(push(routes.applicationForm)),
-  goToHomePage: () => dispatch(push(routes.home))
+  goToHomePage: () => dispatch(push(routes.home)),
+  goToTripList: () => dispatch(push(routes.list)),
 });
 
 export default connect(null, mapDispatchToProps)(TripCreatePage)

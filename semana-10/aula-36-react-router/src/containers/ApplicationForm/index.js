@@ -15,6 +15,7 @@ class ApplicationForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      country: 'Brasil'
     }
   }
 
@@ -33,6 +34,13 @@ class ApplicationForm extends React.Component {
     this.props.getTrips()
   }
 
+  componentDidUpdate(prevProps){
+    if(this.props.trips.length > 0 && prevProps.trips.length === 0){
+      this.setState({
+        trip: this.props.trips[0].id
+      })
+    }
+  }
   render() {
     return (
       <DivStyled>
@@ -89,7 +97,7 @@ class ApplicationForm extends React.Component {
                 value={this.state.country}
                 required={true}
                 name="country" >
-                <MenuItem defaultValue="Brasil" name="Brasil"  >Brasil</MenuItem >
+                <MenuItem value="Brasil" name="Brasil"  >Brasil</MenuItem >
                 <MenuItem value="França" name="França" >França</MenuItem >
                 <MenuItem value="Canadá" name="Canadá" >Canadá</MenuItem >
                 <MenuItem value="México" name="México" >México</MenuItem >
@@ -129,8 +137,8 @@ const mapDispatchToProps = dispatch => ({
   goToApplicationForm: () => dispatch(push(routes.applicationForm)),
   getTrips: () => dispatch(getTrips()),
   candidateTrip: (trip) => dispatch(candidateTrip(trip)),
-  goToHomePage: () => dispatch(push(routes.home))
-
+  goToHomePage: () => dispatch(push(routes.home)),
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ApplicationForm)
