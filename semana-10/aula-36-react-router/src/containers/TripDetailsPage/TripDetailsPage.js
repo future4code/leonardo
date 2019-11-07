@@ -1,24 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
 import { push } from 'connected-react-router'
 import { routes } from '../Router'
-import trips from '../../reducers/trips'
 import { DivStyled, Div1, Div2, CardStyled } from '../../style/theme'
 import ButtonAppBar from '../../componentes/appBar'
-
-
+import { Button } from '@material-ui/core'
 
 
 class TripDetailsPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
     }
   }
+
+  componentDidMount() {
+    const token = window.localStorage.getItem("token");
+    if (!token) {
+      this.props.goToLoginPage();
+    }  
+  }
   render() {
-    console.log(this.props.currentTrip)
     return (
       <DivStyled>
          <Div1>
@@ -39,12 +41,13 @@ class TripDetailsPage extends React.Component {
             {this.props.currentTrip.description}
             <p>Candidatos</p>
                 {this.props.currentTrip.candidates && this.props.currentTrip.candidates.map((trip) => (
-						<li key={trip.name} >
+						<li key={trip.name} style={{ marginBottom: '15px' }} >
 						    {trip.name}
 						</li>
 					))}
-				
+				<Button variant="contained" color="primary" onClick={this.props.goToTripList}>Voltar</Button>
         </CardStyled>
+        
         </Div2>
       </DivStyled>
     )
@@ -62,6 +65,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
     goToLoginPage: () => dispatch(push(routes.login)),
     goToHomePage: () => dispatch(push(routes.home)),
+    goToTripList: () => dispatch(push(routes.list)),
+    goToApplicationForm: () => dispatch(push(routes.applicationForm)),
    
   });
 

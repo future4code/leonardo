@@ -12,7 +12,6 @@ function ButtonAppBar(props) {
                 <Button color="inherit" onClick={props.onClickHome}>Home</Button>
                 <Button color="inherit" onClick={props.onClickApplicationTrip}>Inscrever Viagem</Button>
                 <Button color="inherit" onClick={props.onClickLogin}>Login</Button>
-                {props.bottonTripCreate}
             </Toolbar>
         </AppBar>
     );

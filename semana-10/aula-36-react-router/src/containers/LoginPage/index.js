@@ -7,15 +7,10 @@ import styled from "styled-components";
 import { routes } from "../Router";
 import { DivStyled, Div1, Div2, CardStyled } from '../../style/theme'
 import ButtonAppBar from '../../componentes/appBar'
+import { login } from "../../actions/auth";
 
-
-const LoginWrapper = styled.form`
-  width: 100%;
-  height: 100vh;
-  gap: 10px;
-  place-content: center;
-  justify-items: center;
-  display: grid;
+const ErrorMessage = styled.p`
+  color: red;
 `;
 
 class LoginPage extends Component {
@@ -33,9 +28,14 @@ class LoginPage extends Component {
     });
   };
 
+  onClickLogin = () => {
+    const { email, password } = this.state
+    this.props.doLogin( email, password )
+  }
+
   render() {
     const { email, password } = this.state;
-
+    const { errorMessage } = this.props;
     return (
       <DivStyled>
         <Div1>
@@ -43,7 +43,6 @@ class LoginPage extends Component {
            onClickHome={this.props.goToHomePage}
            onClickApplicationTrip={this.props.goToApplicationForm}
            onClickLogin={this.props.goToLoginPage}/>
-          
         </Div1>
         <Div2>
           <CardStyled >
@@ -64,8 +63,8 @@ class LoginPage extends Component {
           value={password}
           style={{margin: '20px', }}
         />
-        <Button variant="contained" color="primary" onClick={this.props.goToTripList}>Login</Button>
-       
+        <Button variant="contained" color="primary" onClick={this.onClickLogin}>Login</Button>
+        <ErrorMessage>{errorMessage}</ErrorMessage>
       
       </CardStyled>
       </Div2>
@@ -74,15 +73,18 @@ class LoginPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  
-});
+const mapStateToProps = state => {
+  return {
+    errorMessage: state.auth.loginError
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   goToTripList: () => dispatch(push(routes.list)),
   goToHomePage: () => dispatch(push(routes.home)),
   goToLoginPage: () => dispatch(push(routes.login)),
   goToApplicationForm: () => dispatch(push(routes.applicationForm)),
+  doLogin: (email, password) => dispatch(login(email, password))
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(LoginPage);

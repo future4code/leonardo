@@ -30,8 +30,12 @@ export  const Div2 = styled.div`
 `
 
 export  const CardStyled = styled(Card)`
-  width: 400px;
+  width: 40vw;
   display:flex;
   flex-direction:column;
   padding:10px;
+`
+
+export const Formstyled = styled.form`
+  display:grid;
 `
