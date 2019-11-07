@@ -5,9 +5,9 @@ import { push } from 'connected-react-router'
 import { routes } from '../Router'
 import trips from '../../reducers/trips'
 import { getTrips, getTripDetails } from '../../api'
-
-
-
+import ButtonAppBar from '../../componentes/appBar'
+import { Card, List, ListItem, ListItemText, Button } from '@material-ui/core'
+import { DivStyled, Div1, Div2, CardStyled } from '../../style/theme'
 
 class ListTripPage extends React.Component {
   
@@ -22,21 +22,30 @@ class ListTripPage extends React.Component {
     }
   render() {
     return (
-      <div>
-        <p>List Trip Page</p>
+      <DivStyled>
+        <Div1>
+        <ButtonAppBar
+           onClickHome={this.props.goToHomePage}
+           onClickApplicationTrip={this.props.goToApplicationForm}
+           onClickLogin={this.props.goToLoginPage}
+           bottonTripCreate={<Button color="inherit" onClick={this.props.goToTripCreate}>Criar Viagem</Button>}/>        </Div1>
+        <Div2>
+          <CardStyled>
+        <h2>Viagens Criadas</h2>
         {trips && this.props.trips.map((trip) => (
-						<li key={trip.name} onClick={() => this.onChangeToTripDetails(trip.id)} >
+						// <li key={trip.name} onClick={() => this.onChangeToTripDetails(trip.id)} >
 							
-							{trip.name}
-						</li>
+						// 	{trip.name}
+						// </li>
+            <List component="nav">
+            <ListItem button key={trip.name} onClick={() => this.onChangeToTripDetails(trip.id)}>
+              <ListItemText primary={trip.name} />
+            </ListItem>
+          </List>
 					))}
-        <button onClick={this.props.goToHomePage}>Home</button>
-        <button onClick={this.props.goToLoginPage}>login</button>
-        <button onClick={this.props.goToApplicationForm}>Inscricao Viagem</button>
-        <button onClick={this.props.goToTripList}>Lista</button>
-        <button onClick={this.props.goToTripCreate}>Criar Viagem</button>
-        
-      </div>
+        </CardStyled>
+        </Div2>
+      </DivStyled>
     )
   }
 }

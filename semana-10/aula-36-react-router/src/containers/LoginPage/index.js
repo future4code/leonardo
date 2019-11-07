@@ -5,6 +5,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 import { routes } from "../Router";
+import { DivStyled, Div1, Div2, CardStyled } from '../../style/theme'
+import ButtonAppBar from '../../componentes/appBar'
 
 
 const LoginWrapper = styled.form`
@@ -35,13 +37,24 @@ class LoginPage extends Component {
     const { email, password } = this.state;
 
     return (
-      <LoginWrapper>
+      <DivStyled>
+        <Div1>
+        <ButtonAppBar
+           onClickHome={this.props.goToHomePage}
+           onClickApplicationTrip={this.props.goToApplicationForm}
+           onClickLogin={this.props.goToLoginPage}/>
+          
+        </Div1>
+        <Div2>
+          <CardStyled >
+      
         <TextField
           onChange={this.handleFieldChange}
           name="email"
           type="email"
           label="E-mail"
           value={email}
+          style={{margin: '20px', }}
         />
         <TextField
           onChange={this.handleFieldChange}
@@ -49,9 +62,14 @@ class LoginPage extends Component {
           type="password"
           label="Password"
           value={password}
+          style={{margin: '20px', }}
         />
         <Button variant="contained" color="primary" onClick={this.props.goToTripList}>Login</Button>
-      </LoginWrapper>
+       
+      
+      </CardStyled>
+      </Div2>
+      </DivStyled>
     );
   }
 }
@@ -62,6 +80,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   goToTripList: () => dispatch(push(routes.list)),
+  goToHomePage: () => dispatch(push(routes.home)),
+  goToLoginPage: () => dispatch(push(routes.login)),
+  goToApplicationForm: () => dispatch(push(routes.applicationForm)),
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(LoginPage);

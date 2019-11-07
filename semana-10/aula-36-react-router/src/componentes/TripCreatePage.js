@@ -3,29 +3,17 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { push } from 'connected-react-router'
 import { routes } from '../containers/Router'
-import { Card, Button } from '@material-ui/core'
 import { createTrip } from '../api'
+import { DivStyled, Div1, Div2, CardStyled } from '../style/theme'
+import ButtonAppBar from '../componentes/appBar';
+import { Button, TextField, MenuItem } from '@material-ui/core'
 
-const AppWrapper = styled.div`
-height:100vh;
-width:100vw;
-display:flex;
-justify-content:center;
-align-items:center;
-`
-const CardStyled = styled(Card)`
-  width: 400px;
-  display:flex;
-  flex-direction:column;
-`
+
+
 const Formstyled = styled.form`
   display:grid;
 `
 
-const Inputstyled = styled.input`
-  margin:5px 0;
-
-`
 class TripCreatePage extends React.Component {
   constructor(props) {
     super(props)
@@ -41,18 +29,27 @@ class TripCreatePage extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-      this.props.createTrip(this.state)
+      // this.props.createTrip(this.state)
   }
 
 
   render() {
     return (
-      <AppWrapper>
-        <CardStyled>
-          <h1>Criar Viagem</h1>
+      <DivStyled>
+        <Div1>
+        <ButtonAppBar
+           onClickHome={this.props.goToHomePage}
+           onClickApplicationTrip={this.props.goToApplicationForm}
+           onClickLogin={this.props.goToLoginPage}
+           bottonTripCreate={<Button color="inherit" onClick={this.props.onClickLogin}>Criar Viagem</Button>}
+          />
+        </Div1>
+        <Div2>
+          <CardStyled>
+          <h2>Criar Viagem</h2>
           <Formstyled onSubmit={this.handleOnSubmit} >
-            <h3>Nome</h3>
-            <Inputstyled
+            <p>Nome</p>
+            <TextField
               type="text"
               name="name"
               value={this.state.name}
@@ -78,7 +75,7 @@ class TripCreatePage extends React.Component {
                 
             </select>
             <p>Data</p>
-            <Inputstyled
+            <input
               type="date"
               name="date"
               value={this.state.date}
@@ -87,7 +84,7 @@ class TripCreatePage extends React.Component {
               required={true} 
             />
             <p>Descrição</p>
-            <Inputstyled
+            <TextField
               rows="5"
               cols="33"
               type="text"
@@ -99,7 +96,7 @@ class TripCreatePage extends React.Component {
               />
               
             <p>Duração em dias</p>
-            <Inputstyled
+            <TextField
               type="number"
               name="durationInDays"
               onChange={this.handleChange}
@@ -107,15 +104,14 @@ class TripCreatePage extends React.Component {
               value={this.state.durationInDays}
               min="50" >
 
-            </Inputstyled>
+            </TextField>
 
 
-            <Button type='submit'>Enviar</Button>
+            <Button variant="contained" color="primary" type='submit'>Enviar</Button>
           </Formstyled>
-          <Button onClick={this.props.goToLoginPage}>login</Button>
-          <Button onClick={this.props.goToTripCreatePage}>Inscricao Viagem</Button>
         </CardStyled>
-      </AppWrapper>
+        </Div2>
+      </DivStyled>
     )
   }
 }
@@ -123,8 +119,10 @@ class TripCreatePage extends React.Component {
 
 
 const mapDispatchToProps = dispatch => ({
-  createTrip: (trip) => dispatch(createTrip(trip))
-
+  createTrip: (trip) => dispatch(createTrip(trip)),
+  goToLoginPage: () => dispatch(push(routes.login)),
+  goToApplicationForm: () => dispatch(push(routes.applicationForm)),
+  goToHomePage: () => dispatch(push(routes.home))
 });
 
 export default connect(null, mapDispatchToProps)(TripCreatePage)
