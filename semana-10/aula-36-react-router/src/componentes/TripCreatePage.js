@@ -6,7 +6,13 @@ import { createTrip } from '../api'
 import { DivStyled, Div1, Div2, CardStyled, Formstyled } from '../style/theme'
 import ButtonAppBar from '../componentes/appBar';
 import { Button, TextField, MenuItem } from '@material-ui/core'
+import styled from 'styled-components'
 
+const DivButtons = styled.div`
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+`
+ 
 class TripCreatePage extends React.Component {
   constructor(props) {
     super(props)
@@ -102,8 +108,10 @@ class TripCreatePage extends React.Component {
                 min="50"
                 style={{ marginBottom: '15px' }} >
               </TextField>
-              <Button variant="contained" color="primary" type='submit' style={{marginBottom: '10px'}}>Enviar</Button>
-              <Button variant="contained" color="primary" onClick={this.props.goToTripList}>Voltar</Button>
+              <DivButtons>
+              <Button variant="contained" color="primary" style={{margin: '0 10px'}} onClick={this.props.goToTripList}>Voltar</Button>
+              <Button variant="contained" color="primary" type='submit' style={{margin: '0 10px'}}>Criar</Button>
+              </DivButtons>
             </Formstyled>
           </CardStyled>
         </Div2>

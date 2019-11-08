@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { CardContent, Typography, CardActions, CardMedia } from '@material-ui/core'
 import img from '../../img/futurex.png'
 import { CardStyled } from '../../style/theme'
+import CustomizedSnackbars from '../../componentes/snackBar'
 
 const AppWrapper = styled.div`
 height:100vh;
@@ -23,6 +24,10 @@ class HomePage extends React.Component {
     }
   }
 
+  snackBar(){
+    console.log('foi')
+    return <CustomizedSnackbars/>
+  }
   render() {
     return (
       <AppWrapper>
@@ -39,6 +44,7 @@ class HomePage extends React.Component {
             <CardActions style={{ justifyContent: 'center' }}>
               <Button variant="contained" color="primary" onClick={this.props.goToApplicationForm}>Inscricao Viagem</Button>
               <Button variant="contained" color="primary" onClick={this.props.goToLoginPage}>login</Button>
+              <Button onClick={this.snackBar}></Button>
             </CardActions>
           </CardContent>
         </CardStyled>

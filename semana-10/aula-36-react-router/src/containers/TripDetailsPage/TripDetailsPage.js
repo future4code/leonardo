@@ -40,10 +40,17 @@ class TripDetailsPage extends React.Component {
     const candidate = id
     this.props.onReproveCandidate(tripId, candidate)
   }
-  handleReprove
+
+  componentDidUpdate(prevProps){
+    if(this.props.currentTrip !== prevProps.currentTrip){
+      this.setState({
+        currentTrip: this.props.currentTrip
+      })
+    }
+  }
+  
   render() {
-    let x = 'X'
-    let v = 'V'
+    
     return (
       <DivStyled>
         <Div1>

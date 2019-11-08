@@ -1,4 +1,6 @@
 import axios from 'axios'
+import CustomizedSnackbars from '../componentes/snackBar'
+import React from 'react'
 
 export const getTrips = () => async (dispatch, getState) => {
 	const response = await axios.get(
@@ -73,7 +75,7 @@ export const candidateTrip = (candidate) => async (dispatch, getState) => {
 		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${id}/apply`, data,
 		
 	);
-
+	
 };
 
 export const onApproveCandidate = (tripId, candidate) => async (dispatch, getState) => {
@@ -86,6 +88,9 @@ export const onApproveCandidate = (tripId, candidate) => async (dispatch, getSta
 				auth: token
 			}
 		})
+	const state = getState()
+	dispatch(trip(state.trips.trip));
+	
 }
 
 export const onReproveCandidate = (tripId, candidate) => async (dispatch, getState) => {
