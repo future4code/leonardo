@@ -40,6 +40,8 @@ export const trip = trip => {
 	}
 };
 
+
+
 export const createTrip = (trip) => async (dispatch, getState) => {
 	const token = window.localStorage.getItem("token");
 	const data = {
@@ -58,7 +60,7 @@ export const createTrip = (trip) => async (dispatch, getState) => {
 			}
 		}
 	);
-
+	window.location.reload()
 };
 
 export const candidateTrip = (candidate) => async (dispatch, getState) => {
@@ -75,7 +77,7 @@ export const candidateTrip = (candidate) => async (dispatch, getState) => {
 		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${id}/apply`, data,
 		
 	);
-	
+	window.location.reload()
 };
 
 export const onApproveCandidate = (tripId, candidate) => async (dispatch, getState) => {
@@ -91,6 +93,7 @@ export const onApproveCandidate = (tripId, candidate) => async (dispatch, getSta
 	const state = getState()
 	dispatch(trip(state.trips.trip));
 	
+	
 }
 
 export const onReproveCandidate = (tripId, candidate) => async (dispatch, getState) => {
@@ -103,4 +106,5 @@ export const onReproveCandidate = (tripId, candidate) => async (dispatch, getSta
 				auth: token
 			}
 		})
+	
 }

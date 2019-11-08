@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
-import { routes } from '../containers/Router'
-import { createTrip } from '../api'
-import { DivStyled, Div1, Div2, CardStyled, Formstyled } from '../style/theme'
-import ButtonAppBar from '../componentes/appBar';
-import { Button, TextField, MenuItem } from '@material-ui/core'
+import { routes } from '../Router'
+import { createTrip } from '../../api'
+import { DivStyled, Div1, Div2, CardStyled, Formstyled } from '../../style/theme'
+import ButtonAppBar from '../../componentes/appBar';
+import { Button, TextField, MenuItem, Snackbar } from '@material-ui/core'
 import styled from 'styled-components'
+import  {MySnackbarContentWrapper } from '../../componentes/snackBar'
 
 const DivButtons = styled.div`
   display:grid;
@@ -34,10 +35,18 @@ class TripCreatePage extends React.Component {
   }
 
   handleOnSubmit = event => {
+    this.setState({ open: true })
     event.preventDefault();
     this.props.createTrip(this.state)
   }
 
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    this.setState({ open: false });
+  }
   render() {
     return (
       <DivStyled>
@@ -112,6 +121,21 @@ class TripCreatePage extends React.Component {
               <Button variant="contained" color="primary" style={{margin: '0 10px'}} onClick={this.props.goToTripList}>Voltar</Button>
               <Button variant="contained" color="primary" type='submit' style={{margin: '0 10px'}}>Criar</Button>
               </DivButtons>
+              <Snackbar
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  open={this.state.open}
+                  autoHideDuration={6000}
+                  onClose={this.handleClose}
+                >
+                <MySnackbarContentWrapper
+                  onClose={this.handleClose}
+                  variant="success"
+                  message="Viagem criada com sucesso"
+                />
+                </Snackbar>
             </Formstyled>
           </CardStyled>
         </Div2>

@@ -7,7 +7,7 @@ import HomePage from '../HomePage/HomePage'
 import ListTripPage from "../ListTripsPage/ListTripPage";
 import ApplicationForm from "../ApplicationForm";
 import TripDetailsPage from "../TripDetailsPage/TripDetailsPage";
-import TripCreatePage from "../../componentes/TripCreatePage";
+import TripCreatePage from "../TripCreatePage/TripCreatePage";
 
 
 export const routes = {

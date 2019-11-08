@@ -42,7 +42,7 @@ class HomePage extends React.Component {
               Desbrave o espaço
             </Typography>
             <CardActions style={{ justifyContent: 'center' }}>
-              <Button variant="contained" color="primary" onClick={this.props.goToApplicationForm}>Inscricao Viagem</Button>
+              <Button variant="contained" color="primary" onClick={this.props.goToApplicationForm}>Candidatar Viagem</Button>
               <Button variant="contained" color="primary" onClick={this.props.goToLoginPage}>login</Button>
               <Button onClick={this.snackBar}></Button>
             </CardActions>

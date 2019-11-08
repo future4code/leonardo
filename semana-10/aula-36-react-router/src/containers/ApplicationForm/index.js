@@ -32,6 +32,10 @@ class ApplicationForm extends React.Component {
 
   componentDidMount() {
     this.props.getTrips()
+    if (this.props.trips && this.props.trips.length > 0)
+      {this.setState({
+        trip: this.props.trips[0].id
+      })}
   }
 
   componentDidUpdate(prevProps){
