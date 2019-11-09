@@ -9,6 +9,8 @@ import styled from 'styled-components'
 import Approve from '@material-ui/icons/Done';
 import Reprove from '@material-ui/icons/Clear';
 import { onApproveCandidate, onReproveCandidate } from '../../api/index'
+import AlertDialog from '../../componentes/alertDiolog'
+
 
 const DivCandidates = styled.div`
   display:grid;
@@ -19,6 +21,7 @@ class TripDetailsPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      openAlert:false
     }
   }
 
@@ -49,6 +52,10 @@ class TripDetailsPage extends React.Component {
     }
   }
   
+  handleCloseAlert() { 
+    this.setState({ openAlert: false });
+  }
+
   render() {
     
     return (
@@ -109,6 +116,12 @@ class TripDetailsPage extends React.Component {
           </CardStyled>
 
         </Div2>
+        {<AlertDialog
+              isOpen={this.state.openAlert}
+              handleClose={() => this.handleCloseAlert()}
+              onRemoveTrip={() => this.removeTripSnackBar()}
+              msg={`Deseja reprovar o candidato  ?`}
+            />}
       </DivStyled>
     )
   }

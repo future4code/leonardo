@@ -5,9 +5,14 @@ import { routes } from '../Router'
 import { createTrip } from '../../api'
 import { DivStyled, Div1, Div2, CardStyled, Formstyled } from '../../style/theme'
 import ButtonAppBar from '../../componentes/appBar';
-import { Button, TextField, MenuItem, Snackbar } from '@material-ui/core'
+import { Button, TextField, MenuItem, Snackbar, IconButton, SnackbarContent } from '@material-ui/core'
 import styled from 'styled-components'
-import  {MySnackbarContentWrapper } from '../../componentes/snackBar'
+
+import IconButton2 from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import {onCloseSnackBar} from '../../api/index'
+import { green } from '@material-ui/core/colors'
+import { MySnackbarContentWrapper3 } from '../../componentes/snackbar3'
 
 const DivButtons = styled.div`
   display:grid;
@@ -18,6 +23,7 @@ class TripCreatePage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      
     }
   }
 
@@ -35,18 +41,30 @@ class TripCreatePage extends React.Component {
   }
 
   handleOnSubmit = event => {
-    this.setState({ open: true })
+    
     event.preventDefault();
+    
     this.props.createTrip(this.state)
+    this.resetform()
   }
 
-  handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return
-    }
+  handleClose = () => {
+    console.log('foi no fechar o snack')
+    this.props.onCloseSnackBar()
 
-    this.setState({ open: false });
+  };
+
+  resetform() {
+    this.setState({
+      name:'',
+      date:'',
+      description:'',
+      durationInDays:'',
+      planet:'',
+
+    })
   }
+
   render() {
     return (
       <DivStyled>
@@ -122,20 +140,20 @@ class TripCreatePage extends React.Component {
               <Button variant="contained" color="primary" type='submit' style={{margin: '0 10px'}}>Criar</Button>
               </DivButtons>
               <Snackbar
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  open={this.state.open}
-                  autoHideDuration={6000}
-                  onClose={this.handleClose}
-                >
-                <MySnackbarContentWrapper
-                  onClose={this.handleClose}
-                  variant="success"
-                  message="Viagem criada com sucesso"
-                />
-                </Snackbar>
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.props.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+        >
+          <MySnackbarContentWrapper3
+            onClose={this.handleClose}
+            variant={this.props.variant}
+            message={this.props.msg}
+          />
+        </Snackbar>
             </Formstyled>
           </CardStyled>
         </Div2>
@@ -144,12 +162,19 @@ class TripCreatePage extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  open: state.trips.open,
+  msg: state.trips.msg,
+  variant: state.trips.variant
+})
+
 const mapDispatchToProps = dispatch => ({
   createTrip: (trip) => dispatch(createTrip(trip)),
   goToLoginPage: () => dispatch(push(routes.login)),
   goToApplicationForm: () => dispatch(push(routes.applicationForm)),
   goToHomePage: () => dispatch(push(routes.home)),
-  goToTripList: () => dispatch(push(routes.list)),
+  goToTripList: () => dispatch(push(routes.list)),  
+  onCloseSnackBar: () => dispatch(onCloseSnackBar())
 });
 
-export default connect(null, mapDispatchToProps)(TripCreatePage)
+export default connect(mapStateToProps, mapDispatchToProps)(TripCreatePage)

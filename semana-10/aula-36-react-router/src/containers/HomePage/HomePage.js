@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import { CardContent, Typography, CardActions, CardMedia } from '@material-ui/core'
 import img from '../../img/futurex.png'
 import { CardStyled } from '../../style/theme'
-import CustomizedSnackbars from '../../componentes/snackBar'
+
 
 const AppWrapper = styled.div`
 height:100vh;
@@ -24,10 +24,6 @@ class HomePage extends React.Component {
     }
   }
 
-  snackBar(){
-    console.log('foi')
-    return <CustomizedSnackbars/>
-  }
   render() {
     return (
       <AppWrapper>

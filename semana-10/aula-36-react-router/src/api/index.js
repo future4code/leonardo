@@ -1,6 +1,4 @@
 import axios from 'axios'
-import CustomizedSnackbars from '../componentes/snackBar'
-import React from 'react'
 
 export const getTrips = () => async (dispatch, getState) => {
 	const response = await axios.get(
@@ -51,16 +49,23 @@ export const createTrip = (trip) => async (dispatch, getState) => {
 		description: trip.description,
 		durationInDays: trip.durationInDays
 	}
-	
-	await axios.post(
-		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips`, data,
-		{
-			headers: {
-				auth: token
+	try {
+		await axios.post(
+			`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips`, data,
+			{
+				headers: {
+					auth: token
+				}
 			}
-		}
-	);
-	window.location.reload()
+		);
+		const msg = 'Criado com sucesso'
+		const variant = 'success'
+		dispatch(snackBarOpen(msg, variant))
+	} catch (e) {
+		const msg = `Ocorreu um erro : ${e.message}`
+		const variant = 'error'
+		dispatch(snackBarOpen(msg, variant))
+	}
 };
 
 export const candidateTrip = (candidate) => async (dispatch, getState) => {
@@ -72,17 +77,51 @@ export const candidateTrip = (candidate) => async (dispatch, getState) => {
 		profession: candidate.profession,
 		country: candidate.country
 	}
-	
-	await axios.post(
-		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${id}/apply`, data,
-		
-	);
-	window.location.reload()
+	try {
+		await axios.post(
+			`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${id}/apply`, data,
+
+		);
+		console.log('passou candidateTRip')
+		const msg = 'Solicitação realizada com sucesso'
+		const variant = 'success'
+		dispatch(snackBarOpen(msg, variant))
+	} catch (e) {
+		const msg = `Ocorreu um erro : ${e.message}`
+		const variant = 'error'
+		dispatch(snackBarOpen(msg, variant))
+	}
 };
+
+export const snackBarSucess = ( ) => {
+	console.log('passou snackbarsucess')
+	return {
+		type: "SET_SNACKBAR_OPEN"
+		
+	}
+};
+
+export const snackBarOpen = (msg, variant ) => {
+	console.log('passou snackbarsucess')
+	return {
+		type: "SET_SNACKBAR_OPEN2",
+		payload: {
+			msg,
+			variant
+		}
+	}
+};
+
+export const onCloseSnackBar = () => {
+	console.log('foi no onclose')
+	return {
+		type: "SET_SNACKBAR_CLOSE"
+	}
+}
 
 export const onApproveCandidate = (tripId, candidate) => async (dispatch, getState) => {
 	const token = window.localStorage.getItem("token");
-	const data = {approve: true}
+	const data = { approve: true }
 	await axios.put(
 		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${tripId}/candidates/${candidate}/decide`, data,
 		{
@@ -92,13 +131,13 @@ export const onApproveCandidate = (tripId, candidate) => async (dispatch, getSta
 		})
 	const state = getState()
 	dispatch(trip(state.trips.trip));
-	
-	
+
+
 }
 
 export const onReproveCandidate = (tripId, candidate) => async (dispatch, getState) => {
 	const token = window.localStorage.getItem("token");
-	const data = {approve: false}
+	const data = { approve: false }
 	await axios.put(
 		`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${tripId}/candidates/${candidate}/decide`, data,
 		{
@@ -106,5 +145,22 @@ export const onReproveCandidate = (tripId, candidate) => async (dispatch, getSta
 				auth: token
 			}
 		})
-	
+
 }
+
+export const removeTrip = (tripId, tripName) => async (dispatch, getState) => {
+	console.log('entrou api')
+	console.log(tripId, tripName)
+	try {
+		await axios.delete(
+			`https://us-central1-missao-newton.cloudfunctions.net/futureX/leonardo/trips/${tripId}`)
+		const msg = `Viagem ${tripName} excluida com sucesso`
+		const variant = 'success'
+		dispatch(snackBarOpen(msg, variant))
+	} catch (e) {
+		const msg = `Ocorreu um erro : ${e.message}`
+		const variant = 'error'
+		dispatch(snackBarOpen(msg, variant))
+	}
+};
+	

@@ -47,7 +47,7 @@ const styles1 = theme => ({
   },
 });
 
-export function MySnackbarContent(props) {
+function MySnackbarContent(props) {
   const { classes, className, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
 
@@ -85,54 +85,4 @@ MySnackbarContent.propTypes = {
   variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
 };
 
-export const MySnackbarContentWrapper = withStyles(styles1)(MySnackbarContent);
-
-const styles2 = theme => ({
-  margin: {
-    margin: theme.spacing.unit,
-  },
-});
-
-export class CustomizedSnackbars extends React.Component {
-  
-
-  
-
-  handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    this.setState({ open: false });
-  };
-
-  render() {
-    const { classes } = this.props;
-
-    return (
-        
-        <Snackbar
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          open={true}
-          autoHideDuration={6000}
-          onClose={this.handleClose}
-        >
-          <MySnackbarContentWrapper
-            onClose={this.handleClose}
-            variant="success"
-            message="This is a success message!"
-          />
-        </Snackbar>
-        
-    );
-  }
-}
-
-CustomizedSnackbars.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles2)(CustomizedSnackbars);
+ export const MySnackbarContentWrapper3 = withStyles(styles1)(MySnackbarContent);

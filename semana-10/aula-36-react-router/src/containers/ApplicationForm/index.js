@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { push } from 'connected-react-router'
 import { routes } from '../Router'
-import { Button, TextField, MenuItem } from '@material-ui/core'
+import { Button, TextField, MenuItem, Snackbar, SnackbarContent } from '@material-ui/core'
 import { getTrips, candidateTrip } from '../../api'
 import ButtonAppBar from '../../componentes/appBar'
 import { DivStyled, Div1, Div2, CardStyled } from '../../style/theme'
+import { MySnackbarContentWrapper3 } from '../../componentes/snackbar3'
+import {onCloseSnackBar} from '../../api/index'
 
 const Formstyled = styled.form`
   display:grid;
@@ -15,7 +17,8 @@ class ApplicationForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      country: 'Brasil'
+      country: 'Brasil',
+      
     }
   }
 
@@ -28,24 +31,47 @@ class ApplicationForm extends React.Component {
   handleOnSubmit = event => {
     event.preventDefault();
     this.props.candidateTrip(this.state)
+    this.clearForm()
+  }
+
+  clearForm(){
+    this.setState({
+      name:"",
+      age:"",
+      profession:"",
+      applicationText:""
+    })
   }
 
   componentDidMount() {
     this.props.getTrips()
-    if (this.props.trips && this.props.trips.length > 0)
-      {this.setState({
-        trip: this.props.trips[0].id
-      })}
-  }
-
-  componentDidUpdate(prevProps){
-    if(this.props.trips.length > 0 && prevProps.trips.length === 0){
+    if (this.props.trips && this.props.trips.length > 0) {
       this.setState({
-        trip: this.props.trips[0].id
+        trip: this.props.trips[0].id,
+        open: this.props.open
+       
       })
     }
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.trips.length > 0 && prevProps.trips.length === 0) {
+      this.setState({
+        trip: this.props.trips[0].id,
+        open: this.props.open,
+        msg: this.props.msg,
+        variant: this.props.variant
+      })
+    }
+  }
+
+  handleClose = () => {
+    this.props.onCloseSnackBar()
+
+  };
+
   render() {
+    
     return (
       <DivStyled>
         <Div1>
@@ -62,7 +88,7 @@ class ApplicationForm extends React.Component {
               <TextField
                 type="text"
                 name="name"
-                value={this.state.nome}
+                value={this.state.name}
                 onChange={this.handleChange}
                 required={true}
                 inputProps={{ minLength: "3" }}
@@ -71,7 +97,7 @@ class ApplicationForm extends React.Component {
               <TextField
                 type="number"
                 name="age"
-                value={this.state.idade}
+                value={this.state.age}
                 onChange={this.handleChange}
                 required={true}
                 inputProps={{ min: 18 }}
@@ -124,16 +150,37 @@ class ApplicationForm extends React.Component {
                 ))}
               </TextField>
               <Button variant="contained" color="primary" type='submit'>Enviar</Button>
+              
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.props.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+        >
+          <MySnackbarContentWrapper3
+            onClose={this.handleClose}
+            variant={this.props.variant}
+            message={this.props.msg}
+          />
+        </Snackbar>
             </Formstyled>
+           
           </CardStyled>
         </Div2>
+
       </DivStyled>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  trips: state.trips.trips
+  trips: state.trips.trips,
+  open: state.trips.open,
+  msg: state.trips.msg,
+  variant: state.trips.variant
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -142,7 +189,8 @@ const mapDispatchToProps = dispatch => ({
   getTrips: () => dispatch(getTrips()),
   candidateTrip: (trip) => dispatch(candidateTrip(trip)),
   goToHomePage: () => dispatch(push(routes.home)),
-  
+  onCloseSnackBar: () => dispatch(onCloseSnackBar())
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ApplicationForm)
