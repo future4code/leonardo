@@ -33,6 +33,6 @@ describe("Posts Action-Creators", () => {
         };
         const result = onCloseSnackBar(false);
         expect(expectedResult).toMatchObject(result);
+        
       });
-
 })

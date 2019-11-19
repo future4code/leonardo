@@ -13,21 +13,21 @@ export const CardStyled = styled(Card)`
   flex-direction:column;
   margin-bottom:30px;
 `
-const PostCommentWrapper = styled.div`
+export const PostCommentWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 15px;
     padding: 10px;
 `
-const StyledTextField = styled(TextField)`
+export const StyledTextField = styled(TextField)`
     width: 80%;
 `
-const StyledBtn = styled(Button)`
+export const StyledBtn = styled(Button)`
     height: 55px;
     
 `
-const IconWrapper = styled.div`
+export const IconWrapper = styled.div`
     display: flex;
 `
 

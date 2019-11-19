@@ -8,20 +8,20 @@ export const CardStyled = styled(Card)`
   flex-direction: column;
   margin-bottom: 30px;
 `
-const IconsWrapper = styled.div`
+export const IconsWrapper = styled.div`
     display: flex;
 `
-const CommentsWrapper = styled.div`
+export const CommentsWrapper = styled.div`
     display: flex;
 `
-const CommentsArea = styled.div`
+export const CommentsArea = styled.div`
     display: flex;
 `
 export const BoldTxt = styled.p`
     font-weight: bold;
     margin-right: 5px;
 `
-const TxtComentario = styled.div`
+export const TxtComentario = styled.div`
     display: flex;
     align-items: center;
 `
@@ -51,7 +51,7 @@ class Comments extends Component {
                 <CommentsArea>
                     <CommentsWrapper>
                         <TxtComentario>
-                            <BoldTxt>{this.props.UserName + ":"}</BoldTxt>{this.props.textComments}
+                            <BoldTxt>{this.props.UserName}</BoldTxt>{this.props.textComments}
                         </TxtComentario>
                         <IconsWrapper>
                             <IconButton onClick={this.props.onClickUpVoteComment} >

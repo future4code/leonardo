@@ -39,5 +39,4 @@ describe("Posts reducer", () => {
         expect(newState.open).toBe(false);
     })
 
-
 })

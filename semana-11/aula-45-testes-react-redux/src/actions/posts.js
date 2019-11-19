@@ -52,10 +52,10 @@ export const createPost = (title, text) => async (dispatch, getState) => {
 	}
 }
 
-export const postUpVote = (id ) => async (dispatch, getState) => {
+export const postUpVote = (id) => async (dispatch, getState) => {
 	const token = window.localStorage.getItem("token");
 	const idVote = id
-	const data = {direction: +1}
+	const data = { direction: +1 }
 	console.log(idVote)
 	try {
 
@@ -73,10 +73,10 @@ export const postUpVote = (id ) => async (dispatch, getState) => {
 	}
 }
 
-export const postDownVote = (id ) => async (dispatch, getState) => {
+export const postDownVote = (id) => async (dispatch, getState) => {
 	const token = window.localStorage.getItem("token");
 	const idVote = id
-	const data = {direction: -1}
+	const data = { direction: -1 }
 	console.log(idVote)
 	try {
 
@@ -88,7 +88,7 @@ export const postDownVote = (id ) => async (dispatch, getState) => {
 				}
 			}
 		);
-		
+
 		dispatch(getPosts());
 	} catch (e) {
 		window.alert(e.message)
@@ -101,7 +101,7 @@ export const onCloseSnackBar = () => {
 	}
 }
 
-export const snackBarOpen = (msg, variant ) => {
+export const snackBarOpen = (msg, variant) => {
 	return {
 		type: "SET_SNACKBAR_OPEN",
 		payload: {
@@ -111,11 +111,11 @@ export const snackBarOpen = (msg, variant ) => {
 	}
 };
 
-export const postUpComments = (commentId, postId ) => async (dispatch, getState) => {
+export const postUpComments = (commentId, postId) => async (dispatch, getState) => {
 	const token = window.localStorage.getItem("token");
-	
+
 	console.log(commentId, postId)
-	const data = {direction: +1}
+	const data = { direction: +1 }
 	try {
 
 		const response = await axios.put(
@@ -132,33 +132,33 @@ export const postUpComments = (commentId, postId ) => async (dispatch, getState)
 	}
 }
 
-const comments = ( postId) => async () => {
-    console.log(postId)
-    const token = window.localStorage.getItem("token");
-
-    try {
-      const response = await Axios.get(
-        `https://us-central1-missao-newton.cloudfunctions.net/fourEddit/posts/${postId}`,
-        {
-          headers: {
-            auth: token
-          }
-        }
-      );
-      let feedComments = response.data.post.comments
-      this.setState({
-        [postId]: feedComments 
-      })
-      console.log(this.state)
-    } catch (e) {
-      window.alert(e.message)
-    }
-  }
-
-  export const postDownComments = (commentId, postId ) => async (dispatch, getState) => {
+const comments = (postId) => async () => {
+	console.log(postId)
 	const token = window.localStorage.getItem("token");
-	
-	const data = {direction: -1}
+
+	try {
+		const response = await Axios.get(
+			`https://us-central1-missao-newton.cloudfunctions.net/fourEddit/posts/${postId}`,
+			{
+				headers: {
+					auth: token
+				}
+			}
+		);
+		let feedComments = response.data.post.comments
+		this.setState({
+			[postId]: feedComments
+		})
+		console.log(this.state)
+	} catch (e) {
+		window.alert(e.message)
+	}
+}
+
+export const postDownComments = (commentId, postId) => async (dispatch, getState) => {
+	const token = window.localStorage.getItem("token");
+
+	const data = { direction: -1 }
 	console.log(commentId, postId)
 	try {
 
