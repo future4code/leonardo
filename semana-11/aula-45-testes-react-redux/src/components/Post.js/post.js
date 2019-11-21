@@ -105,7 +105,7 @@ class Post extends Component {
                         color="primary"
                         type='submit'
                         variant="contained"
-                        onClick={this.props.onClickSendComment}
+                        onClick={() => this.props.onClickSendComment(this.state.comentario)}
                         disabled={!this.state.comentario}
                     >
                         Comentar

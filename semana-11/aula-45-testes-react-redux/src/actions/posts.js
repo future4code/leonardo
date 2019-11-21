@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Axios from 'axios';
+import {Feed} from '../containers/Feed/Feed'
 
 export const getPosts = () => async (dispatch, getState) => {
 	const token = window.localStorage.getItem("token");
@@ -126,7 +127,28 @@ export const postUpComments = (commentId, postId) => async (dispatch, getState) 
 				}
 			}
 		);
+		try {
+			const response = await Axios.get(
+			  `https://us-central1-missao-newton.cloudfunctions.net/fourEddit/posts/${postId}`,
+			  {
+				headers: {
+				  auth: token
+				}
+			  }
+			);
+			let feedComments = response.data.post.comments
+			console.log(postId, feedComments)
+			this.setState({
+			  [postId]: feedComments
+			})
+			console.log(this.state)
+		  } catch (e) {
+			window.alert(e.message)
+		  }
 		// dispatch(comments(idVote));
+		// console.log(response)
+		// const teste = getState()[postId][0]
+		// console.log(teste.id)
 	} catch (e) {
 		window.alert(e.message)
 	}
@@ -170,7 +192,31 @@ export const postDownComments = (commentId, postId) => async (dispatch, getState
 				}
 			}
 		);
-		dispatch(comments(postId));
+		const teste = getState().posts.posts
+		console.log(teste)
+		// dispatch(comments(postId));
+	} catch (e) {
+		window.alert(e.message)
+	}
+}
+
+export const sendComment = (postId, text) => async (dispatch, getState) => {
+	const token = window.localStorage.getItem("token");
+	const texto = text
+	console.log(texto)
+	const data = { text }
+	console.log(data)
+	try {
+
+		const response = await Axios.post(
+			`https://us-central1-missao-newton.cloudfunctions.net/fourEddit/posts/${postId}/comment`, data,
+			{
+				headers: {
+					auth: token
+				}
+			}
+		);
+		
 	} catch (e) {
 		window.alert(e.message)
 	}

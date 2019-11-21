@@ -12,7 +12,7 @@ import UpVote from '@material-ui/icons/ThumbUp';
 import UpVoteOutlined from '@material-ui/icons/ThumbUpOutlined';
 import DownVote from '@material-ui/icons/ThumbDown';
 import DownVoteOutlined from '@material-ui/icons/ThumbDownOutlined';
-import { createPost, postUpVote, postDownVote, onCloseSnackBar, postUpComments, postDownComments } from '../../actions/posts'
+import { createPost, postUpVote, postDownVote, onCloseSnackBar, postUpComments, postDownComments, sendComment } from '../../actions/posts'
 import { MySnackbarContentWrapper } from "../../components/SnackBar/snackBar";
 import Axios from "axios";
 import Comments from "../../components/Comments/comments";
@@ -70,7 +70,7 @@ const DivPosts = styled.div`
 `
 
 
-class Feed extends Component {
+export class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -146,6 +146,11 @@ class Feed extends Component {
       window.alert(e.message)
     }
   }
+
+  clickSendComment( postId, text){
+    console.log(postId, text)
+    this.props.sendComment(postId, text)
+  }
   render() {
     console.log(this.state)
     return (
@@ -195,7 +200,7 @@ class Feed extends Component {
                 showComments={() => this.comments(post.id)}
                 onClickUpVote={() => this.clickUpVote(post)}
                 onClickDownVote={() => this.clickDownVote(post)}
-
+                onClickSendComment={(text) => this.clickSendComment(post.id, text)}
                 comments={this.state[post.id] && this.state[post.id].map((comment) => (
                   <Comments
                     UserName={comment.username}
@@ -256,8 +261,8 @@ const mapDispatchToProps = dispatch => ({
   postDownVote: (id) => dispatch(postDownVote(id)),
   onCloseSnackBar: () => dispatch(onCloseSnackBar()),
   postDownVoteComments: (commentId, postId) => dispatch(postDownComments(commentId, postId)),
-  postUpVoteComments: (commentId, postId) => dispatch(postUpComments(commentId, postId))
-
+  postUpVoteComments: (commentId, postId) => dispatch(postUpComments(commentId, postId)),
+  sendComment: (postId, text) => dispatch(sendComment(postId, text))
   //   goToFeed: () => dispatch(push(routes.login)),
   //   goToApplicationForm: () => dispatch(push(routes.applicationForm)),
   //   doLogin: (email, password) => dispatch(login(email, password))
