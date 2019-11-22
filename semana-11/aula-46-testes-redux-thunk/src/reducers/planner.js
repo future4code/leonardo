@@ -1,8 +1,8 @@
-const initialState = {
+export const initialState = {
     tasks: []
 };
 
-const planner = (state = initialState, action) => {
+export const planner = (state = initialState, action) => {
     switch (action.type) {
         case "SET_TASK":
             return { ...state, tasks: action.payload.tasks };

@@ -3,24 +3,26 @@ import { connect } from "react-redux";
 import styled from 'styled-components'
 import { createTaskAction, getTasks } from "../../actions/planner";
 
-const AppWrapper = styled.div`
+export const AppWrapper = styled.div`
   height: 100vh;
   display:flex;
   flex-direction:column;
 `
 
-const InputTask = styled.div`
+export const InputTask = styled.div`
   display:flex;
   justify-content:center;
   margin-bottom:15px;
 `
-const PlannerView = styled.div`
+export const PlannerView = styled.div`
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 15px;
 `
+export const Button = styled.button`
 
-class Planner extends React.Component {
+`
+export class Planner extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +32,9 @@ class Planner extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getTasks()
+    if(this.props.getTasks() && this.props.getTasks()){
+      this.props.getTasks()
+    }
   }
 
   onChangeTask = event => {
@@ -61,55 +65,55 @@ class Planner extends React.Component {
             <option value="Sabado">Sábado</option>
             <option value="Domingo">Domingo</option>
           </select>
-          <button onClick={this.onCreateTask}>Agendar</button>
+          <Button onClick={this.onCreateTask}>Agendar</Button>
         </div>
       </InputTask>
       <PlannerView>
         <div><h3>Segunda</h3>
         <ul>
-          {this.props.tasks.filter((task) => {
+          {this.props.tasks && this.props.tasks.filter((task) => {
             return task.day ==="Segunda"}).map(task => (
             <li key={task.id}>{task.text}</li>))}
         </ul>
         </div>
         <div><h3>Terça</h3>
         <ul>
-          {this.props.tasks.filter((task) => {
+          {this.props.tasks && this.props.tasks.filter((task) => {
             return task.day ==="Terca"}).map(task => (
             <li key={task.id}>{task.text}</li>))}
         </ul>
         </div>
         <div><h3>Quarta</h3>
         <ul>
-          {this.props.tasks.filter((task) => {
+          {this.props.tasks && this.props.tasks.filter((task) => {
             return task.day ==="Quarta"}).map(task => (
             <li key={task.id}>{task.text}</li>))}
         </ul>
         </div>
         <div><h3>Quinta</h3>
         <ul>
-          {this.props.tasks.filter((task) => {
+          {this.props.tasks && this.props.tasks.filter((task) => {
             return task.day ==="Quinta"}).map(task => (
             <li key={task.id}>{task.text}</li>))}
         </ul>
         </div>
         <div><h3>Sexta</h3>
         <ul>
-          {this.props.tasks.filter((task) => {
+          {this.props.tasks && this.props.tasks.filter((task) => {
             return task.day ==="Sexta"}).map(task => (
             <li key={task.id}>{task.text}</li>))}
         </ul>
         </div>
         <div><h3>Sabado</h3>
         <ul>
-          {this.props.tasks.filter((task) => {
+          {this.props.tasks && this.props.tasks.filter((task) => {
             return task.day ==="Sabado"}).map(task => (
             <li key={task.id}>{task.text}</li>))}
         </ul>
         </div>
         <div><h3>Domingo</h3>
         <ul>
-          {this.props.tasks.filter((task) => {
+          {this.props.tasks && this.props.tasks.filter((task) => {
             return task.day ==="Domingo"}).map(task => (
             <li key={task.id}>{task.text}</li>))}
         </ul>
