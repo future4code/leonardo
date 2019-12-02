@@ -1,0 +1,15 @@
+{
+  "name": "exercicio1-nodejs",
+  "version": "0.0.1",
+  "description": "exercicio 1 da aula de node.js",
+  "main": "ex1.js",
+  "scripts": {
+    "start": "node ex1.js"
+  },
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "author": "leonardo nogueira",
+  "license": "ISC"
+}
