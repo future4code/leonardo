@@ -5,3 +5,5 @@
  pesquisar sobre node e suas entradas
  teste com o npm start
  comprar
+ pesquisar cores no terminal
+ comprar pao para o Soter
