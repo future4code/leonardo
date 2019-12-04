@@ -5,7 +5,7 @@ fs.readdir("textos", function (err: string, files: any) {
     files.forEach(function (file: any) {
         fs.readFile(`textos/${file}`, (err: any, data: Buffer) => {
             if (err) throw err;
-            const fileContent: string = data.toString();
+            const fileContent: string =  data.toString();
             console.log(fileContent);
         });
     })

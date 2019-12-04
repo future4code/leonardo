@@ -6,10 +6,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node build/test.js --target es6",
-    "ex1": "tsc && node build/ex1.js --target es6"
+    "ex1": "tsc && node build/ex1.js --target es6",
+    "ex2": "tsc && node build/ex2.js --target es6"
   },
-  "author": "",
+  "author": "Leonardo Nogueira",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^12.12.14",
