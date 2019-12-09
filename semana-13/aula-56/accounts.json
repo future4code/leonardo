@@ -1,22 +1,22 @@
 [
-  [
-    {
-      "balance": 10,
-      "cpf": "1234567",
-      "name": "antonio",
-      "age": 19,
-      "transactions": [
-        {
-          "value": 200,
-          "cpf": "1234567",
-          "description": "comprar pao"
-        },
-        {
-          "value": 200,
-          "cpf": "1234567",
-          "description": "comprar pao"
-        }
-      ]
-    }
-  ]
+  {
+    "balance": 0,
+    "cpf": "1234",
+    "name": "jose",
+    "age": 25,
+    "transactions": []
+  },
+  {
+    "balance": 122,
+    "cpf": "1234567",
+    "name": "antonio",
+    "age": 19,
+    "transactions": [
+      {
+        "value": 122,
+        "cpf": "1234567",
+        "description": "comprar pao"
+      }
+    ]
+  }
 ]

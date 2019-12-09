@@ -1,7 +1,7 @@
 import {UserAccount} from "./UserAccount";
 import {JSONFileManager} from "./JSONFileManager";
 
-function verifyAge (age:number):boolean{
+function ageVerify (age:number):boolean{
     if(age > 18){
         return true
     }else {
@@ -9,16 +9,15 @@ function verifyAge (age:number):boolean{
     }
 }
 
-function verifyCPF (cpf:string): boolean{
+function cpfVerify ( cpf: string): boolean {
     const file = new JSONFileManager('accounts.json');
     const getAccounts: UserAccount[] = file.getJSONContent()
-    const filterAccountByCpf: UserAccount[] = getAccounts.filter((account) => {
+    const filterAccountByCpf: any[] = getAccounts.filter((account) => {
         return cpf === account.cpf
     })
-    console.log(filterAccountByCpf)
-    if (filterAccountByCpf.length === 0){
+    if (filterAccountByCpf.length > 0) {
         return false
-    } else {
+    }else {
         return true
     }
 }
@@ -28,11 +27,11 @@ export class Bank {
     fileManager: JSONFileManager;
 
     public createAccount(account: UserAccount): void {
-        if (!verifyAge(account.age)) {
-            console.log('Erro no procedimento, verifique a idade ')
-        }else if (verifyCPF(account.cpf)) {
-            console.log('CPF ja cadastrado')
-        } else {
+        if (!ageVerify(account.age)) {
+            console.log('Cliente menor de idade')
+        } else if (!cpfVerify(account.cpf)) {
+            console.log("cliente ja possui cadastro")
+        }else {
             const file = new JSONFileManager('accounts.json');
             const getAccounts: UserAccount[] = file.getJSONContent()
             getAccounts.push(account)
@@ -43,19 +42,23 @@ export class Bank {
 
     public getAllAccounts(): UserAccount[] {
         const file = new JSONFileManager('accounts.json');
-        const getAccounts: UserAccount[] = file.getJSONContent()
-        return getAccounts
+        return file.getJSONContent()
+
     }
 
-    public getAccountByCpf(cpf: string): UserAccount {
+    public getAccountByCpf(cpf: string): UserAccount[] {
         const file = new JSONFileManager('accounts.json');
         const getAccounts: UserAccount[] = file.getJSONContent()
-        let filterAccountByCpf: any = getAccounts.filter((account) => {
-            return cpf === account.cpf
+        const filterAccountByCpf: UserAccount[] = getAccounts.filter((account) => {
+            if (cpf === account.cpf){
+                return account
+            }else {
+                return console.log('Cpf nao encontrado')
+            }
         })
         return filterAccountByCpf
     }
-//TODO
+
     public saveAccounts(): void {
 
         return

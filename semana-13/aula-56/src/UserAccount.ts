@@ -17,31 +17,26 @@ export class UserAccount {
         this.transactions = []
     }
 
-    public getBalance() {
-        const bank = new Bank
-        const client = bank.getAccountByCpf(this.cpf)
-        console.log(`Saldo da conta ${client.balance}`)
+    public getBalance(cpf: string) {
+        if (cpf === this.cpf)
+            console.log(`Saldo da conta ${this.balance}`);
+        else
+            console.log('Cpf invalido')
     }
 
     public addBalance(transaction: Transaction) {
-        const bank = new Bank()
-        const account: any = bank.getAccountByCpf(transaction.cpf)
-        const allAccounts : UserAccount[] = bank.getAllAccounts()
-        let result: UserAccount[] = allAccounts.filter((accounts) => {
-            return transaction.cpf !== accounts.cpf
-        })
-        const position: Transaction[] = account[0].transactions.push(transaction)
-        console.log(position)
-
-        console.log('conta',account)
-
-        result.push(account)
-        console.log('resultad', result)
         const file = new JSONFileManager('accounts.json');
-        file.saveToJSON(result)
-
-
-
+        const bank = new Bank();
+        const allAccounts = bank.getAllAccounts();
+        const allAccountsMinusUserAccount = allAccounts.filter((user) => {
+            return user.cpf !== transaction.cpf
+        });
+        const userAccountbyCpf = bank.getAccountByCpf(transaction.cpf);
+        userAccountbyCpf[0].transactions.push(transaction);
+        userAccountbyCpf[0].balance += transaction.value;
+        allAccountsMinusUserAccount.push(userAccountbyCpf[0]);
+        console.log(allAccountsMinusUserAccount);
+        file.saveToJSON(allAccountsMinusUserAccount)
 
 
     }
