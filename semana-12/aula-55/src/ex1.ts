@@ -4,7 +4,7 @@ import * as moment from "moment"
 type event = {
   name: string
   description: string
-  data: moment.Moment
+  date: moment.Moment
 }
 
 const nameInput: string = process.argv[2];
@@ -15,7 +15,7 @@ const dataInput: any = process.argv[4];
 const birthday: event = {
   name: nameInput,
   description: descriptionInput,
-  data: dataInput
+  date: dataInput
 }
 
 console.log(birthday)
@@ -42,13 +42,17 @@ const readFilePromise = new Promise((resolve, reject) => {
   });
 });
 
-writeFilePromise.then((content) => {
+let firstPromise = writeFilePromise.then(() => {
 }).catch(e => {
   console.error("Opa! Deu erro na Promise", e)
 });
 
-readFilePromise.then((content) => {
+let secondPromise = readFilePromise.then((content) => {
   console.log("Este é o conteúdo do arquivo", content)
 }).catch(e => {
   console.error("Opa! Deu erro na Promise", e)
+});
+
+Promise.all([firstPromise, secondPromise]).then((values) => {
+  console.log(values);
 });

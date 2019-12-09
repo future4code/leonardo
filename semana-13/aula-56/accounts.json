@@ -1,4 +1,22 @@
 [
-  null,
-  null
+  [
+    {
+      "balance": 10,
+      "cpf": "1234567",
+      "name": "antonio",
+      "age": 19,
+      "transactions": [
+        {
+          "value": 200,
+          "cpf": "1234567",
+          "description": "comprar pao"
+        },
+        {
+          "value": 200,
+          "cpf": "1234567",
+          "description": "comprar pao"
+        }
+      ]
+    }
+  ]
 ]

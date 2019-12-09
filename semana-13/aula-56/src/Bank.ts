@@ -9,6 +9,19 @@ function verifyAge (age:number):boolean{
     }
 }
 
+function verifyCPF (cpf:string): boolean{
+    const file = new JSONFileManager('accounts.json');
+    const getAccounts: UserAccount[] = file.getJSONContent()
+    const filterAccountByCpf: UserAccount[] = getAccounts.filter((account) => {
+        return cpf === account.cpf
+    })
+    console.log(filterAccountByCpf)
+    if (filterAccountByCpf.length === 0){
+        return false
+    } else {
+        return true
+    }
+}
 
 export class Bank {
     accounts: UserAccount[];
@@ -16,12 +29,13 @@ export class Bank {
 
     public createAccount(account: UserAccount): void {
         if (!verifyAge(account.age)) {
-            console.log('Cliente menor de idade')
+            console.log('Erro no procedimento, verifique a idade ')
+        }else if (verifyCPF(account.cpf)) {
+            console.log('CPF ja cadastrado')
         } else {
             const file = new JSONFileManager('accounts.json');
             const getAccounts: UserAccount[] = file.getJSONContent()
             getAccounts.push(account)
-            console.log(getAccounts)
             file.saveToJSON(getAccounts)
             console.log(`Conta criada com sucesso`)
         }
@@ -29,22 +43,19 @@ export class Bank {
 
     public getAllAccounts(): UserAccount[] {
         const file = new JSONFileManager('accounts.json');
-        const getAccounts: UserAccount = file.getJSONContent()
-        console.log(getAccounts)
-
-        return
+        const getAccounts: UserAccount[] = file.getJSONContent()
+        return getAccounts
     }
 
     public getAccountByCpf(cpf: string): UserAccount {
         const file = new JSONFileManager('accounts.json');
         const getAccounts: UserAccount[] = file.getJSONContent()
-        const filterAccountByCpf = getAccounts.filter((account) => {
+        let filterAccountByCpf: any = getAccounts.filter((account) => {
             return cpf === account.cpf
         })
-        console.log(filterAccountByCpf)
-        return
+        return filterAccountByCpf
     }
-
+//TODO
     public saveAccounts(): void {
 
         return
