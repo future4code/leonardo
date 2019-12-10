@@ -9,9 +9,9 @@ const doRequest = async ():Promise<void> => {
       const firstResp:AxiosResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts/${firstId}`, )
       const secondResp:AxiosResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts/${secondId}`)
       const thirdEesp:AxiosResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts/${thirdId}`)
-      console.log('primeiro',firstResp.data.id);
-      console.log('segundo',secondResp.data.id);
-      console.log('terceiro',thirdEesp.data.id);
+      console.log('primeiro',firstResp.data. title);
+      console.log('segundo',secondResp.data.title);
+      console.log('terceiro',thirdEesp.data.title);
     } catch(error) {
       console.error(error);
     }

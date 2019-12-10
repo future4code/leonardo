@@ -9,6 +9,7 @@ fs.readdir("textos", function (err, files) {
                 throw err;
             const fileContent = data.toString();
             console.log(fileContent);
+            fs.writeFile();
         });
     });
 });

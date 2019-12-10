@@ -18,9 +18,9 @@ const doRequest = () => __awaiter(void 0, void 0, void 0, function* () {
         const firstResp = yield axios_1.default.get(`https://jsonplaceholder.typicode.com/posts/${firstId}`);
         const secondResp = yield axios_1.default.get(`https://jsonplaceholder.typicode.com/posts/${secondId}`);
         const thirdEesp = yield axios_1.default.get(`https://jsonplaceholder.typicode.com/posts/${thirdId}`);
-        console.log('primeiro', firstResp.data.id, firstId);
-        console.log('segundo', secondResp.data.id, secondId);
-        console.log('terceiro', thirdEesp.data.id, secondId);
+        console.log('primeiro', firstResp.data.title);
+        console.log('segundo', secondResp.data.title);
+        console.log('terceiro', thirdEesp.data.title);
     }
     catch (error) {
         console.error(error);
