@@ -37,7 +37,5 @@ export class UserAccount {
         allAccountsMinusUserAccount.push(userAccountbyCpf[0]);
         console.log(allAccountsMinusUserAccount);
         file.saveToJSON(allAccountsMinusUserAccount)
-
-
     }
 }

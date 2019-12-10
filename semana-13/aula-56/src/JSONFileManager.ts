@@ -2,7 +2,6 @@ import * as fs from 'fs'
 
 export class JSONFileManager {
     fileName: string;
-
     constructor(fileName: string) {
         this.fileName = fileName
     }

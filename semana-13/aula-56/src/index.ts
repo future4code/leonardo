@@ -10,7 +10,6 @@ banco.createAccount(conta)
 banco.createAccount(cont2)
 banco.createAccount(cont3)
 const trasaction: Transaction = {value: 122, cpf: '1234567', description: 'comprar pao'};
-// console.log(banco.getAccountByCpf(conta.cpf))
 conta.getBalance(conta.cpf)
 conta.addBalance(trasaction);
 conta.addBalance(trasaction);
