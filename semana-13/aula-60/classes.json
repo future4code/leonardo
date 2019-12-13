@@ -1,0 +1,88 @@
+[
+  {
+    "students": [
+      {
+        "name": "leo",
+        "email": "leo@leo",
+        "birthday": "1995-12-25T02:00:00.000Z",
+        "className": 1
+      },
+      {
+        "name": "jose",
+        "email": "leo@leo",
+        "birthday": "1995-12-25T02:00:00.000Z",
+        "className": 1
+      },
+      {
+        "name": "maria",
+        "email": "leo@leo",
+        "birthday": "1995-12-25T02:00:00.000Z",
+        "className": 1
+      }
+    ],
+    "teachers": [
+      {
+        "name": "jose",
+        "email": "jose@s",
+        "birthday": "2019-12-13T20:20:17.663Z",
+        "speciality": [
+          "Back"
+        ]
+      },
+      {
+        "name": "laura",
+        "email": "jose@s",
+        "birthday": "2019-12-13T20:20:17.663Z",
+        "speciality": [
+          "CSS"
+        ]
+      }
+    ],
+    "patron": "Turing",
+    "startDate": "1995-12-25T02:00:00.000Z",
+    "endDate": "1995-12-25T02:00:00.000Z"
+  },
+  {
+    "students": [
+      {
+        "name": "leo",
+        "email": "leo@leo",
+        "birthday": "1995-12-25T02:00:00.000Z",
+        "className": 1
+      },
+      {
+        "name": "jose",
+        "email": "leo@leo",
+        "birthday": "1995-12-25T02:00:00.000Z",
+        "className": 1
+      },
+      {
+        "name": "maria",
+        "email": "leo@leo",
+        "birthday": "1995-12-25T02:00:00.000Z",
+        "className": 1
+      }
+    ],
+    "teachers": [
+      {
+        "name": "jose",
+        "email": "jose@s",
+        "birthday": "2019-12-13T20:20:17.663Z",
+        "speciality": [
+          "Back"
+        ]
+      },
+      {
+        "name": "laura",
+        "email": "jose@s",
+        "birthday": "2019-12-13T20:20:17.663Z",
+        "speciality": [
+          "CSS"
+        ]
+      }
+    ],
+    "classNumber": 1,
+    "startDate": "2019-12-13T20:20:17.660Z",
+    "endDate": "2019-12-13T20:20:17.660Z"
+  }
+]
