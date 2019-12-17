@@ -1,0 +1,19 @@
+USE leonardo;
+
+-- 1
+ALTER TABLE correntistas
+ADD estado_civil varchar(20) NOT NULL DEFAULT 'Solteiro(a)';
+
+-- 2
+UPDATE correntistas
+SET estado_civil = 'Casado(a)'
+WHERE (YEAR(CURDATE()) - YEAR(aniversario)) > 30;
+
+-- 3 
+ALTER TABLE correntistas
+ADD numero_da_sorte int NOT NULL DEFAULT 0;
+
+-- 4
+UPDATE correntistas
+SET numero_da_sorte = FLOOR(RAND()*1001)
+WHERE numero_da_sorte = 0;

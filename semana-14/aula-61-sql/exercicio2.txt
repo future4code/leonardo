@@ -1,0 +1,44 @@
+USE leonardo;
+
+
+-- 1
+SELECT * FROM correntistas
+WHERE pais=UPPER('BRAZIL') AND conta_corrente > 3000
+LIMIT 100;
+
+-- 2
+SELECT COUNT(*) AS Total from correntistas
+WHERE genero=UPPER('F') AND (YEAR(CURDATE()) - YEAR(aniversario)) > 32;
+
+-- 3
+SELECT SUM(conta_corrente) AS Total FROM correntistas
+WHERE pais=UPPER('PERU') AND (YEAR(CURDATE()) - YEAR(aniversario)) > 25;
+
+-- 4
+SELECT COUNT(*) AS "Quantidade", pais, genero FROM correntistas
+GROUP BY genero, pais
+ORDER BY pais;
+
+-- 5
+SELECT COUNT(*) "Total", aniversario FROM correntistas
+GROUP BY aniversario
+ORDER BY total DESC
+LIMIT 1;
+
+-- 6
+SELECT AVG((YEAR(CURDATE()) - YEAR(aniversario))) 'media idade', pais from correntistas
+GROUP BY pais;
+
+-- 7
+SELECT * FROM correntistas
+WHERE MONTH(CURDATE()) = MONTH(aniversario);
+
+-- 8
+SELECT AVG(conta_corrente) 'media', LOWER(pais)  FROM correntistas
+GROUP BY pais;
+
+-- 9
+SELECT COUNT(*) 'numero', primeiro_nome from correntistas
+GROUP BY primeiro_nome
+ORDER BY numero DESC
+LIMIT 3;

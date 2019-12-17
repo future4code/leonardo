@@ -1,0 +1,21 @@
+use leonardo;
+
+-- 1
+SELECT nome, salario FROM funcionarios
+ORDER BY salario DESC
+LIMIT 5;
+
+
+-- 2
+SELECT AVG(salario), local_de_trabalho FROM funcionarios
+GROUP BY local_de_trabalho; 
+
+
+-- 3
+SELECT COUNT(*), genero, local_de_trabalho FROM funcionarios
+GROUP BY genero, local_de_trabalho;
+
+-- 4
+SELECT * FROM funcionarios
+ORDER BY data_contratacao asc
+LIMIT 10;
