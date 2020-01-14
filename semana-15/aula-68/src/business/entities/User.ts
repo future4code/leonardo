@@ -4,17 +4,20 @@ export class User {
         private email: string,
         private password: string) {
 
+        if (this.password.length < 6) {
+            throw new Error('Password is too short')
+        }
     }
 
-    public getId(){
+    public getId() {
         return this.id
     }
 
-    public getEmail(){
+    public getEmail() {
         return this.email
     }
 
-    public getPassword(){
+    public getPassword() {
         return this.password
     }
 }
