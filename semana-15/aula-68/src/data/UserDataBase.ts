@@ -1,7 +1,6 @@
-import { UserGateway } from "../business/gateways/UserGateway";
+import { UserGateway } from "../business/gateways/user/userGateway";
 import knex from 'knex'
 import { User } from "../business/entities/User";
-import { AuthenticationGateway } from "../business/gateways/authenticationGateway";
 
 export class UserModel {
   constructor(public id: string,
@@ -22,8 +21,6 @@ class UserMapper {
   modeltoEntity(model: UserModel): User {
     return new User(model.id, model.email, model.password)
   }
-
-
 }
 
 export class UserDataBase implements UserGateway {
@@ -36,7 +33,7 @@ export class UserDataBase implements UserGateway {
       connection: {
         host: 'ec2-18-229-236-15.sa-east-1.compute.amazonaws.com',
         user: 'leonardo',
-        password: 'c9e5f699eea13f088949aa3b4614241f',
+        password: process.env.SENHA_BANCO,
         database: 'leonardo'
       }
     })
@@ -62,20 +59,34 @@ export class UserDataBase implements UserGateway {
     const query = await this.connection.raw(`
       SELECT * FROM users
       WHERE users.id="${id}";
-    `).then(res => {
-      return res[0][0]
-    })
-    return this.userMapper.modeltoEntity(query)
+    `)
+
+    const result = query[0][0]
+    if (!result) {
+      throw new Error("Usuário não encontrado")
+    }
+    return this.userMapper.modeltoEntity(result)
   }
 
   async updatePassword(id: string, password: string): Promise<void> {
     const query = await this.connection.raw(`
       UPDATE users
       SET password = "${password}"
-      WHERE id = "${id}"`).then(res => {
+      WHERE id = "${id}";`).then(res => {
       return res[0][0]
     })
-    
+  }
+
+  async verifyUserExists(id: string): Promise<boolean> {
+    const query = await this.connection.raw(`
+    SELECT * FROM users
+    WHERE users.id="${id}";
+  `)
+    const result = query[0][0]
+    if (!result) {
+      return false
+    }
+    return true
   }
 
 }

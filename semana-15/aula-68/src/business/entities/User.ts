@@ -5,7 +5,7 @@ export class User {
         private password: string) {
 
         if (this.password.length < 6) {
-            throw new Error('Password is too short')
+            throw new Error('Senha muito curta, deve contar mais que 6 caracteres')
         }
     }
 

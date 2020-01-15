@@ -1,19 +1,19 @@
-import { AuthenticationGateway } from "../../business/gateways/authenticationGateway";
+import { AuthenticationGateway } from "../../business/gateways/auth/authenticationGateway";
 import * as jwt from 'jsonwebtoken'
 
 export class JwtImplamantation implements AuthenticationGateway {
     private static EXPIRES_IN = "1h"
     getJwtSecretKey(): string {
-        if (!process.env.JWT_SECRET_KEY){
-            throw new Error ("Missing JWT secret key")
+        if (!process.env.JWT_SECRET_KEY) {
+            throw new Error("Missing JWT secret key")
         }
         return process.env.JWT_SECRET_KEY
     }
     generateToken(userId: string): string {
         return jwt.sign(
-            {userId},
+            { userId },
             this.getJwtSecretKey(),
-            {expiresIn: JwtImplamantation.EXPIRES_IN}
+            { expiresIn: JwtImplamantation.EXPIRES_IN }
         )
     }
 

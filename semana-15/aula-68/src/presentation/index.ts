@@ -6,6 +6,9 @@ import { LoginUC, LoginInput } from '../business/usecases/auth/login'
 import { JwtImplamantation } from '../service/jwt/jwtImplamantation'
 import { GetLogedUserInformation } from '../business/usecases/getLogedUserInformation'
 import { ChangeUserPassword } from '../business/usecases/auth/changeUserPassword'
+import { generateRandomId } from '../utils/generateRandomId'
+import { CreateRecipeUC, CreateRecipeInput } from '../business/usecases/recipe/createRecipe'
+import { RecipeDataBase } from '../data/RecipeDataBase'
 
 
 const app = express()
@@ -18,7 +21,8 @@ const getTokenFromHeaders = (headers: any): string => {
 app.post('/create', async (request: Request, response: Response) => {
     try {
         const gateway = new UserDataBase()
-        const useCase = new CreateUserUC(gateway, new BcryptImplamantation())
+        const idGenerator = new generateRandomId()
+        const useCase = new CreateUserUC(gateway, new BcryptImplamantation(), idGenerator)
 
         const input: CreateUserInput = {
             email: request.body.email,
@@ -96,6 +100,29 @@ app.post('/updatePassword', async (request: Request, response: Response) => {
     }
 })
 
+app.post('/recipes', async (request: Request, response: Response) => {
+    try {
+        const authService = new JwtImplamantation()
+        const userId = authService.getUserIdFromToken(getTokenFromHeaders(request.headers))
+        const userGateway = new UserDataBase()
+        const recipeGateway = new RecipeDataBase()
+        const useCase = new CreateRecipeUC(userGateway, recipeGateway)
+
+        const input: CreateRecipeInput = {
+            description: request.body.description,
+            title: request.body.title,
+            userId: userId
+        }
+
+        const result = await useCase.execute(input)
+
+        response.status(200).send(result)
+    } catch (err) {
+        response.status(400).send({
+            message: err.message
+        })
+    }
+})
 
 
 

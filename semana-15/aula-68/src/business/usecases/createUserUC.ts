@@ -1,18 +1,18 @@
-import  { User } from '../entities/User'
-import {generateRandomId} from '../../utils/generateRandomId'
-import { UserGateway } from '../gateways/UserGateway'
+import { User } from '../entities/User'
+import { UserGateway } from '../gateways/user/userGateway'
 import { CriptographyGateway } from '../gateways/crypt/cryptographyGateway'
+import { IdGeneratorGateway } from '../gateways/user/idGeneretorGateway'
 
 export class CreateUserUC {
-    constructor (
+    constructor(
         private userGateway: UserGateway,
-        private cryptographyGateway : CriptographyGateway
-    ){
-    }
+        private cryptographyGateway: CriptographyGateway,
+        private idGeneratorGateway: IdGeneratorGateway
+    ) { }
 
-    async execute(createUserInput: CreateUserInput): Promise<CreateUserOutput>{
+    async execute(createUserInput: CreateUserInput): Promise<CreateUserOutput> {
         const encryptedPassword = await this.cryptographyGateway.encrypt(createUserInput.password)
-        const user = new User(generateRandomId(), createUserInput.email, encryptedPassword)
+        const user = new User(this.idGeneratorGateway.generate(), createUserInput.email, encryptedPassword)
 
         await this.userGateway.createUser(user)
 
@@ -22,7 +22,7 @@ export class CreateUserUC {
     }
 }
 
-export interface CreateUserInput{
+export interface CreateUserInput {
     email: string,
     password: string
 }

@@ -1,13 +1,12 @@
-import { UserGateway } from "../../gateways/UserGateway";
+import { UserGateway } from "../../gateways/user/userGateway";
 import { CriptographyGateway } from "../../gateways/crypt/cryptographyGateway";
-import { AuthenticationGateway } from "../../gateways/authenticationGateway";
+import { AuthenticationGateway } from "../../gateways/auth/authenticationGateway";
 
 export class LoginUC {
     constructor(
         private userGateway: UserGateway,
         private cryptographyGateway: CriptographyGateway,
         private authenticationGateway:  AuthenticationGateway
-
     ){}
 
     async execute(input: LoginInput): Promise<LoginOutput>{
@@ -17,7 +16,7 @@ export class LoginUC {
             user.getPassword()
         )
         if(!isPasswordRight){
-            throw new Error("Email or password are invalid")
+            throw new Error("Email ou senha inválida")
         }
 
         const token = this.authenticationGateway.generateToken(user.getId())

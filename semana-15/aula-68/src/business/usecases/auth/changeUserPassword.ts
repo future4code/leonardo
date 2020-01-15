@@ -1,26 +1,22 @@
-import { UserGateway } from "../../gateways/UserGateway";
-import { AuthenticationGateway } from "../../gateways/authenticationGateway";
+import { UserGateway } from "../../gateways/user/userGateway";
+import { AuthenticationGateway } from "../../gateways/auth/authenticationGateway";
 import { CriptographyGateway } from "../../gateways/crypt/cryptographyGateway";
 
-export class ChangeUserPassword{
+export class ChangeUserPassword {
     constructor(
         private userGateway: UserGateway,
         private authenticationGateway: AuthenticationGateway,
         private cryptographyGateway: CriptographyGateway
-        
-    ){
-
-    }
-
-    async execute(input: ChangeUserPasswordInput): Promise<ChangeUserPasswordOutput>{
+    ) {}
+    async execute(input: ChangeUserPasswordInput): Promise<ChangeUserPasswordOutput> {
         const userId = this.authenticationGateway.getUserIdFromToken(input.token)
         const user = await this.userGateway.getUserById(userId)
         const isOldPasswordRight = await this.cryptographyGateway.compare(
             input.oldPassword,
             user.getPassword())
         console.log(user)
-        if(!isOldPasswordRight) {
-            throw new Error('The old password is wrong')
+        if (!isOldPasswordRight) {
+            throw new Error('Senha antiga esta incorreta')
         }
         const encryptedNewPassword = await this.cryptographyGateway.encrypt(input.newPassword)
 
@@ -29,13 +25,10 @@ export class ChangeUserPassword{
         return {
             token: newToken
         }
-        
     }
-
-    
 }
 
-export interface ChangeUserPasswordInput{
+export interface ChangeUserPasswordInput {
     token: string
     oldPassword: string
     newPassword: string
