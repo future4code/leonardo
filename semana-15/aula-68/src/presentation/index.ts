@@ -1,21 +1,28 @@
 import express, { Request, Response } from 'express'
 import { UserDataBase } from '../data/UserDataBase'
-import { CreateUserUC, CreateUserInput } from '../business/usecases/createUserUC'
+import { CreateUserUC, CreateUserInput } from '../business/usecases/user/createUserUC'
 import { BcryptImplamantation } from '../service/crypt/bcryptImplemantation'
 import { LoginUC, LoginInput } from '../business/usecases/auth/login'
 import { JwtImplamantation } from '../service/jwt/jwtImplamantation'
-import { GetLogedUserInformation } from '../business/usecases/getLogedUserInformation'
+import { GetLogedUserInformation } from '../business/usecases/auth/getLogedUserInformation'
 import { ChangeUserPassword } from '../business/usecases/auth/changeUserPassword'
 import { generateRandomId } from '../utils/generateRandomId'
 import { CreateRecipeUC, CreateRecipeInput } from '../business/usecases/recipe/createRecipe'
 import { RecipeDataBase } from '../data/RecipeDataBase'
-
+import { FollowUserUC, FollowUserInput } from '../business/usecases/user/folowUser'
+import {FeedDataBase} from "../data/FeedDataBase";
+import {GetFeedInput, GetFeedUseCase} from "../business/usecases/feed/getFeed";
 
 const app = express()
 app.use(express.json()) // Linha mágica (middleware)
 
 const getTokenFromHeaders = (headers: any): string => {
     return (headers["auth"] as string) || "";
+}
+
+function authenticate( request: Request) {
+    const authService = new JwtImplamantation()
+    return authService.getUserIdFromToken(getTokenFromHeaders(request.headers))
 }
 
 app.post('/create', async (request: Request, response: Response) => {
@@ -102,8 +109,7 @@ app.post('/updatePassword', async (request: Request, response: Response) => {
 
 app.post('/recipes', async (request: Request, response: Response) => {
     try {
-        const authService = new JwtImplamantation()
-        const userId = authService.getUserIdFromToken(getTokenFromHeaders(request.headers))
+        const userId = authenticate(request)
         const userGateway = new UserDataBase()
         const recipeGateway = new RecipeDataBase()
         const useCase = new CreateRecipeUC(userGateway, recipeGateway)
@@ -112,6 +118,50 @@ app.post('/recipes', async (request: Request, response: Response) => {
             description: request.body.description,
             title: request.body.title,
             userId: userId
+        }
+
+        const result = await useCase.execute(input)
+
+        response.status(200).send(result)
+    } catch (err) {
+        response.status(400).send({
+            message: err.message
+        })
+    }
+})
+
+app.post('/users/follow', async (request: Request, response: Response) => {
+    try {
+        const userId = authenticate(request)
+        const userGateway = new UserDataBase()
+        const useCase = new FollowUserUC(userGateway)
+
+        const input: FollowUserInput = {
+            followerId: userId,
+            followedId: request.body.userToFollow
+        }
+
+        await useCase.execute(input)
+
+        response.status(200).send({
+            message: "Usuário seguido com sucesso!!"
+        })
+    } catch (err) {
+        response.status(400).send({
+            message: err.message
+        })
+    }
+})
+
+app.get('/feed', async (request: Request, response: Response) => {
+    try {
+        const userId = authenticate(request)
+        const useCase = new GetFeedUseCase(
+            new FeedDataBase()
+        )
+
+        const input: GetFeedInput = {
+            userId
         }
 
         const result = await useCase.execute(input)

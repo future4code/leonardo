@@ -1,12 +1,11 @@
-import { AuthenticationGateway } from "../gateways/auth/authenticationGateway";
-import { UserGateway } from "../gateways/user/userGateway";
+import { AuthenticationGateway } from "../../gateways/auth/authenticationGateway";
+import { UserGateway } from "../../gateways/user/userGateway";
 
 export class GetLogedUserInformation {
     constructor(
         private userGateway: UserGateway,
         private authenticationGateway: AuthenticationGateway
-
-    ) { }
+    ) {}
 
     async execute(token: string): Promise<GetLogedUserInformationIput> {
         const userId = this.authenticationGateway.getUserIdFromToken(token)

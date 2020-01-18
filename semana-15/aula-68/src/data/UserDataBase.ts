@@ -1,6 +1,6 @@
 import { UserGateway } from "../business/gateways/user/userGateway";
-import knex from 'knex'
 import { User } from "../business/entities/User";
+import { BaseDataBase } from "./BaseDataBase";
 
 export class UserModel {
   constructor(public id: string,
@@ -23,20 +23,11 @@ class UserMapper {
   }
 }
 
-export class UserDataBase implements UserGateway {
-  private connection: knex
+export class UserDataBase extends BaseDataBase implements UserGateway  {
   private userMapper: UserMapper
 
   constructor() {
-    this.connection = knex({
-      client: 'mysql',
-      connection: {
-        host: 'ec2-18-229-236-15.sa-east-1.compute.amazonaws.com',
-        user: 'leonardo',
-        password: process.env.SENHA_BANCO,
-        database: 'leonardo'
-      }
-    })
+    super()
     this.userMapper = new UserMapper()
   }
 
@@ -89,4 +80,11 @@ export class UserDataBase implements UserGateway {
     return true
   }
 
+  async createUserRelation(followerId: string, followedId: string): Promise<void>{
+    await this.connection.raw(
+      `INSERT INTO
+      users_relations (follower_id, followed_id)
+      VALUES ("${followerId}","${followedId}")
+      `)
+  }
 }

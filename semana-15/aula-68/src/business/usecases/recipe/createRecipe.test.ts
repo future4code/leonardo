@@ -11,7 +11,8 @@ describe('Test createRecipe useCase', () => {
             getUserByEmail: jest.fn(),
             getUserById: jest.fn(),
             updatePassword: jest.fn(),
-            verifyUserExists: jest.fn().mockReturnValue(true)
+            verifyUserExists: jest.fn().mockReturnValue(true),
+            createUserRelation: jest.fn()
         }
 
         const input = { description: 'teste description', title: 'teste title', userId: 'teste user id' }
@@ -34,7 +35,8 @@ describe('Test createRecipe useCase', () => {
             getUserByEmail: jest.fn(),
             getUserById: jest.fn(),
             updatePassword: jest.fn(),
-            verifyUserExists: jest.fn().mockReturnValue(true)
+            verifyUserExists: jest.fn().mockReturnValue(true),
+            createUserRelation: jest.fn()
         }
 
         const input = { description: '', title: '', userId: 'teste user id' }
@@ -55,7 +57,8 @@ describe('Test createRecipe useCase', () => {
             getUserByEmail: jest.fn(),
             getUserById: jest.fn(),
             updatePassword: jest.fn(),
-            verifyUserExists: jest.fn().mockReturnValue(false)
+            verifyUserExists: jest.fn().mockReturnValue(false),
+            createUserRelation: jest.fn()
         }
 
         const input = { description: 'teste descricao', title: 'teste title', userId: 'teste user id' }

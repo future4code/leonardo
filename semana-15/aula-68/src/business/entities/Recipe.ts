@@ -4,6 +4,7 @@ export class Recipe {
     private creationDate: Date
     private userId: string
     
+    
     constructor(title: string, description: string, userId: string, creationDate = new Date()) {
         this.title = title,
         this.description = description,
