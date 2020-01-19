@@ -24,6 +24,7 @@ class UserMapper {
 }
 
 export class UserDataBase extends BaseDataBase implements UserGateway  {
+
   private userMapper: UserMapper
 
   constructor() {
@@ -86,5 +87,14 @@ export class UserDataBase extends BaseDataBase implements UserGateway  {
       users_relations (follower_id, followed_id)
       VALUES ("${followerId}","${followedId}")
       `)
+  }
+
+  public async getAllUsers(): Promise<User[]> {
+    const query = this.connection.raw("SELECT * FROM users;");
+    const users = await query;
+    return users[0].map(
+        (user: any) =>
+            new User(user.id, user.email, user.password)
+    );
   }
 }

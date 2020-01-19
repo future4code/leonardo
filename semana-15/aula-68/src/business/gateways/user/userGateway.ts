@@ -7,4 +7,5 @@ export interface UserGateway {
     updatePassword(id: string, password: string): Promise<void>
     verifyUserExists(id: string): Promise<boolean>
     createUserRelation(followerId: string, followedId: string): Promise<void>
+    getAllUsers(): Promise<User[]>
 }

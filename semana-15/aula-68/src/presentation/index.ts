@@ -12,6 +12,7 @@ import { RecipeDataBase } from '../data/RecipeDataBase'
 import { FollowUserUC, FollowUserInput } from '../business/usecases/user/folowUser'
 import {FeedDataBase} from "../data/FeedDataBase";
 import {GetFeedInput, GetFeedUseCase} from "../business/usecases/feed/getFeed";
+import {getAllUsersUC} from "../business/usecases/user/getAllUsers";
 
 const app = express()
 app.use(express.json()) // Linha mágica (middleware)
@@ -165,6 +166,23 @@ app.get('/feed', async (request: Request, response: Response) => {
         }
 
         const result = await useCase.execute(input)
+
+        response.status(200).send(result)
+    } catch (err) {
+        response.status(400).send({
+            message: err.message
+        })
+    }
+})
+
+app.get('/users', async (request: Request, response: Response) => {
+    try {
+        const useCase = new getAllUsersUC(
+            new UserDataBase()
+        )
+
+
+        const result = await useCase.execute()
 
         response.status(200).send(result)
     } catch (err) {
