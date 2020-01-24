@@ -2,9 +2,9 @@ export class Post {
     private id: string
     private photo: string
     private description: string
-    private creationDate: Date
     private type: PostType
     private userId: string
+    private creationDate: Date
 
     constructor(
         id: string,
@@ -12,7 +12,7 @@ export class Post {
         description: string,
         type: PostType,
         userId: string,
-        creationDate: Date = new Date()
+        creationDate: Date
     ) {
         this.id = id
         this.photo = photo

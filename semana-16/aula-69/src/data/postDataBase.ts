@@ -4,6 +4,8 @@ import {BaseDataBase} from "./baseDataBase";
 
 export class PostDataBase extends BaseDataBase implements CreatePostGateway{
     private static TABLE_USERS: string = "posts"
+    private static PAGE: number = 10
+
 
     async createPost(post: Post): Promise<void> {
 

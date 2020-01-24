@@ -10,6 +10,9 @@ import {EraseRelationUC, EraseRelationUCInput} from "../business/usecases/user/e
 import {CreatePostUC, CreatePostUCInput} from "../business/usecases/post/createPost";
 import {PostDataBase} from "../data/postDataBase";
 import {PostType} from "../business/entities/post";
+import {GetFeedUC, GetFeedUCInput} from "../business/usecases/feed/getFeed";
+import {FeedDataBase} from "../data/feedDataBase";
+import {GetPaginetedFeedByTypeUC} from "../business/usecases/feed/getPaginetedFeedByType";
 
 const app = express()
 app.use(express.json()) // Linha mágica (middleware)
@@ -78,7 +81,7 @@ app.post('/requestFriendship', async (request: Request, response: Response) => {
         )
 
         const input: CreateRelationUCInput = {
-            token: request.body.token,
+            token: getTokenFromHeaders(request.headers),
             requestedId: request.body.requestedId
         }
 
@@ -103,7 +106,7 @@ app.delete('/deleteFriendship', async (request: Request, response: Response) => 
         )
 
         const input: EraseRelationUCInput = {
-            token: request.body.token,
+            token: getTokenFromHeaders(request.headers),
             userIdToEraseRelation: request.body.requestedId
         }
 
@@ -132,7 +135,8 @@ app.post('/post', async (request: Request, response: Response) => {
             photo: request.body.photo,
             description: request.body.description,
             type: request.body.type,
-            token: getTokenFromHeaders(request.headers)
+            token: getTokenFromHeaders(request.headers),
+            date: request.body.date
         }
 
         const result = await useCase.execute(input)
@@ -143,6 +147,50 @@ app.post('/post', async (request: Request, response: Response) => {
         })
     }
 })
+
+app.get('/getFeedforUser', async (request: Request, response: Response) => {
+    try {
+
+        const useCase = new GetFeedUC(
+            new FeedDataBase(),
+            new JWTImplementation()
+        )
+
+
+        const input: GetFeedUCInput = {
+           token: getTokenFromHeaders(request.headers)
+        }
+
+        const result = await useCase.execute(input)
+        response.status(200).send(result)
+    } catch (err) {
+        response.status(400).send({
+            message: err.message
+        })
+    }
+})
+
+app.post("/getPaginatedUsers", async (request: Request, response: Response) => {
+    try {
+        const getPaginetedFeedByTypeUC = new GetPaginetedFeedByTypeUC(
+            new FeedDataBase(),
+            new JWTImplementation()
+
+        );
+        const input = {
+            type: request.body.type,
+            page: request.body.page,
+            token: getTokenFromHeaders(request.headers)
+        };
+        const result = await getPaginetedFeedByTypeUC.execute(input);
+        response.status(200).send(result);
+    } catch (err) {
+        response.status(431).send({
+            ...err,
+            errorMessage: err.message
+        });
+    }
+});
 
 
 export default app

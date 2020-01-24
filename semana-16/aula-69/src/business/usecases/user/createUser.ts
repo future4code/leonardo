@@ -13,6 +13,7 @@ export class CreateUserUC {
     ) {}
 
     async execute(input: CreateUserUCInput): Promise<CreateUserUCOutput> {
+        this.validateUser(input)
         const encryptedPassword = await this.cryptographyGateway.encrypt(input.password)
         const userId = this.idGeneratorGateway.generate()
         const user = new User(userId, input.name, input.email, encryptedPassword)
@@ -24,6 +25,12 @@ export class CreateUserUC {
             }
         } catch (e) {
             return e.message
+        }
+    }
+
+    validateUser(input: CreateUserUCInput) {
+        if(!input.name || !input.email || !input.password){
+            throw new Error("Dados do usuário faltando")
         }
     }
 }
