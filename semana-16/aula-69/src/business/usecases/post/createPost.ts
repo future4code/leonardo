@@ -9,8 +9,8 @@ export class CreatePostUC {
         private createPostGateway: CreatePostGateway,
         private idGeneratorGateway: IdGeneratorGateway,
         private getUserIdFromTokenGateway: GetUserIdFromTokenGateway,
-    ) {
-    }
+    ) {}
+
     async execute(input: CreatePostUCInput):Promise<CreatePostUcOutput> {
         this.validatePost(input)
         const userId = await this.getUserIdFromTokenGateway.getUserIdFromToken(input.token)
@@ -21,15 +21,13 @@ export class CreatePostUC {
             Post.convertPostType(input.type),
             userId,
             new Date(input.date)
-            )
+        )
 
         await this.createPostGateway.createPost(newPost)
-
         return {
             message: "Post criado com sucesso"
         }
     }
-
     validatePost(input: CreatePostUCInput) {
         if(!input.photo || !input.description || !input.type || !input.token){
             throw new Error("Dados do Post faltando")

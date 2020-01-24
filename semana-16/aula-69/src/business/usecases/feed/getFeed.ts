@@ -1,7 +1,6 @@
 import {GetFeedGateway} from "../../gateways/feed/feedGateway";
 import {Post} from "../../entities/post";
 import {GetUserIdFromTokenGateway} from "../../gateways/auth/autenticationGateway";
-import {BaseDataBase} from "../../../data/baseDataBase";
 
 export class GetFeedUC {
     constructor(
@@ -21,7 +20,6 @@ export class GetFeedUC {
                 type: Post.convertPostType(response.post.getType()),
                 userName: response.userName,
                 creationDate: response.post.getCreationDate().toISOString().split('T')[0]
-
             }))
         }
     }

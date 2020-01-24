@@ -31,7 +31,6 @@ export class UserDataBase extends BaseDataBase implements
         const user = query[0][0]
         if(!user){
             throw new Error("Usuário não encontrado")
-            
         }
         return new User(user.id, user.name, user.email, user.password)
 
@@ -48,10 +47,15 @@ export class UserDataBase extends BaseDataBase implements
     }
 
     async createUserRelation(requesterId: string, requestedId: string): Promise<void> {
+        const hasRelation = await this.connection.raw(`
+        SELECT * FROM ${UserDataBase.TABLE_RELATIONS} WHERE requester_id="${requesterId}" AND requested_id="${requestedId}"; `)
+        if(hasRelation[0][0]){
+            throw new Error("Usuário já possui amizade com esta pessoa")
+        }else {
         await this.connection.raw(`
         INSERT INTO ${UserDataBase.TABLE_RELATIONS} (requester_id, requested_id)
         VALUES ("${requesterId}", "${requestedId}");
-        `)
+        `)}
     }
 
     async eraseUserRelation(requesterId: string, requestedId: string): Promise<any> {
@@ -63,6 +67,5 @@ export class UserDataBase extends BaseDataBase implements
             await this.connection.raw(`
         DELETE FROM ${UserDataBase.TABLE_RELATIONS} WHERE requester_id="${requesterId}" AND requested_id="${requestedId}";
         `)}
-
     }
 }

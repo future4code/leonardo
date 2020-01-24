@@ -6,8 +6,7 @@ export class EraseRelationUC {
         private verifyUserExistGateway: VerifyUserExistGateway,
         private getUserIdFromTokenGateway: GetUserIdFromTokenGateway,
         private eraseRelationUserGateway: EraseRelationUserGateway
-    ) {
-    }
+    ) {}
 
     async execute(input: EraseRelationUCInput): Promise<EraseRelationUCOutput>{
         const userToEraseRelation = await this.verifyUserExistGateway.verifyUserExist(input.userIdToEraseRelation)

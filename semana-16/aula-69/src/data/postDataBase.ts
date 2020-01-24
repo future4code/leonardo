@@ -9,7 +9,6 @@ export class PostDataBase extends BaseDataBase implements CreatePostGateway{
 
     async createPost(post: Post): Promise<void> {
 
-
         await this.connection.raw(`
         INSERT INTO ${PostDataBase.TABLE_USERS} 
         (id, photo, description, creation_date, type, userId)

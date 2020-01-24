@@ -1,22 +1,22 @@
-import {GetPaginetedFeedByTypeGateway} from "../../gateways/feed/feedGateway";
-import {Post} from "../../entities/post";
+import {GetPaginatedFeedGateway} from "../../gateways/feed/feedGateway";
 import {GetUserIdFromTokenGateway} from "../../gateways/auth/autenticationGateway";
+import {Post} from "../../entities/post";
 
-export class GetPaginetedFeedByTypeUC {
+export class GetPaginatedFeedUC {
     private static FEED_BY_PAGE: number = 10
     constructor(
-        private getPaginetedFeedByTypeGateway: GetPaginetedFeedByTypeGateway,
+        private getPaginatedFeedGateway: GetPaginatedFeedGateway,
         private getUserIdFromTokenGateway: GetUserIdFromTokenGateway,
     ) {
     }
-    async execute(input: GetPaginetedFeedByTypeUCInput): Promise<getPaginetedFeedByTypeUCOutput>{
-        const postType = Post.convertPostType(input.type)
+
+    async execute(input: GetPaginatedFeedUCInput): Promise<getPaginatedFeedUCOutput>{
         const userId = this.getUserIdFromTokenGateway.getUserIdFromToken(input.token)
         this.validatePage(input)
-        const responses = await this.getPaginetedFeedByTypeGateway.getPaginetedFeedByType(
-            postType,
-            GetPaginetedFeedByTypeUC.FEED_BY_PAGE,
-            0,
+        const offset = GetPaginatedFeedUC.FEED_BY_PAGE * (input.page - 1);
+        const responses = await this.getPaginatedFeedGateway.getPaginatedFeed(
+            GetPaginatedFeedUC.FEED_BY_PAGE,
+            offset,
             userId
         )
 
@@ -28,12 +28,11 @@ export class GetPaginetedFeedByTypeUC {
                 type: Post.convertPostType(response.post.getType()),
                 userName: response.userName,
                 creationDate: response.post.getCreationDate().toISOString().split('T')[0]
-
             }))
         }
     }
 
-    validatePage(input: GetPaginetedFeedByTypeUCInput): void{
+    validatePage(input: GetPaginatedFeedUCInput): void{
         if( input.page <= 0 ){
             input.page = 1
         } else if (input.page === NaN){
@@ -42,15 +41,12 @@ export class GetPaginetedFeedByTypeUC {
     }
 }
 
-
-
-export interface GetPaginetedFeedByTypeUCInput {
-    type: string
+export interface GetPaginatedFeedUCInput {
     page: number
     token: string
 }
 
-export interface getPaginetedFeedByTypeUCOutput {
+export interface getPaginatedFeedUCOutput {
     posts: Array<{
         id: string
         photo: string
@@ -60,3 +56,4 @@ export interface getPaginetedFeedByTypeUCOutput {
         creationDate: string
     }>
 }
+

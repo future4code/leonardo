@@ -1,10 +1,10 @@
 import express, { Request, Response, request } from 'express'
 import { CreateUserUC, CreateUserUCInput } from "../business/usecases/user/createUser";
 import { UserDataBase } from "../data/userDataBase";
-import { UuidImplementation } from "../services/uuidImplementation";
-import { BcryptImplamantation } from "../services/bcryptImplementation";
+import { UuidIdGenerator } from "../services/uuidIdGenerator";
+import { BcryptImplamantation } from "../services/bcryptCryptography";
 import { loginUC, loginUCInput } from '../business/usecases/auth/login';
-import { JWTImplementation } from '../services/JWTImplementation';
+import { JWTCryptography } from '../services/JWTCryptography';
 import {CreateRelationUC, CreateRelationUCInput} from "../business/usecases/user/createRelation";
 import {EraseRelationUC, EraseRelationUCInput} from "../business/usecases/user/eraseRelation";
 import {CreatePostUC, CreatePostUCInput} from "../business/usecases/post/createPost";
@@ -12,7 +12,7 @@ import {PostDataBase} from "../data/postDataBase";
 import {PostType} from "../business/entities/post";
 import {GetFeedUC, GetFeedUCInput} from "../business/usecases/feed/getFeed";
 import {FeedDataBase} from "../data/feedDataBase";
-import {GetPaginetedFeedByTypeUC} from "../business/usecases/feed/getPaginetedFeedByType";
+import {GetPaginatedFeedByTypeUC} from "../business/usecases/feed/getPaginatedFeedByType";
 
 const app = express()
 app.use(express.json()) // Linha mágica (middleware)
@@ -24,9 +24,9 @@ const getTokenFromHeaders = (headers: any): string => {
 app.post('/create', async (request: Request, response: Response) => {
     try {
         const gateway = new UserDataBase()
-        const idGenerator = new UuidImplementation()
+        const idGenerator = new UuidIdGenerator()
         const bcrypt = new BcryptImplamantation()
-        const auth = new JWTImplementation()
+        const auth = new JWTCryptography()
 
         const useCase = new CreateUserUC(
             gateway, bcrypt, idGenerator, auth
@@ -52,7 +52,7 @@ app.post('/login', async (request: Request, response: Response) => {
         const useCase = new loginUC(
             new UserDataBase(),
             new BcryptImplamantation(),
-            new JWTImplementation()
+            new JWTCryptography()
         )
 
         const input: loginUCInput = {
@@ -76,8 +76,7 @@ app.post('/requestFriendship', async (request: Request, response: Response) => {
         const useCase = new CreateRelationUC(
             new UserDataBase(),
             new UserDataBase(),
-            new JWTImplementation()
-
+            new JWTCryptography()
         )
 
         const input: CreateRelationUCInput = {
@@ -86,7 +85,6 @@ app.post('/requestFriendship', async (request: Request, response: Response) => {
         }
 
         const result = await useCase.execute(input)
-
         response.status(200).send(result)
     }
     catch (error) {
@@ -100,9 +98,8 @@ app.delete('/deleteFriendship', async (request: Request, response: Response) => 
     try {
         const useCase = new EraseRelationUC(
             new UserDataBase(),
-            new JWTImplementation(),
+            new JWTCryptography(),
             new UserDataBase()
-
         )
 
         const input: EraseRelationUCInput = {
@@ -111,7 +108,6 @@ app.delete('/deleteFriendship', async (request: Request, response: Response) => 
         }
 
         const result = await useCase.execute(input)
-
         response.status(200).send(result)
     }
     catch (error) {
@@ -123,13 +119,11 @@ app.delete('/deleteFriendship', async (request: Request, response: Response) => 
 
 app.post('/post', async (request: Request, response: Response) => {
     try {
-
         const useCase = new CreatePostUC(
             new PostDataBase(),
-            new UuidImplementation(),
-            new JWTImplementation()
+            new UuidIdGenerator(),
+            new JWTCryptography()
         )
-
 
         const input: CreatePostUCInput = {
             photo: request.body.photo,
@@ -150,12 +144,10 @@ app.post('/post', async (request: Request, response: Response) => {
 
 app.get('/getFeedforUser', async (request: Request, response: Response) => {
     try {
-
         const useCase = new GetFeedUC(
             new FeedDataBase(),
-            new JWTImplementation()
+            new JWTCryptography()
         )
-
 
         const input: GetFeedUCInput = {
            token: getTokenFromHeaders(request.headers)
@@ -170,19 +162,18 @@ app.get('/getFeedforUser', async (request: Request, response: Response) => {
     }
 })
 
-app.post("/getPaginatedUsers", async (request: Request, response: Response) => {
+app.post("/getPaginatedFeedByType", async (request: Request, response: Response) => {
     try {
-        const getPaginetedFeedByTypeUC = new GetPaginetedFeedByTypeUC(
+        const getPaginatedFeedByTypeUC = new GetPaginatedFeedByTypeUC(
             new FeedDataBase(),
-            new JWTImplementation()
-
+            new JWTCryptography()
         );
         const input = {
             type: request.body.type,
             page: request.body.page,
             token: getTokenFromHeaders(request.headers)
         };
-        const result = await getPaginetedFeedByTypeUC.execute(input);
+        const result = await getPaginatedFeedByTypeUC.execute(input);
         response.status(200).send(result);
     } catch (err) {
         response.status(431).send({
@@ -192,5 +183,25 @@ app.post("/getPaginatedUsers", async (request: Request, response: Response) => {
     }
 });
 
+app.post("/getPaginatedFeed", async (request: Request, response: Response) => {
+    try {
+        const getPaginatedFeedByTypeUC = new GetPaginatedFeedByTypeUC(
+            new FeedDataBase(),
+            new JWTCryptography()
+        );
+        const input = {
+            type: request.body.type,
+            page: request.body.page,
+            token: getTokenFromHeaders(request.headers)
+        };
+        const result = await getPaginatedFeedByTypeUC.execute(input);
+        response.status(200).send(result);
+    } catch (err) {
+        response.status(431).send({
+            ...err,
+            errorMessage: err.message
+        });
+    }
+});
 
 export default app

@@ -10,7 +10,8 @@ describe("test for createPost",  () => {
             photo: "imagem",
             description: "descricao",
             type: PostType.EVENTO,
-            token: "token"
+            token: "token",
+            date: "2020-01-01"
 
         }
         const idGeneratorGateway: IdGeneratorGateway ={
@@ -27,7 +28,8 @@ describe("test for createPost",  () => {
                 input.photo,
                 input.description,
                 PostType.NORMAL,
-                "123"))
+                "123",
+                new Date(input.date)))
         }
 
         const useCase = new CreatePostUC(createPostGateway, idGeneratorGateway, getUserIdFromTokenGateway)
@@ -40,7 +42,8 @@ describe("test for createPost",  () => {
             photo: "imagem",
             description: "",
             type: PostType.EVENTO,
-            token: "token"
+            token: "token",
+            date: "2020-01-01"
 
         }
         const idGeneratorGateway: IdGeneratorGateway ={
@@ -57,7 +60,8 @@ describe("test for createPost",  () => {
                 input.photo,
                 input.description,
                 PostType.NORMAL,
-                "123"))
+                "123",
+                new Date(input.date)))
         }
 
         const useCase = new CreatePostUC(createPostGateway, idGeneratorGateway, getUserIdFromTokenGateway)
@@ -69,7 +73,8 @@ describe("test for createPost",  () => {
             photo: "imagem",
             description: "description",
             type: PostType.EVENTO,
-            token: "token"
+            token: "token",
+            date:"2020-01-01"
 
         }
         const idGeneratorGateway: IdGeneratorGateway ={
@@ -86,7 +91,8 @@ describe("test for createPost",  () => {
                 input.photo,
                 input.description,
                 PostType.NORMAL,
-                "123"))
+                "123",
+                new Date(input.date)))
         }
 
         const useCase = new CreatePostUC(createPostGateway, idGeneratorGateway, getUserIdFromTokenGateway)

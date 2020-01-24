@@ -4,7 +4,7 @@ import {
     GetUserIdFromTokenGateway
 } from '../business/gateways/auth/autenticationGateway';
 
-export class JWTImplementation implements GenerateTokenAuthenticationGateway, GetUserIdFromTokenGateway{
+export class JWTCryptography implements GenerateTokenAuthenticationGateway, GetUserIdFromTokenGateway{
 
     private static EXPIRES_IN = "1h"
 
@@ -19,7 +19,7 @@ export class JWTImplementation implements GenerateTokenAuthenticationGateway, Ge
         return jwt.sign(
             {userId}, 
             this.getJWTSecretKey(),
-            {expiresIn: JWTImplementation.EXPIRES_IN}
+            {expiresIn: JWTCryptography.EXPIRES_IN}
         )
     }
 

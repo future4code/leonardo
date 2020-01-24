@@ -4,5 +4,4 @@ export interface GenerateTokenAuthenticationGateway {
 
 export interface GetUserIdFromTokenGateway {
     getUserIdFromToken(token:string): string
-
 }

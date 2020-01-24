@@ -9,9 +9,17 @@ export interface FeedResponse {
     userName: string
 }
 
-export interface GetPaginetedFeedByTypeGateway {
-    getPaginetedFeedByType(
+export interface GetPaginatedFeedByTypeGateway {
+    getPaginatedFeedByType(
         type: string,
+        limit: number,
+        offset: number,
+        userId: string
+    ): Promise<FeedResponse[]>
+}
+
+export interface GetPaginatedFeedGateway {
+    getPaginatedFeed(
         limit: number,
         offset: number,
         userId: string
