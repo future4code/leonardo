@@ -1,9 +1,11 @@
 import * as jwt from 'jsonwebtoken'
+
 import {
     GenerateTokenAuthenticationGateway,
     GetUserIdFromTokenGateway
 } from '../business/gateways/auth/autenticationGateway';
-
+import * as dotenv from "dotenv";
+dotenv.config();
 export class JWTCryptography implements GenerateTokenAuthenticationGateway, GetUserIdFromTokenGateway{
 
     private static EXPIRES_IN = "1h"
