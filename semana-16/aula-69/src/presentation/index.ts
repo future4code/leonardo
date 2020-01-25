@@ -183,7 +183,7 @@ app.post("/getPaginatedFeedByType", async (request: Request, response: Response)
     }
 });
 
-app.post("/getPaginatedFeed", async (request: Request, response: Response) => {
+    app.post("/getPaginatedFeed", async (request: Request, response: Response) => {
     try {
         const getPaginatedFeedByTypeUC = new GetPaginatedFeedByTypeUC(
             new FeedDataBase(),
