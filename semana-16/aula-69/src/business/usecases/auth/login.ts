@@ -9,7 +9,7 @@ export class loginUC {
         private authenticationGateway: GenerateTokenAuthenticationGateway,
     ){}
 
-    async execute(input: loginUCInput){
+    async execute(input: loginUCInput): Promise<loginUCOutput>{
         const user = await this.userGateway.getUserByEmail(input.email)  
         const isPasswordRight = await this.cryptographyGateway.compare(
             input.password,

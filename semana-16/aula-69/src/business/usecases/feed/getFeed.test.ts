@@ -11,13 +11,13 @@ describe("test for get feed", ()=>{
         }
         const post = new Post("id", "photo", "description", PostType.NORMAL, "123", new Date("2020-01-01"))
         const userNameTest = "leo"
-        const output =[{
+        const mockResultGetFeedForUser =[{
             post : post,
             userName: userNameTest
         }]
 
 
-        const feedResponse: getFeedUCOutput = {
+        const mockfeedResponse: getFeedUCOutput = {
             posts: [{
                 id: "id",
                 photo: "photo",
@@ -29,7 +29,7 @@ describe("test for get feed", ()=>{
         }
 
         const feedGateway: GetFeedGateway ={
-            getPostsFeedForUser: jest.fn().mockReturnValue(output)
+            getPostsFeedForUser: jest.fn().mockReturnValue(mockResultGetFeedForUser)
         }
 
         const authenticationGateway: JWTCryptography = {
@@ -40,6 +40,6 @@ describe("test for get feed", ()=>{
 
         const usecase = new GetFeedUC(feedGateway, authenticationGateway)
         const result = await usecase.execute(input)
-        expect(result).toEqual(feedResponse)
+        expect(result).toEqual(mockfeedResponse)
     })
 })
