@@ -16,7 +16,7 @@ export class loginUC {
             user.getPassword()
         )
         if(!isPasswordRight){
-            throw new Error ("Senha inválida")
+            throw new Error ("Senha ou email invalidos")
         }
         const token = this.authenticationGateway.generateToken(user.getId())
         return {
