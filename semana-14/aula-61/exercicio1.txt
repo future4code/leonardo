@@ -1,0 +1,32 @@
+USE exercicios;
+DESCRIBE funcionarios;
+
+SELECT nome, salario FROM funcionarios 
+WHERE genero="F" AND salario > 2000;
+
+SELECT nome, data_contratacao from funcionarios
+WHERE local_de_trabalho="salao" AND YEAR(data_contratacao) > 2004;
+
+SELECT nome, data_nascimento from funcionarios
+where nome LIKE '%ei%';
+
+SELECT nome, salario, data_nascimento from funcionarios 
+WHERE (YEAR(CURDATE()) - YEAR(data_nascimento)) > 21 AND salario > 1300;
+
+DESCRIBE funcionarios;
+
+USE leonardo;
+CREATE TABLE funcionarios (
+id INT(11) PRIMARY KEY,
+nome varchar(100) NOT NULL,
+salario double NOT NULL,
+local_de_trabalho varchar(100) NOT NULL,
+genero varchar(1) NOT NULL,
+data_nascimento date NOT NULL DEFAULT '2019-01-01' ,
+data_contratacao date NOT NULL DEFAULT '2019-01-01'
+) ;
+
+INSERT INTO funcionarios (id, nome, salario, local_de_trabalho, genero, data_nascimento, data_contratacao)
+VALUES (1, 'Leonardo', 1000, 'Casa', 'M', '1986-03-10', '2019-01-01');
+
+DESCRIBE funcionarios;

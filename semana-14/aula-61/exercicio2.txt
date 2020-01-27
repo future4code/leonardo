@@ -1,0 +1,38 @@
+USE exercicios;
+DESCRIBE correntistas;
+
+SELECT primeiro_nome, ultimo_nome, email FROM correntistas
+WHERE conta_corrente < 0;
+
+SELECT primeiro_nome, ultimo_nome, genero, pais, aniversario FROM correntistas
+WHERE pais=UPPER('PERU') OR YEAR(aniversario) < 1990;
+
+SELECT ultimo_nome FROM correntistas
+WHERE primeiro_nome LIKE 'A%';
+
+SELECT primeiro_nome, ultimo_nome, aniversario from correntistas
+WHERE YEAR(aniversario) > 2000 AND conta_corrente > 1000;
+
+USE leonardo;
+
+CREATE TABLE correntistas (
+id INT(11) PRIMARY KEY,
+primeiro_nome varchar(50),
+ultimo_nome varchar(50),
+email varchar(50),
+genero varchar(50),
+conta_corrente double NOT NULL,
+pais varchar(50),
+aniversario date
+) ;
+
+DESCRIBE correntistas;
+
+INSERT INTO correntistas (id, primeiro_nome, ultimo_nome, email, genero, conta_corrente, pais, aniversario)
+VALUES
+(1, 'leonardo', 'nogueira', 'leonardocpn@gmail.com', 'M', 1234, 'Brasil', '1986-10-03'),
+(2, 'jose', 'fred', 'js@jg.com', 'M', 1222, 'Peru', '2014-08-10'),
+(3, 'zion', 'roots', 'zionr@z.com', 'M', 1332, 'India', '1988-10-07'),
+(4, 'Tatiana', 'Amaral', 'tama@tati.com', 'F', 1243,'japao', '1900-05-14'),
+(5, 'Natan', 'Sua', 'natans@nata.com', 'M', 3213,'Noruega', '1980-09-10');
+
