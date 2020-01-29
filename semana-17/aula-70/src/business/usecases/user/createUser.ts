@@ -17,7 +17,6 @@ export class CreateUserUC {
         this.validadeUserInput(input)
         const encryptedPassword = await this.cryptographyGateway.encrypt(input.password)
         const userId = this.idGeneratorGateway.generate()
-        console.log("USUARIO", userId, input.name, new Date(input.birthday), input.email, input.photo, encryptedPassword)
         const newUser = new User(
             userId,
             input.name,

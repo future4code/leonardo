@@ -1,4 +1,5 @@
-import * as bcrypt from 'bcrypt'
+// import * as bcrypt from 'bcryptjs'
+var bcrypt = require('bcryptjs');
 import { EncryptCryptographyGateway } from "../business/gateways/cryptography/cryptographyGateway";
 
 

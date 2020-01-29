@@ -23,3 +23,18 @@ export interface CreateUserRelationGateway {
 export interface EraseRelationUserGateway {
     eraseUserRelation(requesterId: string, requestedId: string): Promise<void>
 }
+
+export interface GetAllUsersGateway {
+    getAllUsers(userId: string): Promise<GetAllUsersResponse[]>
+}
+
+export interface GetAllUsersResponse {
+    users: {
+        id: string,
+        name: string,
+        birthday: string,
+        email: string,
+        photo: string
+    }
+}
+
