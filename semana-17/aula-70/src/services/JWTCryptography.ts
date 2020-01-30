@@ -6,8 +6,8 @@ import {
 } from '../business/gateways/auth/autenticationGateway';
 import * as dotenv from "dotenv";
 dotenv.config();
-export class JWTCryptography implements GenerateTokenAuthenticationGateway, GetUserIdFromTokenGateway{
 
+export class JWTCryptography implements GenerateTokenAuthenticationGateway, GetUserIdFromTokenGateway{
     private static EXPIRES_IN = "1h"
 
     getJWTSecretKey(): string {
@@ -29,7 +29,6 @@ export class JWTCryptography implements GenerateTokenAuthenticationGateway, GetU
         const jwtData = jwt.verify(token, this.getJWTSecretKey()) as JWTData
         return jwtData.userId
     }
-
 }
 
 interface JWTData {

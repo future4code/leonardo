@@ -5,5 +5,4 @@ export class UuidIdGenerator implements IdGeneratorGateway {
     generate(): string {
         return v4();
     }
-
 }

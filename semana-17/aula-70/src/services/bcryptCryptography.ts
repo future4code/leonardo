@@ -1,7 +1,6 @@
 // import * as bcrypt from 'bcryptjs'
-var bcrypt = require('bcryptjs');
+let bcrypt = require('bcryptjs');
 import { EncryptCryptographyGateway } from "../business/gateways/cryptography/cryptographyGateway";
-
 
 export class BcryptImplamantation implements EncryptCryptographyGateway {
     private static BCRYPT_SALT_ROUNDS = 10
