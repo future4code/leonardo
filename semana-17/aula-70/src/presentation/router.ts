@@ -1,16 +1,25 @@
 import {LoginUC, LoginUCInput} from "../business/usecases/auth/login";
 import {UserDataBase} from "../data/userDataBase";
-import {BcryptImplamantation} from "../services/bcryptCryptography";
+import {BcryptCryptography} from "../services/bcryptCryptography";
 import {JWTCryptography} from "../services/JWTCryptography";
 import {GetAllUsersUC, GetAllUsersUCInput} from "../business/usecases/user/getAllUsers";
 import {RelateUserUC, RelateUserUCInput} from "../business/usecases/user/relateUser";
 import {GetMatchesUC, GetMatchesUCInput} from "../business/usecases/user/getMatches";
 import {CreateUserUC, CreateUserUCInput} from "../business/usecases/user/createUser";
 import {UuidIdGenerator} from "../services/uuidIdGenerator";
+import {
+    SendResetPasswordEmailUC,
+    SendResetPasswordEmailUCInput
+} from "../business/usecases/auth/sendResetPasswordEmail";
+import {RandomStringGenerator} from "../services/randomStringGenerator";
+import {NodeMailer} from "../services/nodeMailer";
+import {ResetPasswordUC, ResetPasswordUCInput} from "../business/usecases/user/resetPassword";
 
 //Pelo que eu entendi ficou correto mandar somente uma lambda
 //concentrei tudo na astroMatchLambda
 // a API Gateway ficou no endereco https://03njycqr6k.execute-api.us-east-1.amazonaws.com/dev
+// algumas vezes a api retorna um internal error, mas dai eu faco algumas novas solicitacoes e roda
+
 
 export class ApiRouter {
     public static async handleRoute(path: string, event: any): Promise<any> {
@@ -19,7 +28,7 @@ export class ApiRouter {
                 try{
                     const useCase = new CreateUserUC(
                         new UserDataBase(),
-                        new BcryptImplamantation(),
+                        new BcryptCryptography(),
                         new UuidIdGenerator(),
                         new JWTCryptography()
                     )
@@ -53,7 +62,7 @@ export class ApiRouter {
                 try {
                     const useCase = new LoginUC(
                         new UserDataBase(),
-                        new BcryptImplamantation(),
+                        new BcryptCryptography(),
                         new JWTCryptography()
                     )
                     const input: LoginUCInput = {
@@ -89,6 +98,40 @@ export class ApiRouter {
                     )
                     const input: GetMatchesUCInput = {
                         token: event.headers["auth"]
+                    }
+                    return await useCase.execute(input)
+                }catch (error) {
+                    return error.message
+                }
+                break
+            case "sendResetPasswordEmail":
+                try {
+                    const useCase = new SendResetPasswordEmailUC(
+                        new UserDataBase(),
+                        new RandomStringGenerator(),
+                        new NodeMailer(),
+                        new UserDataBase()
+                    )
+                    const input: SendResetPasswordEmailUCInput = {
+                        email: event.body.email
+                    }
+                    return await useCase.execute(input)
+                }catch (error) {
+                    return error.message
+                }
+                break
+            case "resetPassword":
+                try {
+                    const useCase = new ResetPasswordUC(
+                        new UserDataBase(),
+                        new BcryptCryptography(),
+                        new UserDataBase(),
+                        new UserDataBase()
+                    )
+                    const input: ResetPasswordUCInput = {
+                        emailCode: event.body.emailCode,
+                        email: event.body.email,
+                        newPassword: event.body.newPassword
                     }
                     return await useCase.execute(input)
                 }catch (error) {

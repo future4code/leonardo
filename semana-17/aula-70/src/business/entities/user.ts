@@ -5,7 +5,8 @@ export class User {
         private birthday: Date,
         private email: string,
         private photo: string,
-        private password: string
+        private password: string,
+        private email_code: string = ""
 
     ) {
     }
@@ -32,5 +33,9 @@ export class User {
 
     public getPassword(): string{
         return this.password
+    }
+
+    public getEmailCode(): string {
+        return this.email_code
     }
 }

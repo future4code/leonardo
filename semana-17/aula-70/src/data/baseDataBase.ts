@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 dotenv.config();
-
+let moment = require('moment');
 import knex from 'knex';
 
 export abstract class BaseDataBase {
@@ -14,4 +14,9 @@ export abstract class BaseDataBase {
         }
     })
     getSQLDateFromTSDate = (date: Date): string => date.toISOString().split('T')[0]
+
+    getAge (age: string): number {
+        const userAge =  moment(age,"YYYY/MM/DD")
+        return moment().diff(userAge,"year")
+    }
 }

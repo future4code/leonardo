@@ -26,3 +26,13 @@ export interface GetMatchesGateway{
     getMatches(userId: string): Promise<GetMatchesUCOutput>
 }
 
+export interface UpdateEmailCodeGateway {
+    updateEmailCode(userId: string, emailCode: string): Promise<void>
+}
+
+export interface UpdatePasswordGateway {
+    updatePassword(userId: string, password: string): Promise<void>
+}
+
+
+

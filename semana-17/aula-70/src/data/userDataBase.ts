@@ -3,19 +3,23 @@ import {
     CreateUserGateway,
     GetAllUsersGateway,
     GetMatchesGateway,
-    RelateUserGateway,
+    RelateUserGateway, UpdateEmailCodeGateway, UpdatePasswordGateway,
     VerifyUserExistGateway
 } from "../business/gateways/user/userGateway";
 import { User } from "../business/entities/user";
 import {GetAllUsersUCOutput} from "../business/usecases/user/getAllUsers";
 import {GetMatchesUCOutput} from "../business/usecases/user/getMatches";
 
+
+
 export class UserDataBase extends BaseDataBase implements
     CreateUserGateway,
     GetAllUsersGateway,
     RelateUserGateway,
     VerifyUserExistGateway,
-    GetMatchesGateway {
+    GetMatchesGateway,
+    UpdateEmailCodeGateway,
+    UpdatePasswordGateway{
 
     private static TABLE_USERS: string = "Users"
     private static TABLE_RELATIONS: string = "Matches"
@@ -43,7 +47,14 @@ export class UserDataBase extends BaseDataBase implements
         if (!user) {
             throw new Error("Usuário não encontrado")
         }
-        return new User(user.id, user.name, new Date(user.birthday), user.email, user.photo, user.password)
+        return new User(
+            user.id,
+            user.name,
+            new Date(user.birthday),
+            user.email,
+            user.photo,
+            user.password,
+            user.email_code)
     }
 
     async verifyUserExist(userId: string): Promise<boolean> {
@@ -100,6 +111,7 @@ export class UserDataBase extends BaseDataBase implements
                 id: user.id,
                 name: user.name,
                 birthday: this.getSQLDateFromTSDate(new Date(user.birthday)),
+                age: this.getAge(user.birthday),
                 email: user.email,
                 photo: user.photo
             }))
@@ -117,11 +129,25 @@ export class UserDataBase extends BaseDataBase implements
                 id: user.id,
                 name: user.name,
                 birthday: this.getSQLDateFromTSDate(new Date(user.birthday)),
+                age: this.getAge(user.birthday),
                 email: user.email,
                 photo: user.photo
             }))
         }
     }
+
+    async updateEmailCode(userId: string, emailCode: string): Promise<void> {
+        await this.connection.raw(`
+        UPDATE ${UserDataBase.TABLE_USERS} SET email_code ="${emailCode}"
+        WHERE id="${userId}";`)
+    }
+
+    async updatePassword(userId: string, password: string): Promise<void> {
+        await this.connection.raw(`
+        UPDATE ${UserDataBase.TABLE_USERS} SET password ="${password}"
+        WHERE id="${userId}";`)
+    }
+
 }
 
 export interface ModelUserFromDB {

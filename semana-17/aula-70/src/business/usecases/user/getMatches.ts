@@ -15,6 +15,7 @@ export class GetMatchesUC {
                 id: user.id,
                 name: user.name,
                 birthday: user.birthday,
+                age: user.age,
                 email: user.email,
                 photo: user.photo
             }))
@@ -34,6 +35,7 @@ export interface UserForGetMatchesOutput {
     id: string
     name: string
     birthday: string
+    age: number
     email: string
     photo: string
 }
