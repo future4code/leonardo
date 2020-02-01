@@ -1,6 +1,7 @@
 import {GetUserByEmailGateway} from "../../gateways/user/userGateway";
 import {CompareCryptographyGateway} from "../../gateways/cryptography/cryptographyGateway";
 import {GenerateTokenAuthenticationGateway} from "../../gateways/auth/autenticationGateway";
+import {User} from "../../entities/user";
 
 export class LoginUC {
     constructor(
@@ -10,15 +11,15 @@ export class LoginUC {
     ){}
 
     async execute(input: LoginUCInput): Promise<LoginUCOutput>{
-        const user = await this.userGateway.getUserByEmail(input.email)
-        const isPasswordRight = await this.cryptographyGateway.compare(
+        const user: User = await this.userGateway.getUserByEmail(input.email)
+        const isPasswordRight: boolean = await this.cryptographyGateway.compare(
             input.password,
             user.getPassword()
         )
         if(!isPasswordRight){
             throw new Error ("Senha ou email invalidos")
         }
-        const token = this.authenticationGateway.generateToken(user.getId())
+        const token = await this.authenticationGateway.generateToken(user.getId())
         return {
             token
         }

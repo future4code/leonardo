@@ -41,9 +41,9 @@ export class UserDataBase extends BaseDataBase implements
     async getUserByEmail(email: string): Promise<User> {
         const query = await this.connection.raw(`
         SELECT * FROM ${UserDataBase.TABLE_USERS} 
-        WHERE ${UserDataBase.TABLE_USERS}.email="${email}";
+        WHERE email="${email}";
         `)
-        const user = query[0][0]
+        const user: ModelUserFromDB = query[0][0]
         if (!user) {
             throw new Error("Usuário não encontrado")
         }
@@ -54,7 +54,7 @@ export class UserDataBase extends BaseDataBase implements
             user.email,
             user.photo,
             user.password,
-            user.email_code)
+            "")
     }
 
     async verifyUserExist(userId: string): Promise<boolean> {
@@ -156,4 +156,6 @@ export interface ModelUserFromDB {
     birthday: string,
     email: string,
     photo: string,
+    password: string,
+    email_code: string
 }

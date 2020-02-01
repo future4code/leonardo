@@ -3,5 +3,5 @@ export interface EncryptCryptographyGateway {
 }
 
 export interface CompareCryptographyGateway {
-    compare(encryptedPassword: string, hash: string): Promise<boolean>
+    compare(word: string, hash: string): Promise<boolean>
 }
