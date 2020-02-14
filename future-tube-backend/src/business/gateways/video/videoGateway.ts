@@ -1,6 +1,6 @@
 import {Video} from "../../entities/video/video";
-import {GetPaginatedAllVideosUCOutput} from "../../usecases/video/getPaginatedAllVideosUC";
 import {GetVideoForAUserUCOutput} from "../../usecases/video/getVideoFromAUserUC";
+import {GetPaginatedAllVideosUCOutput} from "../../usecases/video/getPaginatedAllVideosUC";
 
 export interface UploadVideoGateway {
     uploadVideo(video: Video): Promise<void>

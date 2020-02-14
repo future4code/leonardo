@@ -1,14 +1,14 @@
-export class EditVideoInformationUC {
-    constructor(
-        
-    ) {
-    }
-    
-    execute(): void {
-        
-    }
-}
+// export class EditVideoInformationUC {
+//     constructor(
 
-export interface EditVideoInformationUCInput {
+//     ) {
+//     }
 
-}
+//     execute(): void {
+
+//     }
+// }
+
+// export interface EditVideoInformationUCInput {
+
+// }
